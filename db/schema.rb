@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150928035320) do
+ActiveRecord::Schema.define(version: 20150929040127) do
+
+  create_table "campaigns", force: :cascade do |t|
+    t.integer  "client_id"
+    t.text     "title"
+    t.text     "summary"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "campaigns", ["client_id", "created_at"], name: "index_campaigns_on_client_id_and_created_at"
+  add_index "campaigns", ["client_id"], name: "index_campaigns_on_client_id"
 
   create_table "clients", force: :cascade do |t|
     t.string   "compname"

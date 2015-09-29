@@ -1,0 +1,9 @@
+<li id="campaigns-<%= campaign.id %>">
+  
+  <span class="title"><%= campaign.title %></span>
+  <span class="content"><%= campaign.summary %></span>  
+  <span class="content"><%= campaign.content %></span>
+      <% if campaign.client == @client %>
+         <%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
+     <% end %>
+</li>

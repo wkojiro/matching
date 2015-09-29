@@ -1,6 +1,14 @@
 <h1>
     <hr >
   <%= @client.compname %>
-  <%= @current_client.inspect %>
+  <% @current_client.inspect %>
   <%= session[:id] %>
+
+
+ <p>新規登録はこちら <%= link_to "原稿登録!", new_campaign_path %></p>
+  <% if @client.campaigns.any? %>
+   <%= render @campaigns %>
+  <% end %>
+  
+
 </h1>

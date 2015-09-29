@@ -1,10 +1,8 @@
 class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
-  end
-
-  def index
-    redirect_to root_path
+    @campaigns = @client.campaigns
+    @campaign = current_client.campaigns.build
   end
 
   def new
