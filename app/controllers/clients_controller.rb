@@ -1,7 +1,11 @@
 class ClientsController < ApplicationController
- def show
-  @client = Client.find(params[:id])
- end
+  def show
+    @client = Client.find(params[:id])
+  end
+
+  def index
+    redirect_to root_path
+  end
 
   def new
     @client = Client.new
