@@ -13,3 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
+
+
+
+var data = {'date-format': 'YYYY-MM-DD' };
+ $(function() {
+    $('.datepicker4').attr(data);
+    $('.datepicker4').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+});
+

@@ -29,9 +29,25 @@ class CampaignsController < ApplicationController
      redirect_to request.referrer || root_url
     end
     
+     def edit
+      @campaign = Campaign.find(params[:id])
+     end
+    
+     def update
+      @campaign = Campaign.find(params[:id])
+        if @campaign.update(campaign_params)
+           flash[:success] = "update done!"    
+            redirect_to request.referrer || root_url
+        else
+           render 'edit'
+        end
+     end
+
+    
+    
     private
     def campaign_params
-        params.require(:campaign).permit(:title,:summary,:content)
+        params.require(:campaign).permit(:title,:summary,:content ,:startdate,:enddate,:limage,:image1,:image2,:image3,:image4,:opflg)
     end
     
 end

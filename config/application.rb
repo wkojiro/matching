@@ -21,6 +21,22 @@ module Matching
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.smtp_settings = {
+      :enable_starttls_auto => true,
+      :address => 'smtp.gmail.com',
+      :port => '587',
+      :domain => 'smtp.gmail.com',
+      :authentication => 'plain',
+      :user_name => ENV["SMTP_USER_NAME"] ,
+      :password => ENV["SMTP_USER_PASSWORD"]
+    }    
+    
+    
+    
+    
     config.active_record.raise_in_transactional_callbacks = true
     
     config.generators do |g|

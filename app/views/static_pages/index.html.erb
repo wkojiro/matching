@@ -1,4 +1,13 @@
 <h1>StaticPages#index</h1>
 <p>Find me in app/views/static_pages/index.html.erb</p>
 
-<%= @campaigns.inspect %>
+<% @campaigns.inspect %>
+<% @campaigns.each do |camp| %>
+<%= camp.client_id %>
+<%= camp.title %>
+<br />
+<% end %>
+<hr >
+本来的にここにでるもの。
+サーチ
+リスト表示

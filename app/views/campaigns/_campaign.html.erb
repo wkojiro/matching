@@ -1,9 +1,25 @@
 <li id="campaigns-<%= campaign.id %>">
-  
+  <%= campaign.inspect %>
   <span class="title"><%= campaign.title %></span>
   <span class="content"><%= campaign.summary %></span>  
   <span class="content"><%= campaign.content %></span>
+   <span class="content"><%= campaign.startdate %></span>  
+  <span class="content"><%= campaign.enddate %></span> 
+  <span class="content"><%= campaign.limage %></span> 
+  <span class="content"><%= campaign.image1 %></span> 
+    <span class="content"><%= campaign.image2 %></span> 
+      <span class="content"><%= campaign.image3 %></span> 
+<%= image_tag campaign.limage_url.to_s %>
+<%= image_tag campaign.image1_url.to_s %>
+<%= image_tag campaign.image2_url.to_s %>
+<%= image_tag campaign.image3_url.to_s %>
+<%= image_tag campaign.image4_url.to_s %>
+    <span class="content"><%= campaign.opflg %></span>  
+
       <% if campaign.client == @client %>
+
+        <%= link_to "Edit", edit_campaign_path(campaign.id) %> 
          <%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
+         
      <% end %>
 </li>

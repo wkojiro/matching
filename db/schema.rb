@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929040127) do
+ActiveRecord::Schema.define(version: 20151001053845) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
 
   create_table "campaigns", force: :cascade do |t|
     t.integer  "client_id"
@@ -20,6 +30,15 @@ ActiveRecord::Schema.define(version: 20150929040127) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "opflg"
+    t.date     "startdate"
+    t.date     "enddate"
+    t.string   "limage"
+    t.string   "image1"
+    t.string   "image2"
+    t.string   "image3"
+    t.string   "image4"
+    t.string   "youtube"
   end
 
   add_index "campaigns", ["client_id", "created_at"], name: "index_campaigns_on_client_id_and_created_at"
