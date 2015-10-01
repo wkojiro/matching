@@ -1,5 +1,5 @@
 <% if client_logged_in? %>
-<%= form_for @campaign, :html => {:multipart => true} do |f| %> 
+<%= nested_form_for @campaign, :html => {:multipart => true} do |f| %> 
 
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
@@ -18,33 +18,31 @@
 <%= f.text_field :enddate, :class => 'datepicker4' %>
 </div>
 
-
 <!---data picker -->  
 
-    <div class="field">
-    <%= f.text_area :summary, placeholder: "Compose new micropost..." %>
-  </div>
-    <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
-  </div>
-   <p>  
-   <label class="control-label">Select File</label>
-   <input id="input-1" type="file" class="file">
-    <%= f.file_field :limage %>  
-  </p>  
-   <p>  
-    <%= f.file_field :image1 %>  
-  </p>  
-     <p>  
-    <%= f.file_field :image2 %>  
-  </p>  
-     <p>  
-    <%= f.file_field :image3 %>  
-  </p>  
-     <p>  
-    <%= f.file_field :image4 %>  
-  </p>    
-  
+<div class="field"><%= f.text_area :summary, placeholder: "Compose new micropost..." %></div>
+<div class="field"><%= f.text_area :content, placeholder: "Compose new micropost..." %></div>
+<p>
+<label class="control-label">Select File</label>
+<input id="input-1" type="file" class="file">
+<%= f.file_field :limage %></p>  
+<p><%= f.file_field :image1 %></p>  
+<p><%= f.file_field :image2 %></p>  
+<p><%= f.file_field :image3 %></p>  
+<p><%= f.file_field :image4 %></p>    
+<p>  表示フラグ<%= f.check_box :opflg, { :checked => true } %></p>    
+<!---checkbox -->  
+
+
+  <div class="field">
+    <%= f.label :camp_cates %><br />
+    <%= collection_check_boxes(:campaign, :category_ids, Category.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>    
+
+<!---checkbox -->  
+
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
 <% end %>

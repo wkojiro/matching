@@ -3,6 +3,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @campaigns = @client.campaigns
     @campaign = current_client.campaigns.build
+
   end
 
   def new

@@ -23,7 +23,16 @@ class ApplicationController < ActionController::Base
     #login_urlで良いのか？
     end
    end
-  
+
+   def logged_in_admin
+    unless admin_logged_in?
+    store_location
+    flash[:danger] = "Please log in."
+    redirect_to admin_login_url
+    #login_urlで良いのか？
+    end
+   end
+
 end
   
   

@@ -2,13 +2,15 @@ class CampaignsController < ApplicationController
     before_action :logged_in_client, only: [:create]
     
     def new
-     @campaign = current_client.campaigns.build
+    @campaign = current_client.campaigns.build
+     @campaign.camp_cates.build # これ！
     end
     
     
     def show
 #    @campaign = current_client.campaigns.build if client_logged_in?
 #    @campaigns = @client.campaigns
+
     end
     
     def create
@@ -17,6 +19,7 @@ class CampaignsController < ApplicationController
          flash[:success] = "キャンペーン登録完了"
          redirect_to request.referrer 
      else
+      @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil      
          render 'static_pages/index'
      end
     end
@@ -47,7 +50,9 @@ class CampaignsController < ApplicationController
     
     private
     def campaign_params
-        params.require(:campaign).permit(:title,:summary,:content ,:startdate,:enddate,:limage,:image1,:image2,:image3,:image4,:opflg)
+        params.require(:campaign).permit(:title,:summary,:content ,:startdate,:enddate,:limage,:image1,:image2,:image3,:image4,:opflg,
+        {:category_ids => []})
     end
-    
 end
+
+
