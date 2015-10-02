@@ -35,7 +35,7 @@
 
 
   <div class="field">
-    <%= f.label :camp_cates %><br />
+    <%= f.label :専門領域 %><br />
     <%= collection_check_boxes(:campaign, :category_ids, Category.all, :id, :name) do |b| %>
       <%= b.label { b.check_box + b.text } %>
     <% end %>

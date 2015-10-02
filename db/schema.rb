@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001112401) do
+ActiveRecord::Schema.define(version: 20151002034445) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -22,16 +22,6 @@ ActiveRecord::Schema.define(version: 20151001112401) do
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-
-  create_table "camp_cates", force: :cascade do |t|
-    t.integer  "category_id"
-    t.integer  "campaign_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "camp_cates", ["campaign_id"], name: "index_camp_cates_on_campaign_id"
-  add_index "camp_cates", ["category_id"], name: "index_camp_cates_on_category_id"
 
   create_table "campaigns", force: :cascade do |t|
     t.integer  "client_id"
@@ -54,6 +44,16 @@ ActiveRecord::Schema.define(version: 20151001112401) do
 
   add_index "campaigns", ["client_id", "created_at"], name: "index_campaigns_on_client_id_and_created_at"
   add_index "campaigns", ["client_id"], name: "index_campaigns_on_client_id"
+
+  create_table "campcats", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "campaign_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "campcats", ["campaign_id"], name: "index_campcats_on_campaign_id"
+  add_index "campcats", ["category_id"], name: "index_campcats_on_category_id"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"

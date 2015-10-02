@@ -10,7 +10,7 @@ class Campaign < ActiveRecord::Base
   mount_uploader :image3, ImageUploader 
   mount_uploader :image4, ImageUploader   
   
-  has_many :camp_cates
-  has_many :categories, :through => :camp_cates
+  has_many :campcats
+  has_many :categories, :through => :campcats
 
 end

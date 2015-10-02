@@ -2,15 +2,14 @@ class CampaignsController < ApplicationController
     before_action :logged_in_client, only: [:create]
     
     def new
-    @campaign = current_client.campaigns.build
-     @campaign.camp_cates.build # これ！
+     @campaign = current_client.campaigns.build
+     @campaign.campcats.build # これ！
     end
     
     
     def show
 #    @campaign = current_client.campaigns.build if client_logged_in?
 #    @campaigns = @client.campaigns
-
     end
     
     def create

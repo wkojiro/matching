@@ -5,5 +5,6 @@ class StaticPagesController < ApplicationController
     @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil
     @user = current_user
     @client = current_client
+
   end
 end

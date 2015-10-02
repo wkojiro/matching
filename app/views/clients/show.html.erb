@@ -1,3 +1,8 @@
+
+
+client/show.html
+
+
 <h1>
     <hr >
   <%= @client.compname %></h1>
@@ -8,9 +13,20 @@
  <p>新規登録はこちら <%= link_to "原稿登録!", new_campaign_path %></p>
   <% if @client.campaigns.any? %>
    <%= render @campaigns %>
-      <%= @camp_cates.inspect %>
+   <%# @camps = Campcat.find(campaigns.id) %>
+   <%# @camps %>
   <% end %>
 本来的にここに載せるもの
+
+<hr>
+<%= @campan %>
+<% @campcate.inspect %>
+<% @campcate.each do |f| %>
+<%= f.campaign_id %>
+<%= f.category_id %><br >
+
+<% end %>
+<hr>
 
 承認待ち案件　｜　編集　｜削除
 

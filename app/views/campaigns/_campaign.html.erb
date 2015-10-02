@@ -15,7 +15,8 @@
 <%= image_tag campaign.image3_url.to_s %>
 <%= image_tag campaign.image4_url.to_s %>
     <span class="content"><%= campaign.opflg %></span>  
-<%= @camp_cates.inspect %>
+  <% @camps = Campcat.find_by(campaign.id) %>
+   <%= @camps.inspect %> 
       <% if campaign.client == @client %>
 
         <%= link_to "Edit", edit_campaign_path(campaign.id) %> 
