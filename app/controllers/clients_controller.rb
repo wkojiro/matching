@@ -3,15 +3,17 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id]) #このクライアントをClientから特定
     @campaigns = @client.campaigns #特定したクライアントのキャンペンを
     @campaign = current_client.campaigns.build
+
 #    @campaign.campcats.build # これ！
 #    @campsall = Campaign.all.order("updated_at DESC").limit(30) if not nil
-    @campcate = Campcat.all.order("updated_at DESC").limit(30) if not nil
-   
+#    @campcate = Campcat.all.order("updated_at DESC").limit(30) if not nil
+#    @campan = Campaign.where(id: 48).first.categories
+#     @campan = Campaign.where(id: current_campaign).first.categories  
   end
 
   def new
     @client = Client.new
-    @campaign.campcats.build # これ！
+#    @campaign.campcats.build # これ！
   end
   
   def create

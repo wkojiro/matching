@@ -5,6 +5,8 @@ class AdminsController < ApplicationController
   
   def show
     @admin = Admin.find(params[:id])
+    @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil
+  #   @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil
   end  
   
   def create

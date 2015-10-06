@@ -4,11 +4,29 @@
 <% @campaigns.inspect %>
 <%= @camp_cates %>
 <% @campaigns.each do |camp| %>
+<% if camp.startdate <= Date.today && camp.opflg == "1" %>
+<%= camp.id %>
 <%= camp.client_id %>
 <%= camp.title %>
+<%= camp.summary %>
+<%= camp.content %>
+<%= camp.startdate %>
+<%= camp.enddate %>
+<%= camp.opflg %>
+<% @camps = Campaign.where(id: camp.id).first.categories %>
+<% @camps.each do |f| %>        
+<%= f.name %> 
+<% end %>
+<%= link_to "詳細", campaign_path(camp.id) %>
+<% if user_logged_in? %>
+返信する
+<% end %>
 <br />
 <% end %>
+<% end %>
 <hr >
+
 本来的にここにでるもの。
 サーチ
 リスト表示
+

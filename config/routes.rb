@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :client_sessions, only: [:new, :create, :destroy]  
   resources :campaigns
+  resources :resumes  
   resources :admins
   resources :admin_sessions, only: [:new, :create, :destroy]    
 end

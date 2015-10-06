@@ -1,26 +1,42 @@
+<% if campaign.startdate == Date.today %>
+TODAY!
+<%elsif campaign.startdate < Date.today %>
+startしています!
+<%elsif campaign.startdate > Date.today %>
+madamatte
+<% end %>
+
 <li id="campaigns-<%= campaign.id %>">
-  <%= campaign.inspect %>
-  <span class="title"><%= campaign.title %></span>
-  <span class="content"><%= campaign.summary %></span>  
-  <span class="content"><%= campaign.content %></span>
-   <span class="content"><%= campaign.startdate %></span>  
-  <span class="content"><%= campaign.enddate %></span> 
-  <span class="content"><%= campaign.limage %></span> 
-  <span class="content"><%= campaign.image1 %></span> 
-    <span class="content"><%= campaign.image2 %></span> 
-      <span class="content"><%= campaign.image3 %></span> 
+  <% campaign.inspect %>
+ <% if current_admin == @admin %>
+ <span class="title"><%= campaign.id %></span>
+ <span class="title"><%= campaign.client_id %></span>
+ <% end %>
+ <span class="title"><%= campaign.title %></span>
+ <span class="content"><%= campaign.summary %></span>  
+ <span class="content"><%= campaign.content %></span>
+ <span class="content"><%= campaign.startdate.strftime("%Y年%m月%d日") %></span>  ～
+ <span class="content"><%= campaign.enddate.strftime("%Y年%m月%d日") %></span> 
+ <span class="content"><%= campaign.limage %></span> 
+ <span class="content"><%= campaign.image1 %></span> 
+ <span class="content"><%= campaign.image2 %></span> 
+ <span class="content"><%= campaign.image3 %></span> 
 <%= image_tag campaign.limage_url.to_s %>
 <%= image_tag campaign.image1_url.to_s %>
 <%= image_tag campaign.image2_url.to_s %>
 <%= image_tag campaign.image3_url.to_s %>
 <%= image_tag campaign.image4_url.to_s %>
     <span class="content"><%= campaign.opflg %></span>  
-  <% @camps = Campcat.find_by(campaign.id) %>
-   <%= @camps.inspect %> 
-      <% if campaign.client == @client %>
+<% @camps = Campaign.where(id: campaign.id).first.categories %>
+<% @camps.each do |f| %>        
+<%= f.name %> 
+<% end %>
 
+      <% if campaign.client == @client %>
         <%= link_to "Edit", edit_campaign_path(campaign.id) %> 
          <%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
-         
+        <% elsif current_admin == @admin %>
+        <%= link_to "Edit", edit_campaign_path(campaign.id) %> 
+        <%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
      <% end %>
 </li>

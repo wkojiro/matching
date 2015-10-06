@@ -1,4 +1,15 @@
-<h1>
-  <%= @admin.name %>
+<h1><%= @admin.name %></h1>
+   
 
-</h1>
+<%# @campaigns.each do |camp| %>
+<%# camp.client_id %>
+<%# camp.title %>
+<%# end %>
+   <%= render @campaigns %>
+
+   <%# @camps = Campcat.find(campaigns.id) %>
+   <%# @camps %>
+
+
+
+<br />
