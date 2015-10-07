@@ -1,0 +1,18 @@
+<% unless user_logged_in? %>
+aaa
+<% else %>
+bbb
+<%= form_for @resume, :html => {:multipart => true} do |f| %> 
+<%= render 'shared/error_messages', object: f.object %>
+<div class="field">
+<%= f.text_area :address1, placeholder: "Compose new micropost..." %>
+<%= f.text_area :address2, placeholder: "Compose new micropost..." %>
+<%= f.text_area :tel, placeholder: "Compose new micropost..." %>    
+<%= f.date_select :birthday, placeholder: "Compose new micropost..." %>    
+<%= f.text_area :sex, placeholder: "Compose new micropost..." %>    
+<%= f.text_area :shikaku, placeholder: "Compose new micropost..." %>   
+<%= f.text_area :menkyo, placeholder: "Compose new micropost..." %>   
+</div>
+<%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
+<% end %>

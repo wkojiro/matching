@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-#    @resumes = @user.resumes 
-#    @resume = current_user.resumes.build
+    @resume = Resume.find(params[:id])
   end
 
   def index
@@ -13,7 +12,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    
   end
   
   def create

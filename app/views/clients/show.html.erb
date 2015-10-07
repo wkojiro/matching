@@ -1,5 +1,11 @@
 
+<% unless client_logged_in? %>
 
+
+<%= link_to "クライアントログイン", client_login_path %>
+
+
+<% else %>
 client/show.html
 <%= Time.now.to_s %>
 <%= datetime = DateTime.now %>
@@ -27,4 +33,5 @@ client/show.html
 
 承認待ち案件　｜　編集　｜削除
 
+<% end %>
 

@@ -9,7 +9,14 @@ class CampaignsController < ApplicationController
     
     
     def show
-     @campaign = current_client.campaigns.find_by(id: params[:id])
+        if current_client != @client
+         @campaign = current_client.campaigns.find_by(id: params[:id])
+        else
+         @campaign =Campaign.find(params[:id])
+        end
+        if current_user != @user #この書き方なんかイケてない、、、
+            @user = current_user
+        end
 #    @campaigns = @client.campaigns
 
     end

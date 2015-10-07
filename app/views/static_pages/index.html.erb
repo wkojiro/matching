@@ -24,6 +24,26 @@
 <br />
 <% end %>
 <% end %>
+
+<hr>
+現状は、campaign自体がクライアントに紐づいて処理をされてしまっている。
+つまり、current_clientがいないとエラーになる。
+  def show
+     @campaign = current_client.campaigns.find_by(id: params[:id])
+#    @campaigns = @client.campaigns
+
+    end
+    
+→一応直してみたが、Clientが異なったとき位URL直タタキで編集とかできてしまうか、要確認。
+
+Userのshowはhas_one belongs_toのアソシエーションを利用していない。これでいいのか不明。
+  def show
+    @user = User.find(params[:id])
+    @resume = Resume.find(params[:id])
+  end
+
+<hr >
+ログアウトしても、Clients/1を直接たたくとも見れてしまう。
 <hr >
 
 本来的にここにでるもの。

@@ -1,0 +1,14 @@
+
+<%= @user.inspect %>
+<hr>
+<%= @resume.inspect %>
+
+
+<%= @resume.id %>
+<%= @resume.birthday %>
+<%= @resume.sex %>
+<%= @resume.menkyo %>
+<%= @resume.shikaku %>
+<%= link_to "Edit", edit_resume_path(@resume.id) %> 
+<%# link_to "delete", delete_resume_path(@resume.id), data: { confirm: "you sure?" } %>
+<%# link_to "delete", resume_path, method: :delete, data: { confirm: "you sure?" } %>

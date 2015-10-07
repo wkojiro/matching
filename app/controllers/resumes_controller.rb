@@ -2,16 +2,18 @@ class ResumesController < ApplicationController
     before_action :logged_in_user, only: [:create]
     
     def new
-     
-     @resume = current_user.resumes.build
+      @resume = Resume.new
+
     end 
     
     def show
-#     @resume = current_user.resumes.find_by(id: params[:id])
+     #@resume = current_user.build_resume.find_by(id: params[:id])
+     @resume = Resume.find(params[:id])if not nil
+     @user = User.find(params[:id]) #paramidが同じことをいいことに危険な実装。
     end
-    
+
     def create
-     @resume = current_user.resumes.build(resume_params)
+     @resume = current_user.build_resume(resume_params)
      if @resume.save
         flash[:success] = "登録!"
          redirect_to @resume
@@ -21,13 +23,14 @@ class ResumesController < ApplicationController
      end
     end
     
-    def destroy
-     @resume = current_user.resumes.find_by(id: params[:id])
-     return redirect_to root_url if @resume.nil?
-     @resume.destroy
-     flash[:success] = "Resume deleted"
-     redirect_to request.referrer || root_url
-    end
+   # def destroy
+   #  基本的にはResume単体でDestroyさせることはない  
+   #  @resume = Resume.find(params[:id]) if not nil
+   #  return redirect_to root_url if @resume.nil?
+   #  @resume.destroy
+   #  flash[:success] = "Resume deleted"
+   #  redirect_to request.referrer || root_url
+   # end
     
      def edit
       @resume = Resume.find(params[:id])

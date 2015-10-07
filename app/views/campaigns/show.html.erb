@@ -21,3 +21,14 @@
 <% @camps.each do |f| %>        
 <%= f.name %> 
 <% end %>
+
+<hr >
+<%= @user.inspect %>
+
+<% if current_user == @user %>
+
+ログインしているよ。
+<% end %>
+
+ここに返信用のフォームをいれる。（ユーザーログインずみだったら）
+

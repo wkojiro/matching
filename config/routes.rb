@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :categories
+
 #  get 'admin_sessions/new'
 
 #  get 'admins/new'
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :client_sessions, only: [:new, :create, :destroy]  
   resources :campaigns
+  resources :categories
   resources :resumes  
   resources :admins
   resources :admin_sessions, only: [:new, :create, :destroy]    

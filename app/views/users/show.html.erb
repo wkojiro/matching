@@ -1,5 +1,16 @@
 <h1>
-  <%= @user.name %>
-   <p>新規登録はこちら <%= link_to "原稿登録!", new_resume_path %></p>
+  <%= @user.name %></h1>
+<%= @resume.inspect %>
 
-</h1>
+<%# @resume.each do |resume| %>
+      <% #if resume.user == @user %>
+      <%# resume.id %>
+
+        <%#link_to "Edit", edit_resume_path(resume.id) %> 
+         <%# link_to "delete", resume, method: :delete, data: { confirm: "you sure?" } %>
+        <% #elsif current_admin == @admin %>
+        <%# link_to "Edit", edit_resume_path(resume.id) %> 
+         <%# link_to "delete", resume, method: :delete, data: { confirm: "you sure?" } %>
+     <% #end %>
+ <% #end %>
+ 

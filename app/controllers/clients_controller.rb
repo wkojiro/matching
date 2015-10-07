@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id]) #このクライアントをClientから特定
     @campaigns = @client.campaigns #特定したクライアントのキャンペンを
-    @campaign = current_client.campaigns.build
+# @campaign = current_client.campaigns.build
 
 #    @campaign.campcats.build # これ！
 #    @campsall = Campaign.all.order("updated_at DESC").limit(30) if not nil
