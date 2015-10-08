@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @resume = Resume.find(params[:id])
+    if current_user == @user && @resume != nil
+    @resume = Resume.find(params[:id]) 
+    end
   end
 
   def index

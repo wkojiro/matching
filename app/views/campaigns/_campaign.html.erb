@@ -40,3 +40,15 @@ madamatte
         <%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
      <% end %>
 </li>
+応募者リスト：<br >
+<% @appliyer = Apply.where(campaign_id: campaign.id) %>
+<% @appliyer.each do |f| %>        
+<% @appu = User.find(f.user_id) %>
+<%= @appu.name %>
+Message:<%= f.message %> 
+<br >
+<% end %>
+
+
+
+<hr >
