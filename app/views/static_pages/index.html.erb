@@ -1,5 +1,30 @@
-<h1>StaticPages#index</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+
+
+<!--- 確認 --->
+<% if current_user != nil %>
+Current _user is <%= current_user.inspect %>
+<% elsif current_client != nil %>
+Current _user is <%= current_client.inspect %>
+<% else %>
+Not login
+<% end %>
+<!--- 確認 --->
+<hr >
+<!--- 検索部分 --->
+<li>Search</li>
+
+<%= search_form_for @search,url: root_path do |f| %>
+  <%= f.label :summary_cont, 'タイトル' %>
+  <%= f.text_field :summary_cont %>
+  <div>
+    <%= f.submit 'search' %>
+  </div>
+  <%= @search %>
+<% end %>
+<!--- 検索部分END --->
+
+
+
 
 <% @campaigns.inspect %>
 <%= @camp_cates %>
@@ -22,6 +47,7 @@
 返信する
 <% end %>
 <br />
+<hr>
 <% end %>
 <% end %>
 

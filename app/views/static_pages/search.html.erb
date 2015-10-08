@@ -1,0 +1,7 @@
+<h1><%= params&#91;:q&#93; %>の検索結果</h1>
+
+<%= render(@campaigns) %>
+<% if @campaigns.count == 0 %>
+  <p><%= params&#91;:q&#93; %>に一致するものはありませんでした。</p>
+<% end %>
+<%= paginate (@campaigns) %>

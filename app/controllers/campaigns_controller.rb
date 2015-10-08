@@ -1,6 +1,8 @@
 class CampaignsController < ApplicationController
     before_action :logged_in_client, only: [:create]
 
+    def index
+    end
     
     def new
      @campaign = current_client.campaigns.build

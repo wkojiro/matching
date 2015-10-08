@@ -8,7 +8,13 @@ Rails.application.routes.draw do
 
 #  get 'user_sessions/new'
 
+
+
+
   root to: 'static_pages#index'
+
+
+ # get 'search/:q' =>  'static_pages#search'
   get 'client/signup', to:'clients#new'
   get 'user/signup', to:'users#new'
   get 'admin/signup', to:'admins#new'
@@ -31,7 +37,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :clients
   resources :client_sessions, only: [:new, :create, :destroy]  
-  resources :campaigns
+  resources :campaigns 
   resources :categories
   resources :resumes  
   resources :admins
