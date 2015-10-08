@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
   #  @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil
   @search = Campaign.all.search(params[:q])
   @campaigns = @search.result
-
+  #@applies = current_user.apllies.build
     @user = current_user
     @client = current_client
   end

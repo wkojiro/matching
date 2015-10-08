@@ -1,34 +1,41 @@
 
 
-
+<h2><%= @campaign.id %></h2>
 <li id="campaigns-<%= @campaign.id %>">
-  <span class="title"><%= @campaign.title %></span>
-  <span class="content"><%= @campaign.summary %></span>  
-  <span class="content"><%= @campaign.content %></span>
-   <span class="content"><%= @campaign.startdate %></span>  
-  <span class="content"><%= @campaign.enddate %></span> 
-  <span class="content"><%= @campaign.limage %></span> 
-  <span class="content"><%= @campaign.image1 %></span> 
-    <span class="content"><%= @campaign.image2 %></span> 
-      <span class="content"><%= @campaign.image3 %></span> 
-<%= image_tag @campaign.limage_url.to_s %>
-<%= image_tag @campaign.image1_url.to_s %>
-<%= image_tag @campaign.image2_url.to_s %>
-<%= image_tag @campaign.image3_url.to_s %>
-<%= image_tag @campaign.image4_url.to_s %>
-    <span class="content"><%= @campaign.opflg %></span>  
+<span class="title"><%= @campaign.title %></span><br >
+<span class="content"><%= @campaign.summary %></span><br >  
+<span class="content"><%= @campaign.content %></span><br >
+<span class="content"><%= @campaign.startdate %></span>  <br >
+<span class="content"><%= @campaign.enddate %></span> <br >
+<span class="content"><%= @campaign.limage %></span> <br >
+<span class="content"><%= @campaign.image1 %></span> <br >
+<span class="content"><%= @campaign.image2 %></span> <br >
+<span class="content"><%= @campaign.image3 %></span> <br >
+<%= image_tag @campaign.limage_url.to_s %><br >
+<%= image_tag @campaign.image1_url.to_s %><br >
+<%= image_tag @campaign.image2_url.to_s %><br >
+<%= image_tag @campaign.image3_url.to_s %><br >
+<%= image_tag @campaign.image4_url.to_s %><br >
+<span class="content"><%= @campaign.opflg %></span><br >  
 <% @camps = Campaign.where(id: @campaign.id).first.categories %>
 <% @camps.each do |f| %>        
-<%= f.name %> 
+<%= f.name %> <br >
+<% end %>
+
+<% if user_logged_in? %>
+ここに返信用のフォームをいれる。（ユーザーログインずみだったら）
+<li id="campaigns-<%= @campaign.id %>">応募フォーム
+
+<%= form_for @applies , url: applies_path do |f| %>
+<%= f.label :応募 %>
+<%= f.text_field :campaign_id, :value => @campaign.id %>
+<%= f.text_area :message, placeholder: "Compose new micropost..." %>
+<%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
 <% end %>
 
 <hr >
 <%= @user.inspect %>
 
-<% if current_user == @user %>
 
-ログインしているよ。
-<% end %>
-
-ここに返信用のフォームをいれる。（ユーザーログインずみだったら）
 

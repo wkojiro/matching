@@ -12,5 +12,7 @@ class Campaign < ActiveRecord::Base
   
   has_many :campcats
   has_many :categories, :through => :campcats
+  has_many :applies 
+  has_many :users, :through => :applies
 
 end

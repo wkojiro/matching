@@ -42,4 +42,5 @@ Rails.application.routes.draw do
   resources :resumes  
   resources :admins
   resources :admin_sessions, only: [:new, :create, :destroy]    
+  resources :applies
 end

@@ -11,35 +11,38 @@ class CampaignsController < ApplicationController
     
     
     def show
-        if current_client != @client
-         @campaign = current_client.campaigns.find_by(id: params[:id])
-        else
+    #  if current_client == @client
+    #     @campaign = current_client.campaigns.find_by(id: params[:id])
+    #    else
          @campaign =Campaign.find(params[:id])
-        end
+     #   end
         if current_user != @user #この書き方なんかイケてない、、、
             @user = current_user
         end
 #    @campaigns = @client.campaigns
-
+    if user_logged_in?
+      @applies = current_user.applies.build
+    end
     end
     
     def create
      @campaign = current_client.campaigns.build(campaign_params)
-     if @campaign.save
-         if @campaign.startdate > Date.today 
-         flash[:success] = "キャンペーン予約登録完了"
-        elsif @campaign.startdate == Date.today 
-          flash[:success] = "すぐに開始できるかな" 
-        elsif @campaign.startdate < Date.today 
-
+        if @campaign.save
+            if @campaign.startdate > Date.today 
+            flash[:success] = "キャンペーン予約登録完了"
+            elsif @campaign.startdate == Date.today 
+            flash[:success] = "すぐに開始できるかな" 
+            elsif @campaign.startdate < Date.today 
             flash[:success] = "取りあえず登録"
-         end
+            end
          redirect_to @campaign
 #         redirect_to request.referrer 
-     else
-      @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil      
+         else
+  @search = Campaign.all.search(params[:q])
+  @campaigns = @search.result             
+        #  @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil      
          render 'static_pages/index'
-     end
+        end
     end
     
     def destroy
