@@ -4,12 +4,14 @@
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 150px;
 }
 
 section {
   overflow: auto;
 }
+.container {  padding-right: 0px;
+  padding-left: 0px;} 
 
 textarea {
   resize: vertical;
@@ -105,3 +107,32 @@ input {
     color: $state-danger-text;
   }
 }
+
+
+/* ドラキャリ用 */
+@charset "UTF-8"; body{ font-size:13px; line-height:150%; color:#444; font-family:"メイリオ", Meiryo; }
+a{ color:#0066cc; text-decoration:none; }
+a span{ display:inline-block; }
+a:hover{ opacity: .5; filter: alpha(opacity=50); /* IE lt 8 */ -ms-filter: "alpha(opacity=50)"; /* IE 8 */ -webkit-opacity: .5; -moz-opacity: .5; }
+a{ -webkit-transition: opacity 0.06s ease-out; -moz-transition: opacity 0.06s ease-out; -ms-transition: opacity 0.06s ease-out; transition: opacity 0.06s ease-out; }
+input[type="text"],input[type="password"],select,text-area{ text-indent:7px; }
+input[type=submit]:hover{ cursor: pointer; -ms-filter: "alpha( opacity=50 )"; filter: alpha( opacity=50 ); opacity: 0.5; }
+.cf:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+li{ list-style:none; }
+img{ max-width:100%; vertical-align:bottom; }
+.ttl{ font-weight:bold; }
+
+
+header nav{
+background:#87c20a; width:100%; min-width:970px;
+}
+header nav ul{ width:100%; margin:0 auto; padding:1px 0 0px; }
+header nav ul:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+header nav ul li{ float:left; line-height:100%;}
+header nav ul li a{ display:block; text-align:center; font-size:14px; font-weight:bold; margin:0 0; padding:12px 24px; border-right:1px solid #5d9500; color:#ffffff; }
+header nav ul li:first-child a { border-left:1px solid #5d9500; }
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+

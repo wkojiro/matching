@@ -1,8 +1,12 @@
-footer {
-  padding: 40px 0;
-  font-size: 13px;
-  .copyright {
-    text-align: center;
-    color: #aaa;
-  }
-}
+
+
+/* footer */
+#footer{ background:#f5f5f5; padding:10px; text-align:center; font-size:11px; line-height:100%; border-top: 1px solid #87c20a; min-width:970px;}
+#footer ul.footer{ text-align:center; padding:0 0 10px; }
+#footer ul.footer li{ display:inline-block; border-left:1px solid #ccc; padding:0 10px; }
+#footer ul.footer li:first-child{ border:0; }
+#footer ul.footer li a{ }
+.bottom_bnr{ padding:15px; text-align:center; }
+
+.footer-nav-list {width:100%;text-align:center;}
+.footer-copyright {width:100%;text-align:center;}

@@ -1,5 +1,9 @@
 
-
+<div class="container-fluid" id="content">
+  <div class="doc extra-entry">
+    <div class="container-inner inner-md thin mobile">
+      <div class="box box-md radius-zero markdown wow fadeInUp">
+        <div class="box-inner inner-md">
 <!--- 確認 --->
 <% if current_user != nil %>
 Current _user is <%= current_user.inspect %>
@@ -27,6 +31,7 @@ Not login
 
 
 <% @campaigns.inspect %>
+総登録求人数：<%= @campaigns.count %>件<br >
 <%= @camp_cates %>
 <% @campaigns.each do |camp| %>
 <% if camp.startdate <= Date.today && camp.opflg == "1" %>
@@ -76,3 +81,8 @@ Userのshowはhas_one belongs_toのアソシエーションを利用していな
 サーチ
 リスト表示
 
+</div>
+</div>
+</div>
+</div>
+</div>
