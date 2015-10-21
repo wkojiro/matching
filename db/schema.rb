@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008063210) do
+ActiveRecord::Schema.define(version: 20151021093412) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20151008063210) do
     t.text     "title"
     t.text     "summary"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "opflg"
     t.date     "startdate"
     t.date     "enddate"
@@ -52,6 +52,46 @@ ActiveRecord::Schema.define(version: 20151008063210) do
     t.string   "image4"
     t.string   "youtube"
     t.string   "category"
+    t.text     "jobtitle01"
+    t.text     "jobtitle02"
+    t.text     "jobtitle03"
+    t.text     "auth"
+    t.text     "offce_name"
+    t.text     "offce_postel"
+    t.text     "offce_address01"
+    t.text     "offce_address02"
+    t.text     "offce_address03"
+    t.text     "offce_address04"
+    t.text     "mycar"
+    t.text     "station"
+    t.text     "mapinfo"
+    t.text     "koyokeitai"
+    t.text     "koyokikan"
+    t.text     "salary"
+    t.text     "salary_remarks"
+    t.text     "socialsecurity"
+    t.text     "commuting_expenses"
+    t.text     "promote"
+    t.text     "retirement_salary"
+    t.text     "allowance"
+    t.text     "emp_remarks"
+    t.text     "worktime"
+    t.text     "breaktime"
+    t.text     "overtime"
+    t.text     "holiday"
+    t.text     "annual_holiday"
+    t.text     "job_description"
+    t.text     "workflow"
+    t.text     "licence"
+    t.text     "skill"
+    t.text     "qualification"
+    t.text     "age_criteria"
+    t.text     "in_charge"
+    t.text     "apply_tel"
+    t.text     "apply_email"
+    t.text     "apply_how"
+    t.text     "apply_flow"
+    t.text     "apply_remarks"
   end
 
   add_index "campaigns", ["client_id", "created_at"], name: "index_campaigns_on_client_id_and_created_at"

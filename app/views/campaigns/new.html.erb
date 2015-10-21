@@ -1,9 +1,13 @@
 <% if client_logged_in? %>
 <%= nested_form_for @campaign, :html => {:multipart => true} do |f| %> 
 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :title, placeholder: "Compose new micropost..." %>
+<%= f.label :求人広告タイトル %>    
+    <%= f.text_field :title, placeholder: "求人広告タイトル" %>
   </div>
 
 <!---data picker -->
@@ -24,13 +28,76 @@
 <div class="field"><%= f.text_area :content, placeholder: "Compose new micropost..." %></div>
 <p>
 <label class="control-label">Select File</label>
-<input id="input-1" type="file" class="file">
+<!--<input id="input-1" type="file" class="file"> -->
+<%= f.label :写真（大）%>    
 <%= f.file_field :limage %></p>  
+<%= f.label :写真（中１）%>   
 <p><%= f.file_field :image1 %></p>  
+<%= f.label :写真（中２）%>   
 <p><%= f.file_field :image2 %></p>  
+<%= f.label :写真（中３）%>   
 <p><%= f.file_field :image3 %></p>  
+<%= f.label :写真（中４）%>   
 <p><%= f.file_field :image4 %></p>    
 <p>  表示フラグ<%= f.check_box :opflg, { :checked => true } %></p>    
+
+
+<div class="field">
+<%= f.label :募集職種1 %>    
+<%= f.text_field :jobtitle01, placeholder: "募集職種" %>
+</div>
+<div class="field">
+<%= f.label :募集職種2 %>    
+<%= f.text_field :jobtitle02, placeholder: "募集職種" %>
+</div>
+<div class="field">
+<%= f.label :募集職種3 %>    
+<%= f.text_field :jobtitle03, placeholder: "募集職種" %>
+</div>
+<div class="field">
+<%= f.label :事業所認定 %>    
+<%= f.text_field :auth, placeholder: "事業所認定" %>
+</div>
+<%= f.text_field :offce_name, placeholder: "office_name" %>
+<%= f.text_field :offce_postel, placeholder: "office_postel" %>
+<%= f.text_field :offce_address01, placeholder: "office_address1" %>
+<%= f.text_field :offce_address02, placeholder: "office_address2" %>
+<%= f.text_field :offce_address03, placeholder: "office_address3" %>
+<%= f.text_field :offce_address04, placeholder: "office_address4" %>
+<%= f.text_field :mycar, placeholder: "mycar" %>
+<%= f.text_field :station, placeholder: "station" %>
+<%= f.text_field :mapinfo, placeholder: "mapinfo" %>
+<%= f.text_field :koyokeitai, placeholder: "koyokeitai" %>
+<%= f.text_field :koyokikan, placeholder: "koyokikan" %>
+<%= f.text_field :salary, placeholder: "salary" %>
+<%= f.text_field :salary_remarks, placeholder: "salary_remarks" %>
+<%= f.text_field :socialsecurity, placeholder: "socialsecurity" %>
+<%= f.text_field :commuting_expenses, placeholder: "commuting_expenses" %>
+<%= f.text_field :promote, placeholder: "promote" %>
+<%= f.text_field :retirement_salary, placeholder: "retirement_salary" %>
+<%= f.text_field :allowance, placeholder: "allowance" %>
+<%= f.text_field :emp_remarks, placeholder: "emp_remarks" %>
+<%= f.text_field :worktime, placeholder: "worktime" %>
+<%= f.text_field :breaktime, placeholder: "breaktime" %>
+<%= f.text_field :overtime, placeholder: "overtime" %>
+<%= f.text_field :holiday, placeholder: "holiday" %>
+<%= f.text_field :annual_holiday, placeholder: "annual_holiday" %>
+<%= f.text_field :job_description, placeholder: "job_description" %>
+<%= f.text_field :workflow, placeholder: "workflow" %>
+<%= f.text_field :licence, placeholder: "licence" %>
+<%= f.text_field :skill, placeholder: "skill" %>
+<%= f.text_field :qualification, placeholder: "qualification" %>
+<%= f.text_field :age_criteria, placeholder: "age_criteria" %>
+<%= f.text_field :in_charge, placeholder: "in_charge" %>
+<%= f.text_field :apply_tel, placeholder: "apply_tel" %>
+<%= f.text_field :apply_email, placeholder: "apply_email" %>
+<%= f.text_field :apply_how, placeholder: "apply_how" %>
+<%= f.text_field :apply_flow, placeholder: "apply_flow" %>
+<%= f.text_field :apply_remarks, placeholder: "apply_remarks" %>
+
+
+
+
 <!---checkbox -->  
 
 
@@ -47,5 +114,6 @@
 <% end %>
 <% end %>
 
-
+  </div>
+</div>
 

@@ -1,0 +1,44 @@
+class CampaignsUpdate < ActiveRecord::Migration
+  def change
+      add_column :campaigns, :jobtitle01, :text
+      add_column :campaigns, :jobtitle02, :text
+      add_column :campaigns, :jobtitle03, :text
+      add_column :campaigns, :auth, :text
+      add_column :campaigns, :offce_name, :text
+      add_column :campaigns, :offce_postel, :text
+      add_column :campaigns, :offce_address01, :text
+      add_column :campaigns, :offce_address02, :text
+      add_column :campaigns, :offce_address03, :text
+      add_column :campaigns, :offce_address04, :text
+      add_column :campaigns, :mycar, :text
+      add_column :campaigns, :station, :text
+      add_column :campaigns, :mapinfo, :text
+      add_column :campaigns, :koyokeitai, :text
+      add_column :campaigns, :koyokikan, :text
+      add_column :campaigns, :salary, :text
+      add_column :campaigns, :salary_remarks, :text
+      add_column :campaigns, :socialsecurity, :text
+      add_column :campaigns, :commuting_expenses, :text
+      add_column :campaigns, :promote, :text
+      add_column :campaigns, :retirement_salary, :text
+      add_column :campaigns, :allowance, :text
+      add_column :campaigns, :emp_remarks, :text
+      add_column :campaigns, :worktime, :text
+      add_column :campaigns, :breaktime, :text
+      add_column :campaigns, :overtime, :text
+      add_column :campaigns, :holiday, :text
+      add_column :campaigns, :annual_holiday, :text
+      add_column :campaigns, :job_description, :text
+      add_column :campaigns, :workflow, :text
+      add_column :campaigns, :licence, :text
+      add_column :campaigns, :skill, :text
+      add_column :campaigns, :qualification, :text
+      add_column :campaigns, :age_criteria, :text
+      add_column :campaigns, :in_charge, :text
+      add_column :campaigns, :apply_tel, :text
+      add_column :campaigns, :apply_email, :text
+      add_column :campaigns, :apply_how, :text
+      add_column :campaigns, :apply_flow, :text
+      add_column :campaigns, :apply_remarks, :text
+  end
+end

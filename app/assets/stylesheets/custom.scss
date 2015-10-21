@@ -4,14 +4,16 @@
 /* universal */
 
 body {
-  padding-top: 150px;
+/*  padding-top: 150px; */
 }
 
 section {
   overflow: auto;
 }
-.container {  padding-right: 0px;
-  padding-left: 0px;} 
+
+/*.container {       background-color:#ffffff;
+
+} */
 
 textarea {
   resize: vertical;
@@ -80,7 +82,7 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
-/* forms */
+/* forms 
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -92,7 +94,7 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
-
+*/
 #error_explanation {
   color: red;
   ul {
@@ -124,13 +126,17 @@ img{ max-width:100%; vertical-align:bottom; }
 
 
 header nav{
-background:#87c20a; width:100%; min-width:970px;
+background:#87c20a; width:100%; /*min-width:970px;*/
 }
 header nav ul{ width:100%; margin:0 auto; padding:1px 0 0px; }
 header nav ul:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
 header nav ul li{ float:left; line-height:100%;}
-header nav ul li a{ display:block; text-align:center; font-size:14px; font-weight:bold; margin:0 0; padding:12px 24px; border-right:1px solid #5d9500; color:#ffffff; }
+header nav ul li a{ display:block; text-align:center; font-size:14px; font-weight:bold; margin:0 0; /*padding:12px 24px */; border-right:1px solid #5d9500; color:#ffffff; }
 header nav ul li:first-child a { border-left:1px solid #5d9500; }
+
+.navbar  {
+ margin:0;/* 下に空白が生まれてしまうのを削除している*/
+} 
 
 .navbar-default .navbar-nav > li > a {
     color: #ffffff;
