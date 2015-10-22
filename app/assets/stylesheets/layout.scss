@@ -1,0 +1,129 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+
+body { padding-top: 50px; }
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+ /* height: auto !important;　*/
+ /* height: 100%;
+  /* フッターの高さ分だけ、ネガティブインデントを指定 */
+  margin: 0 auto -60px;
+  /* フッターの高さ分だけ、パディングを指定 */
+  padding: 0 0 60px;
+}
+
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Layout CSS
+--------------------------------------------------
+
+
+Padding指定サンプル
+padding: 2px; … ［上下左右］ を指定
+padding: 2px 4px; … ［上下］ と ［左右］ を指定
+padding: 2px 4px 6px; … ［上］ と ［左右］ と ［下］ を指定
+padding: 2px 4px 6px 8px; … ［上］ と ［右］ と ［下］ と ［左］ を指定
+
+
+containerの横幅が全体的に大きすぎるので縮小しています. 
+
+
+グリッドシステムの基本構造は次のようになります。
+
+containerまたはcontainer-fluidでグリッドを囲むと15px余白をつくる。
+行を作成する要素（divなど）にrowクラスを適用すると-15px余白をつくりcontainerの余白と相殺されて結局余白は０になる。
+カラムを作成する要素（divなど）にcol-xs-N(xsの他にxs,sm,md,lgがある)クラスを適用する
+
+containerまたはcontainer-fluidで左右のmarginを15pxとり、rowで左右のmarginを-15pxする。
+
+.containerについて
+
+.containerは固定幅のコンテナを作ります。
+けれども、固定幅とはいえレスポンシブに対応していますので、ポイントになるwindowサイズでカラムの幅が変更されます。
+つまり、windowのポイントに従って、750pxや970pxや1170pxで固定されます。
+
+*/
+
+#wrap > .container {
+  padding: 5px 15px;
+}
+.container .credit {
+  margin: 20px 0;
+}
+
+#footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+
+#wrap > .container-fluid {
+margin-right: auto;
+margin-left: auto;
+max-width: 1130px; 
+}
+/* Custom page CSS
+-------------------------------------------------- */
+
+.jumbotron {
+  /*    background:#ddd;
+      background-position: center center;*/
+      background-size: cover;
+      color: #fff;
+      height:200px;
+      margin-bottom:5px;
+    }
+/*    
+    header > .container {
+      margin-top: 13%;
+    }
+    
+    header > .midashi-btn {
+      border: 1px solid #fff;
+      color: #fff;
+      border-radius: 0;
+    }
+    
+    header > .midashi-btn:hover {
+      color: #0089ff;
+      border-color: #0089ff;
+    }
+    
+    .navbar-form {
+      padding-right: 30px;
+    }
+*/
+
+/* breadcrumb
+-------------------------------------------------- */
+
+.breadcrumb{
+  margin-top:5px;
+ 
+}
+/*
+.page-hader{
+  marginが大きすぎる為基本的に使わない
+}*/
+

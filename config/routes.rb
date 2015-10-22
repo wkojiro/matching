@@ -1,18 +1,12 @@
 Rails.application.routes.draw do
 
 #  get 'admin_sessions/new'
-
 #  get 'admins/new'
-
 #  get 'client_sessions/new'
-
 #  get 'user_sessions/new'
 
-
-
-
   root to: 'static_pages#index'
-
+  get 'search' => 'static_pages#search'
 
  # get 'search/:q' =>  'static_pages#search'
   get 'client/signup', to:'clients#new'

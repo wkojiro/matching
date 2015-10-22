@@ -1,0 +1,24 @@
+/* test用のCSS
+-------------------------------------------------- 
+グリッドシステムの基本構造は次のようになります。
+
+containerまたはcontainer-fluidでグリッドを囲むと15px余白をつくる。
+行を作成する要素（divなど）にrowクラスを適用すると-15px余白をつくりcontainerの余白と相殺されて結局余白は０になる。
+カラムを作成する要素（divなど）にcol-xs-N(xsの他にxs,sm,md,lgがある)クラスを適用する
+
+Padding指定サンプル
+padding: 2px; … ［上下左右］ を指定
+padding: 2px 4px; … ［上下］ と ［左右］ を指定
+padding: 2px 4px 6px; … ［上］ と ［左右］ と ［下］ を指定
+padding: 2px 4px 6px 8px; … ［上］ と ［右］ と ［下］ と ［左］ を指定
+
+containerまたはcontainer-fluidで左右のmarginを15pxとり、rowで左右のmarginを-15pxする。
+-------------------------------------------------- */
+
+
+
+
+.container {border:solid 1px blue;}
+.container-fluid {border:dashed 1px blue;}
+.row {border:solid 1px red;}
+.border{border:dashed 1px green;}

@@ -10,10 +10,19 @@ class StaticPagesController < ApplicationController
     @user = current_user
     @client = current_client
   end
-#  def search
-#  @campaigns = Campaign.all
-#           .search(:content_cont => params[:q]).result
-#           .order(:id)
-#           .page params[:page]
-#  end
+  def search
+
+#  @search = Campaign.all.search(params[:q])
+#  @campaigns = @search.result
+
+#    @user = current_user
+#    @client = current_client
+  @search = Campaign.all.search(params[:q])
+  @campaigns = @search.result
+  #@applies = current_user.apllies.build
+    @user = current_user
+    @client = current_client
+
+
+  end
 end

@@ -1,7 +1,21 @@
-<h1><%= params&#91;:q&#93; %>の検索結果</h1>
+<%= render 'shared/logintest' %>
+<!--- 確認 --->
+
+<h1>の検索結果</h1>
+     <div class="container-fluid"> 
+      <div class="col-md-3 border" id="leftCol">
+aaa
+     
+     </div>
+      <div class="col-md-9 border" id="rightCol">
+
+            <ul class="breadcrumb border">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">詳細</a></li>
+                <li class="active">あいうえお</li>
+            </ul>
+<%= sort_link @search,:id, "idでソート" %>
+<%= sort_link @search,:enddate, "終了日でソート" %>
 
 <%= render(@campaigns) %>
-<% if @campaigns.count == 0 %>
-  <p><%= params&#91;:q&#93; %>に一致するものはありませんでした。</p>
-<% end %>
-<%= paginate (@campaigns) %>
+</div>

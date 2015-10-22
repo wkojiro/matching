@@ -3,15 +3,19 @@ TODAY!
 <%elsif campaign.startdate < Date.today %>
 startしています!
 <%elsif campaign.startdate > Date.today %>
-madamatte
+待機中です。
 <% end %>
 
 <li id="campaigns-<%= campaign.id %>">
-  <% campaign.inspect %>
- <% if current_admin == @admin %>
- <span class="title"><%= campaign.id %></span>
- <span class="title"><%= campaign.client_id %></span>
+
+ <% if current_admin != nil and current_admin == @admin %>
+ ここはアドミンでログインした時だけ見れます。
+ <%= current_admin.inspect %>
+ <%= @admin.inspect %>
+ <span class="title">キャンペーンID:<%= campaign.id %></span>
+ <span class="title">クライアントID:<%= campaign.client_id %></span>
  <% end %>
+
  <span class="title"><%= campaign.title %></span>
  <span class="content"><%= campaign.summary %></span>  
  <span class="content"><%= campaign.content %></span>
@@ -31,15 +35,18 @@ madamatte
 <% @camps.each do |f| %>        
 <%= f.name %> 
 <% end %>
+<%= link_to "詳細", campaign_path(campaign.id) %>
 
-      <% if campaign.client == @client %>
-        <%= link_to "Edit", edit_campaign_path(campaign.id) %> 
-         <%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
-        <% elsif current_admin == @admin %>
-        <%= link_to "Edit", edit_campaign_path(campaign.id) %> 
-        <%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
-     <% end %>
+<% if current_client != nil and campaign.client == @client %>
+<%= link_to "Edit", edit_campaign_path(campaign.id) %> 
+<%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
+<% elsif current_admin != nil and current_admin == @admin %>
+<%= link_to "Edit", edit_campaign_path(campaign.id) %> 
+<%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
+<% end %>
+
 </li>
+<% if current_client != nil and campaign.client == @client %>
 応募者リスト：<br >
 <% @appliyer = Apply.where(campaign_id: campaign.id) %>
 <% @appliyer.each do |f| %>        
@@ -47,6 +54,7 @@ madamatte
 <%= @appu.name %>
 Message:<%= f.message %> 
 <br >
+<% end %>
 <% end %>
 
 

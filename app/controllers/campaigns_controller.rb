@@ -16,8 +16,11 @@ class CampaignsController < ApplicationController
     #    else
          @campaign =Campaign.find(params[:id])
      #   end
-        if current_user != @user #この書き方なんかイケてない、、、
+        if current_user != nil #この書き方なんかイケてない、、、
             @user = current_user
+        end
+        if current_client != nil
+         @client= current_client
         end
 #    @campaigns = @client.campaigns
     if user_logged_in?
@@ -71,7 +74,16 @@ class CampaignsController < ApplicationController
     
     private
     def campaign_params
+ #       params.require(:campaign).permit(:title,:summary,:content ,:startdate,:enddate,:limage,:image1,:image2,:image3,:image4,:opflg,
+ #       :youtube,:category,:jobtitle01,:jobtitle02,:jobtitle03,:auth,:offce_name,:offce_postel,:offce_address01,:offce_address02,:offce_address03,
+ #       :offce_address04,:mycar,:station,:mapinfo,:koyokeitai,:koyokikan,:salary,:salary_remarks,:socialsecurity,:commuting_expenses,:promote,
+ #       :retirement_salary,:allowance,:emp_remarks,:worktime,:breaktime,:overtime,:holiday,:annual_holiday,:job_description,:workflow,:licence,
+ #       :skill,:qualification,:age_criteria,:in_charge,:apply_tel,:apply_email,:apply_how,:apply_flow,:apply_remarks,{:category_ids => []})
         params.require(:campaign).permit(:title,:summary,:content ,:startdate,:enddate,:limage,:image1,:image2,:image3,:image4,:opflg,
+         :youtube,:category,:jobtitle01,:jobtitle02,:jobtitle03,:auth,:offce_name,:offce_postel,:offce_address01,:offce_address02,:offce_address03,
+         :offce_address04,:mycar,:station,:mapinfo,:koyokeitai,:koyokikan,:salary,:salary_remarks,:socialsecurity,:commuting_expenses,:promote,
+         :retirement_salary,:allowance,:emp_remarks,:worktime,:breaktime,:overtime,:holiday,:annual_holiday,:job_description,:workflow,:licence,
+         :skill,:qualification,:age_criteria,:in_charge,:apply_tel,:apply_email,:apply_how,:apply_flow,:apply_remarks,
         {:category_ids => []})
     end
 end

@@ -1,26 +1,514 @@
+<%= render 'shared/logintest' %>
+<!--- 確認 --->
+
+<pre class="prettyprint">
+
+    <span class="alert-danger">タグで表示されているものをSearchに飛ばす方法</span>
+    <span class="alert-danger">クライアントの情報を引っ張ってくる（current_client はクライアントがログインしていることが前提となってしまうためNG）</span>
+    <span class="alert-danger">パンくず</span>
+    <span class="alert-danger">写真の設定（圧縮、整形）</span>
+    <span class="alert-danger">地図情報（緯度経度？）</span>
+    <span class="alert-danger">応募フォームの整形</span>
 
 
-<h2><%= @campaign.id %></h2>
-<li id="campaigns-<%= @campaign.id %>">
-<span class="title"><%= @campaign.title %></span><br >
-<span class="content"><%= @campaign.summary %></span><br >  
-<span class="content"><%= @campaign.content %></span><br >
-<span class="content"><%= @campaign.startdate %></span>  <br >
-<span class="content"><%= @campaign.enddate %></span> <br >
-<span class="content"><%= @campaign.limage %></span> <br >
-<span class="content"><%= @campaign.image1 %></span> <br >
-<span class="content"><%= @campaign.image2 %></span> <br >
-<span class="content"><%= @campaign.image3 %></span> <br >
-<%= image_tag @campaign.limage_url.to_s %><br >
-<%= image_tag @campaign.image1_url.to_s %><br >
-<%= image_tag @campaign.image2_url.to_s %><br >
-<%= image_tag @campaign.image3_url.to_s %><br >
-<%= image_tag @campaign.image4_url.to_s %><br >
-<span class="content"><%= @campaign.opflg %></span><br >  
-<% @camps = Campaign.where(id: @campaign.id).first.categories %>
-<% @camps.each do |f| %>        
-<%= f.name %> <br >
+</pre>
+
+<div class="col-md-9 border" id="leftCol">
+<!--Startここから -->
+
+            <ul class="breadcrumb border">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">詳細</a></li>
+                <li class="active"><%= @campaign.title %></li>
+            </ul>
+
+<% if @campaign.enddate >= Date.today and @campaign.startdate <= Date.today and @campaign.opflg != "1" %>             
+<div class="alert alert-warning"><span class="glyphicon glyphicon-time"></span> この求人広告の募集は終了しております。</div>            
 <% end %>
+            
+
+            
+            
+<hr>
+<div class="col-md-6">
+<ul class="snsb list-inline">
+<li><a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none">ツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+<li><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div></li>
+<li><div class="g-plusone" data-size="medium" data-annotation="none"></div>
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</li>
+</ul>
+</div>
+<div class="col-md-4 col-md-offset-2 text-right">
+<div class="form-group">
+    <button id="button1id" name="button1id" class="btn btn-success">応募する</button>
+    <button id="button2id" name="button2id" class="btn btn-danger">気になる</button>
+  </div>
+</div>
+
+
+<!--フォント、セクション系の話-->
+
+ <div class=""><span class="glyphicon glyphicon-calendar"></span>&nbsp; <time class="" datetime="2015-10-19T18:34:47+00:00"><%= @campaign.startdate %> ～ <%= @campaign.enddate %></time></div>
+ <h1 class="title"><%= @campaign.title %></h1>
+ 
+ <h3>会社名<small>の求人情報</small></h3>
+
+
+<% @camps = Campaign.where(id: @campaign.id).first.categories %>
+
+
+  <div class="">
+      <span class="glyphicon glyphicon-tags"></span>&nbsp;
+      <% @camps.each do |f| %>      
+        <span class="label label-info"><a href=""><%= f.name %>&nbsp; </a></span>&nbsp;
+        <% end %>
+
+</div>
+ 
+<h2 class="section"><%= @campaign.title %></h2>
+<p><%= @campaign.summary %></p>
+<p><%= @campaign.content %></p>
+         
+
+        <div class="row">
+          <div class="col-md-4"><%= image_tag @campaign.image1_url.to_s, :class => "img-responsive" %></div>
+          <div class="col-md-4"><%= image_tag @campaign.image2_url.to_s, :class => "img-responsive" %></div>
+          <div class="col-md-4"><%= image_tag @campaign.image3_url.to_s, :class => "img-responsive" %></div>
+          <div class="col-md-4"><%= image_tag @campaign.image4_url.to_s, :class => "img-responsive" %></div>          
+        </div>
+         <h2 class="section"></h2>
+        <p>
+         </p>
+
+
+<!--interivew -->
+<div class="row">
+<div class="col-md-5 col-md-push-7">
+      <ul class="thumbnails list-unstyled">
+        <li class="span2">
+          <div class="thumbnail">
+            <img src="http://www.find-job.net/img/com_pics/35291/b-89855ff7.jpg" alt="">
+            <div class="caption">
+              <h5>メンバーは皆、明るくて気さく。 
+気軽に話しかけてくださいね。</h5>
+              <p></p>
+            </div>
+          </div>
+        </li>
+      </ul>
+</div>
+
+<div class="col-md-7 col-md-pull-5">
+<h2>『ぐるなび』の未来</h2>
+<p>●目標は、「21世紀の食文化の創造」 
+<br>今後は、飲食業界とeマーケットを融合した今までにないビジネスを生み出していきたいと考えています。そのためには前例にとらわれていてはいけない。中途入社の方には、新しい風を吹き込んで、新しい取り組みを加速する原動力になっていただければと考えています。</p>
+</div>        
+
+</div>
+
+<!--interivew -->
+<div class="row">
+    
+<div class="col-md-5">
+      <ul class="thumbnails list-unstyled">
+        <li class="span2">
+          <div class="thumbnail">
+            <img src="http://www.find-job.net/img/com_pics/35291/b-89855ff7.jpg" alt="">
+            <div class="caption">
+              <h5>メンバーは皆、明るくて気さく。 
+気軽に話しかけてくださいね。</h5>
+              <p></p>
+            </div>
+          </div>
+        </li>
+      </ul>
+</div>
+
+<div class="col-md-7">
+<h2>『ぐるなび』の未来</h2>
+<p>●目標は、「21世紀の食文化の創造」 
+<br>今後は、飲食業界とeマーケットを融合した今までにないビジネスを生み出していきたいと考えています。そのためには前例にとらわれていてはいけない。中途入社の方には、新しい風を吹き込んで、新しい取り組みを加速する原動力になっていただければと考えています。</p>
+</div>        
+
+</div>
+      <ul class="thumbnails list-unstyled">
+        <li class="span2">
+          <div class="thumbnail">
+            <img src="http://www.find-job.net/img/com_pics/35291/b-89855ff7.jpg" alt="">
+            <div class="caption">
+              <h5>サムネイルラベル</h5>
+              <p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+
+
+
+<div class="well">
+<p class=""><img src="" /></p>
+
+<h2><strong>株式会社○○代表取締役社長</strong></h2>
+
+<p class="text">「勉強するすべての人にとって欠かせない存在」&hellip;私たちはそういうプラットフォームに育てていきます。こうした「学習&times;コミュニケーション」というプラットフォームは世界的に見ても類似サービスがないフロンティアな領域なんです。</p>
+
+    
+    
+    
+</div>
+
+
+
+         <h2 class="section">働きやすさにも自信あり！</h2>
+        <p>お任せするのは､企業や店舗･マンション･駐車場など､施設からの警報に対し
+現場にパトロールカーで急行し､異常を早期に発見･通報し被害の拡大防止をします｡
+緊張感は常にありますが､頼れる先輩が丁寧にお教えしますので安心してください｡
+
+未経験からスタートした先輩が多いからこそ新人の気持ちをよく理解し､上手にサポートしてくれます｡
+親身な指導で､現場にすぐに慣れることができると思います｡
+
+互いに支えあい､切磋琢磨できるチームワークの良さが当社の強みです｡
+
+特に車の運転が得意な方は､その長所を活かして働ける仕事です｡
+         </p>
+          <h2 class="section">求人のポイント</h2>     
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		求人のポイント
+	</div>
+	<div class="panel-body">
+		<ul>
+		    <li>福利厚生が充実している</li>
+		    <li>未経験者OK</li>		    
+		    <li>試用期間あり</li>		    		    
+		</ul>
+	</div>
+</div>          
+          
+          
+
+        
+        <hr>
+	<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-6 col-md-3">
+										<a href="javascript:void(0)" class="thumbnail">
+										 <img src=" //placehold.it/180x180">
+										</a>
+									</div>
+									<div class="col-sm-6 col-md-3">
+										<a href="javascript:void(0)" class="thumbnail">
+										 <img src=" //placehold.it/180x180">
+										</a>
+									</div>
+									<div class="col-sm-6 col-md-3">
+										<a href="javascript:void(0)" class="thumbnail">
+										 <img src=" //placehold.it/180x180">
+										</a>
+									</div>
+									<div class="col-sm-6 col-md-3">
+										<a href="javascript:void(0)" class="thumbnail">
+											 <img src=" //placehold.it/180x180">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>     
+
+
+<%= @campaign.youtube %><br>
+<%= @campaign.category %><br>
+
+
+
+<div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th colspan="2" class="bg-primary">募集概要</th>
+    </tr>      
+    <tr>
+      <th>募集職種</th>
+      <td><%= @campaign.jobtitle01 %><br>
+<%= @campaign.jobtitle02 %><br>
+<%= @campaign.jobtitle03 %><br></td>
+    </tr>
+    <tr>
+      <th>採用情報</th>
+      <td>1人</td>
+    </tr>
+    <tr>
+      <th>仕事概要</th>
+      <td>主に○○県・○○○県等の大手メーカーの定期便をお願いします。カゴ積み、パレ積みメインの仕事です。応募時・面接時に業務内容をご説明します。</td>
+    </tr>
+    <tr>
+      <th>勤務先名称</th>
+      <td><%= @campaign.offce_name %></td>
+    </tr>
+    <tr>
+      <th>勤務先所在地</th>
+      <td>〒<%= @campaign.offce_postel %><%= @campaign.offce_address01 %><%= @campaign.offce_address02 %><%= @campaign.offce_address03 %><%= @campaign.offce_address04 %></td>
+    </tr>
+    <tr>
+      <th>最寄駅</th>
+      <td><%= @campaign.station %></td>
+    </tr>    
+    <tr>
+      <th>事業所認定資格</th>
+      <td><%= @campaign.auth %></td>
+    </tr>
+    <tr>
+      <th>マイカー通勤</th>
+      <td><%= @campaign.mycar %></td>
+    </tr>
+    <tr>
+      <th>勤務先地図</th>
+      <td><%= @campaign.mapinfo %>
+          <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#googleMapBTN">
+                  GoogleMapで確認
+                    </button>    
+                    <div id="googleMapBTN" class="collapse">
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.0452413855764!2d139.744858!3d35.67588800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b89b2e1b089%3A0x48c7d4fa5e528690!2z5Zu95Lya6K2w5LqL5aCC!5e0!3m2!1sja!2sjp!4v1434107251242" width="100%" height="400" frameborder="0" style="border:0">
+         </iframe></div>
+         </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th colspan="2" class="bg-primary">雇用条件</th>
+    </tr>
+    <tr>
+      <th>雇用形態</th>
+      <td><%= @campaign.koyokeitai %></td>
+    </tr>
+    <tr>
+      <th>雇用期間</th>
+      <td><%= @campaign.koyokikan %></td>
+    </tr>
+    <tr>
+      <th>給与形態</th>
+      <td>時給制</td>
+    </tr>
+    <tr>
+      <th>給　与</th>
+      <td><%= @campaign.salary %></td>
+    </tr>
+    <tr>
+      <th>給　与　備　考</th>
+      <td><%= @campaign.salary_remarks %></td>
+    </tr>    
+    <tr>
+      <th>待　遇［社会保険］</th>
+      <td><%= @campaign.socialsecurity %></td>
+    </tr>
+    <tr>
+      <th>待　遇［通勤費］</th>
+      <td><%= @campaign.commuting_expenses %></td>
+    </tr>
+    <tr>
+      <th>待　遇［昇給］</th>
+      <td><%= @campaign.promote %></td>
+    </tr>
+    <tr>
+      <th>待　遇［賞与］</th>
+      <td>有り</td>
+    </tr>
+    <tr>
+      <th>待　遇［退職金］</th>
+      <td><%= @campaign.retirement_salary %></td>
+    </tr>
+    <tr>
+      <th>待　遇［その他諸手当］</th>
+      <td><%= @campaign.allowance %>&nbsp;</td>
+    </tr>
+    <tr>
+      <th>雇用に関する備考</th>
+      <td><%= @campaign.emp_remarks %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th colspan="2" class="bg-primary">勤務条件</th>
+    </tr>
+    <tr>
+      <th>勤務時間</th>
+      <td><%= @campaign.worktime %></td>
+    </tr>
+    <tr>
+      <th>休憩時間</th>
+      <td><%= @campaign.breaktime %></td>
+    </tr>
+    <tr>
+      <th>時間外<br></th>
+      <td><%= @campaign.overtime %></td>
+    </tr>
+    <tr>
+      <th>休日</th>
+      <td><%= @campaign.holiday %></td>
+    </tr>
+    <tr>
+      <th>年間休日</th>
+      <td><%= @campaign.annual_holiday %></td>
+    </tr>
+    <tr>
+      <th>仕事内容</th>
+      <td><%= @campaign.job_description %></td>
+    </tr>
+    <tr>
+      <th>仕事の流れ</th>
+      <td><%= @campaign.workflow %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th colspan="2" class="bg-primary">応募条件</th>
+    </tr>
+    <tr>
+      <th>免　許</th>
+      <td><%= @campaign.licence %></td>
+    </tr>
+    <tr>
+      <th>資　格</th>
+      <td><%= @campaign.skill %></td>
+    </tr>
+    <tr>
+      <th>応募資格</th>
+      <td><%= @campaign.qualification %></td>
+    </tr>
+    <tr>
+      <th>年齢制限</th>
+      <td><%= @campaign.age_criteria %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th colspan="2" class="bg-primary">企業情報</th>
+    </tr>
+    <tr>
+      <th>企業名</th>
+      <td><span itemprop="name">ドラジョブ株式会社</span></td>
+    </tr>
+    <tr>
+      <th>代表者名</th>
+      <td>銅鑼一郎</td>
+    </tr>
+    <tr>
+      <th>ホームページ</th>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <th>本社所在地</th>
+      <td><div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">〒<span itemprop="postalCode">000-0000</span> <span itemprop="addressRegion">神奈川県</span><span itemprop="addressLocality">○○市</span><span itemprop="streetAddress">○○○○○○</span></td>
+    </tr>
+    <tr>
+      <th>資本金</th>
+      <td>100,000,000円</td>
+    </tr>
+    <tr>
+      <th>設立日</th>
+      <td><span itemprop="foundingDate">1981年</span></td>
+    </tr>
+    <tr>
+      <th>事業内容</th>
+      <td>冷凍、冷蔵食品輸送<br></td>
+    </tr>
+    <tr>
+      <th>従業員数</th>
+      <td>10,000人</td>
+    </tr>
+    <tr>
+      <th>業　種</th>
+      <td>一般貨物運送事業</td>
+    </tr>
+    <tr>
+      <th colspan="2" class="bg-primary">採用の流れ</th>
+    </tr>
+    <tr>
+      <th>応募担当者</th>
+      <td><%= @campaign.in_charge %></td>
+    </tr>
+    <tr>
+      <th>応募先電話番号</th>
+      <td><%= @campaign.apply_tel %></td>
+    </tr>
+    <tr>
+      <th>応募先メールアドレス</th>
+      <td><%= @campaign.apply_email %></td>
+    </tr>
+    <tr>
+      <th>応募方法</th>
+      <td><%= @campaign.apply_how %></td>
+    </tr>
+    <tr>
+      <th>選考までの流れ</th>
+      <td><%= @campaign.apply_flow %></td>
+    </tr>
+    <tr>
+      <th>応募に関する備考</th>
+      <td><%= @campaign.apply_remarks %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+        <hr>
+
+<!-- 募集要項・企業概要　-->
+
+
+
+
+
+
+
+
+
+
+<!--応募フォーム-->
+
 
 <% if user_logged_in? %>
 ここに返信用のフォームをいれる。（ユーザーログインずみだったら）
@@ -34,8 +522,66 @@
 <% end %>
 <% end %>
 
-<hr >
-<%= @user.inspect %>
+
+
+
+
+
+</div>
+<!-- leftここまで -->
+<div class="col-md-3" id="rightCol">
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-bullhorn"></span> 応援する
+        </button>    
+         <a href="#" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-bullhorn"></span> 応援する
+        </a>
+
+<div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title"><span class="glyphicon glyphicon-bullhorn"></span>
+                                応援している人 <span class="s10">(5)</span></div>
+                        </div>
+                        <div class="panel-body">
+                           
+                        </div>
+                    </div> 
+ 
+ 
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		求人のポイント
+	</div>
+	<div class="panel-body">
+		<ul>
+		    <li>福利厚生が充実している</li>
+		    <li>未経験者OK</li>		    
+		    <li>試用期間あり</li>		    		    
+		</ul>
+	</div>
+</div>              
+    
+    
+    
+        <ul class="nav nav-stacked" id="sidebar">
+          <li><a href="#sec0">Section 0</a></li>
+          <li><a href="#sec1">Section 1</a></li>
+          <li><a href="#sec2">Section 2</a></li>
+          <li><a href="#sec3">Section 3</a></li>
+          <li><a href="#sec4">Section 4</a></li>
+        </ul>
+</div>
+
+
+
+
+</div>
+bbb
+
+<!--endここまで -->
+
+
+
 
 
 

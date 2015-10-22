@@ -1,0 +1,14 @@
+<% if current_user != nil or current_client != nil or current_admin != nil %>
+ログインしています。
+<% else %>
+Not login
+<% end %>
+<% if current_user != nil %>
+私は、userの<%= current_user.name %>です。
+<% end %>
+<% if current_client != nil %>
+私は、clientの<%= current_client.compname %>です。
+<% end %>
+<% if current_admin != nil %>
+私は、adminの<%= current_admin.name %>です。
+<% end %>

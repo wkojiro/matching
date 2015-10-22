@@ -1,38 +1,39 @@
-
+<%= render 'shared/logintest' %>
 <div class="container-fluid" id="content">
   <div class="doc extra-entry">
     <div class="container-inner inner-md thin mobile">
       <div class="box box-md radius-zero markdown wow fadeInUp">
         <div class="box-inner inner-md">
 <!--- 確認 --->
-<% if current_user != nil %>
-Current _user is <%= current_user.inspect %>
-<% elsif current_client != nil %>
-Current _client is <%= current_client.inspect %>
-<% else %>
-Not login
-<% end %>
+
+
+
+
 <!--- 確認 --->
 <hr >
 <!--- 検索部分 --->
-<li>Search</li>
 
-<%= search_form_for @search,url: root_path do |f| %>
+
+<%# search_form_for @search,url: root_path do |f| %>
+<%= search_form_for @search,url: search_path do |f| %>
   <%= f.label :summary_cont, 'タイトル' %>
+  <%= f.text_field :title_cont %>  
+  <%= f.label :summary_cont, 'サマリー' %>  
   <%= f.text_field :summary_cont %>
-  <div>
+  <%= f.label :summary_cont, '募集職種１' %>  
+  <%= f.text_field :jobtitle01_cont %>  
     <%= f.submit 'search' %>
-  </div>
   <%= @search %>
 <% end %>
 <!--- 検索部分END --->
 
-
-
+<%= sort_link @search,:id, "idでソート" %>
+<%= sort_link @search,:enddate, "終了日でソート" %>
 
 <% @campaigns.inspect %>
 総登録求人数：<%= @campaigns.count %>件<br >
 <%= @camp_cates %>
+
 <% @campaigns.each do |camp| %>
 <% if camp.startdate <= Date.today && camp.opflg == "1" %>
 <%= camp.id %>
@@ -42,6 +43,58 @@ Not login
 <%= camp.content %>
 <%= camp.startdate %>
 <%= camp.enddate %>
+<%= camp.limage %>
+<%= camp.image1 %>
+<%= camp.image2 %>
+<%= camp.image3 %>
+<%= camp.image4 %>
+<%= camp.youtube %>
+<%= camp.category %>
+<%= camp.jobtitle01 %>
+<%= camp.jobtitle02 %>
+<%= camp.jobtitle03 %>
+<%= camp.auth %>
+<%= camp.offce_name %>
+<%= camp.offce_postel %>
+<%= camp.offce_address01 %>
+<%= camp.offce_address02 %>
+<%= camp.offce_address03 %>
+<%= camp.offce_address04 %>
+<%= camp.mycar %>
+<%= camp.station %>
+<%= camp.mapinfo %>
+<%= camp.koyokeitai %>
+<%= camp.koyokikan %>
+<%= camp.salary %>
+<%= camp.salary_remarks %>
+<%= camp.socialsecurity %>
+<%= camp.commuting_expenses %>
+<%= camp.promote %>
+<%= camp.retirement_salary %>
+<%= camp.allowance %>
+<%= camp.emp_remarks %>
+<%= camp.worktime %>
+<%= camp.breaktime %>
+<%= camp.overtime %>
+<%= camp.holiday %>
+<%= camp.annual_holiday %>
+<%= camp.job_description %>
+<%= camp.workflow %>
+<%= camp.licence %>
+<%= camp.skill %>
+<%= camp.qualification %>
+<%= camp.age_criteria %>
+<%= camp.in_charge %>
+<%= camp.apply_tel %>
+<%= camp.apply_email %>
+<%= camp.apply_how %>
+<%= camp.apply_flow %>
+<%= camp.apply_remarks %>
+
+
+
+
+
 <%= camp.opflg %>
 <% @camps = Campaign.where(id: camp.id).first.categories %>
 <% @camps.each do |f| %>        
