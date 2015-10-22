@@ -1,21 +1,25 @@
 <%= render 'shared/logintest' %>
 <!--- 確認 --->
-
+<% breadcrumb :campaigns, @campaign %>
 <pre class="prettyprint">
 
     <span class="alert-danger">タグで表示されているものをSearchに飛ばす方法</span>
-    <span class="alert-danger">クライアントの情報を引っ張ってくる（current_client はクライアントがログインしていることが前提となってしまうためNG）</span>
-    <span class="alert-danger">パンくず</span>
+    <span class="alert-danger"><strike>クライアントの情報を引っ張ってくる（current_client はクライアントがログインしていることが前提となってしまうためNG）</strike></span>
+    <span class="alert-danger">パンくず</span>Grentelを使ってみたけど今一だったら自分で作るのもありかも。もう少し研究が必要そう。breadcrumbs_on_railsの方が自由度があるかも
     <span class="alert-danger">写真の設定（圧縮、整形）</span>
     <span class="alert-danger">地図情報（緯度経度？）</span>
     <span class="alert-danger">応募フォームの整形</span>
-
+    <span class="alert-danger">応募フォームの別ページ化（必要かよく検討。Findjobみたいにするのか。）ログインと同時に情報を予め入力しておいてあげる。</span>    
+    <span class="alert-danger">同じ案件に対しての応募制限</span>    
 
 </pre>
 
 <div class="col-md-9 border" id="leftCol">
 <!--Startここから -->
 
+
+<div class="breadcrumb boader"><%= breadcrumb :campaigns, @campaign %></div>→View側の実装が全然できない。違う。これがあることが上手く行っていること。
+  
             <ul class="breadcrumb border">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">詳細</a></li>
@@ -417,9 +421,10 @@
 </table>
 </div>
 
-
-
-
+<%= @campaign.client_id %>
+<% @client = Client.find(@campaign.client_id) %>
+<%= @client.inspect %>
+<%= @client.compname %>
 <div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
 <table class="table table-striped table-bordered table-hover table-condensed">
   <tbody>
@@ -428,7 +433,7 @@
     </tr>
     <tr>
       <th>企業名</th>
-      <td><span itemprop="name">ドラジョブ株式会社</span></td>
+      <td><span itemprop="name"><%= @client.compname %></span></td>
     </tr>
     <tr>
       <th>代表者名</th>
@@ -512,14 +517,17 @@
 
 <% if user_logged_in? %>
 ここに返信用のフォームをいれる。（ユーザーログインずみだったら）
-<li id="campaigns-<%= @campaign.id %>">応募フォーム
+応募フォーム
+<div class="alert alert-info">
 
 <%= form_for @applies , url: applies_path do |f| %>
+
 <%= f.label :応募 %>
-<%= f.text_field :campaign_id, :value => @campaign.id %>
-<%= f.text_area :message, placeholder: "Compose new micropost..." %>
-<%= f.submit "Post", class: "btn btn-primary" %>
+<%= f.hidden_field :campaign_id, :value => @campaign.id, class: 'form-control'  %>
+<%= f.text_area :message, placeholder: "コメント" , class: 'form-control' %>
+<%= f.submit "応募する", class: "btn btn-primary form-control" %>
 <% end %>
+</div>
 <% end %>
 
 

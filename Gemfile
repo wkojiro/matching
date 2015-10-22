@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'nested_form'
 gem 'ransack'
+gem 'gretel'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

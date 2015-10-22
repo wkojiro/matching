@@ -8,14 +8,10 @@ aaa
      
      </div>
       <div class="col-md-9 border" id="rightCol">
+<div class="breadcrumb boader"><%= breadcrumb :issues %></div>
 
-            <ul class="breadcrumb border">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">詳細</a></li>
-                <li class="active">あいうえお</li>
-            </ul>
 <%= sort_link @search,:id, "idでソート" %>
 <%= sort_link @search,:enddate, "終了日でソート" %>
 
 <%= render(@campaigns) %>
-</div>
+</div> 
