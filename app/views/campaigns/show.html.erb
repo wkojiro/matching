@@ -3,14 +3,16 @@
 <% breadcrumb :campaigns, @campaign %>
 <pre class="prettyprint">
 
-    <span class="alert-danger">タグで表示されているものをSearchに飛ばす方法</span>
+    <span class="alert-danger"><strike>タグで表示されているものをSearchに飛ばす方法</strike></span>
     <span class="alert-danger"><strike>クライアントの情報を引っ張ってくる（current_client はクライアントがログインしていることが前提となってしまうためNG）</strike></span>
     <span class="alert-danger">パンくず</span>Grentelを使ってみたけど今一だったら自分で作るのもありかも。もう少し研究が必要そう。breadcrumbs_on_railsの方が自由度があるかも
     <span class="alert-danger">写真の設定（圧縮、整形）</span>
     <span class="alert-danger">地図情報（緯度経度？）</span>
-    <span class="alert-danger">応募フォームの整形</span>
+    <span class="alert-danger">入力フォームの整形（クライアント側：変更したら入力できていない。radio等配列で入れる必要あり</span>STIにチャレンジするかどうか迷い中。
+    <span class="alert-danger">応募フォームの整形</span>    
     <span class="alert-danger">応募フォームの別ページ化（必要かよく検討。Findjobみたいにするのか。）ログインと同時に情報を予め入力しておいてあげる。</span>    
     <span class="alert-danger">同じ案件に対しての応募制限</span>    
+    <span class="alert-danger"><strike>案件が10件以上表示されない謎。→opflgが1でないから。ちゃんと機能していた。入力問題とはべつ。）。</strike></span>      
 
 </pre>
 
@@ -76,11 +78,10 @@
 
 <% @camps = Campaign.where(id: @campaign.id).first.categories %>
 
-
   <div class="">
       <span class="glyphicon glyphicon-tags"></span>&nbsp;
       <% @camps.each do |f| %>      
-        <span class="label label-info"><a href=""><%= f.name %>&nbsp; </a></span>&nbsp;
+        <span class="label label-info"><a href="../search?utf8=✓&q%5Bcategories_name_cont%5D=<%= f.name %>&amp;commit=search"><%= f.name %>&nbsp; </a></span>&nbsp;
         <% end %>
 
 </div>

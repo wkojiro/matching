@@ -2,209 +2,597 @@
 <%= nested_form_for @campaign, :html => {:multipart => true} do |f| %> 
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-12">
 
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-<%= f.label :求人広告タイトル %>    
-    <%= f.text_field :title, placeholder: "求人広告タイトル" %>
-  </div>
+  
+ 
+ 
+<div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
+<table class="table table-striped table-bordered table-hover table-condensed">
+          <tbody>
+            <tr>
+              <td class="" colspan="2">求人広告掲載期間</td>
+            </tr>
+            <tr>
+              <td class="">求人ID(自動付与されます）</td>
+              <td class="">-</td>
+            </tr>
+            <tr>
+              <td class="">掲載プラン<span class="">※</span></td>
+              <td class="">Aプラン　成功報酬額：50,000円（お祝い金5000円）→最後に出したほうが良い？？</td>
+            </tr>
+            <tr>
+              <td class="" rowspan="2">掲載開始希望日<span class="point1">※</span></td>
+              <td class="">        
+              <span class="input-group date datepicker4">
+                   <%= f.label :スタート予定日 %>
+                   <%= f.text_field :startdate, :class => "datepicker4" %>
 
-<!---data picker -->
+                   〜   
+                   
+                   <%= f.label :終了予定日 %>
+                   <%= f.text_field :enddate, :class => "datepicker4" %>
+                </span>
+                   
+                   
+                </td>
+            </tr>
+            <tr>
+              <td class=""> ※掲載日は当日から指定できますが、ドラジョブ事務局の承認が下りるまでは掲載スタートされません。尚、広告原稿の審査は1営業日で完了致します。なお、無期限に設定すると基本的に掲載し続けます。
+                ※原稿を編集した場合は、審査が必要となるため、1営業日程お時間を頂きます。 </td>
+            </tr>
+          </tbody>
+        </table>
+ <table class="table table-striped table-bordered table-hover table-condensed">
+          <tbody>
+            <tr>
+              <td class="" colspan="2">求人広告詳細</td>
+            </tr>
+            <tr>
+              <td class="">募集タイトル<br>
+                （20文字以内）<span class="point1">※</span></td>
+              <td class="">    <%= f.text_field :title, :size => "80x3",  placeholder: "求人広告タイトル" %>
 
-<div class='input-group date datepicker4'>
-<%= f.label :スタート予定日 %>
-<%= f.text_field :startdate, :class => 'datepicker4' %>
-</div>
+                例）業務拡大につき、路線バス運転手大募集！</td>
+            </tr>
+            <tr>
+              <td class=""><%= f.label :summary, "募集の背景" %><br>
+                （300文字以内）<span class="">※</span></td>
+              <td class=""><%= f.text_area :summary, :size => "100x5",  placeholder: "募集の背景" %>
+                <br>
+                例）業務拡大につき、路線バス運転手大募集！</td>
+            </tr>
+            <tr >
+              <td class="">募集カテゴリ<span class="point1">※</span><br>
+                <span class="">検索結果表示項目</span></td>
+              <td class="">
+              <div class=""> <span class="">大カテゴリ</span>
+                  <select name="" class="">
+                    <option value="">▼選択</option>
+                    <option value="1">タクシー・ハイヤードライバー</option>
+                    <option value="2">バス乗務員</option>
+                    <option value="3">トラックドライバー</option>
+                    <option value="4">セールスドライバー</option>
+                    <option value="5">特殊車両</option>
+                  </select>
+                  <span class="">小カテゴリ</span>
+                  <select name="" class="">
+                    <option value="">▼選択</option>
+                    <option value="11">タクシー乗務員</option>
+                    <option value="12" selected="selected">ハイヤー</option>
+                    <option value="13">役員付き運転手</option>
+                    <option value="14">その他</option>
+                  </select>
+                </div>
+                <div class=""> <span class="">大カテゴリ</span>
+                  <select name="" class="">
+                    <option value="">▼選択</option>
+                    <option value="1">タクシー・ハイヤードライバー</option>
+                    <option value="2">バス乗務員</option>
+                    <option value="3">トラックドライバー</option>
+                    <option value="4">セールスドライバー</option>
+                    <option value="5">特殊車両</option>
+                  </select>
+                  <span class="">小カテゴリ</span>
+                  <select name="" class="">
+                    <option value="">▼選択</option>
+                    <option value="11">タクシー乗務員</option>
+                    <option value="12" >ハイヤー</option>
+                    <option value="13">役員付き運転手</option>
+                    <option value="14">その他</option>
+                  </select>
+                </div>
+                <div class=""> <span class="">大カテゴリ</span>
+                  <select name="" class="">
+                    <option value="">▼選択</option>
+                    <option value="1">タクシー・ハイヤードライバー</option>
+                    <option value="2">バス乗務員</option>
+                    <option value="3">トラックドライバー</option>
+                    <option value="4">セールスドライバー</option>
+                    <option value="5">特殊車両</option>
+                  </select>
+                  <span class="">小カテゴリ</span>
+                  <select name="" class="">
+                    <option value="">▼選択</option>
+                    <option value="11">タクシー乗務員</option>
+                    <option value="12" >ハイヤー</option>
+                    <option value="13">役員付き運転手</option>
+                    <option value="14">その他</option>
+                  </select>
+                </div>
+                <p class="">※最大３つ設定できます。当方で判断して、別カテゴリに移動することもあります。</p></td>
+            </tr>
+              
 
-<div class='input-group date datepicker4'>
-<%= f.label :終了予定日 %>
-<%= f.text_field :enddate, :class => 'datepicker4' %>
-</div>
+          <tr>
+              <td class="" colspan="2">求人広告詳細</td>
+            </tr>
+            
+            <tr>
+              <td class="">求人広告概要→何を書いてよいかあいまい。<br>
+                （200文字以内）<span class="">※</span></td>
+              <td class=""><%= f.text_area :content, :size => "80x3", placeholder: "アピール枠にするか？？" %>
+                <br>
+                例）当社は、設立●●年以来、関東・東北・●●拠点体制で、●●・●●部品専門の物流サービスを展開してきました。ここ数年の経済情勢の変化にも柔軟に対応！企業の利益確保・物流コスト削減に成功し、数々の大手顧客の信頼を獲得しました。 </td>
+            </tr>
+            <tr>
+              <td class="">採用人数</td>
+              <td class="">---
+                <span class="">人</span></td>
+            </tr>
+            <tr>
+              <td>仕事概要</td>
+              <td><%# f.text_area :job_description, :size => "100x10", placeholder: "job_description" %>
+                <br>
+                例）主に●●県・●●●県等の大手メーカーの定期便をお願いします。カゴ積み、パレ積みメインの仕事です。応募時・面接時に業務内容をご説明します。 </td>
+            </tr>
+                    <tr>
+              <td class="td_left3_b" colspan="2">勤務先情報</td>
+            </tr>
+   
+            <tr>
+              <td class="td_left">勤務先名称<span class="point1">※</span></td>
+              <td class="info_r_03"><span class="point1">登録時の会社名と異なる場合は変更ください。</span><br>
+               <%= f.text_field :offce_name, placeholder: "office_name" %>
+                <br>
+                例）ドラジョブ運送東京営業所</td>
+            </tr>
+            <tr>
+              <td class="td_left">勤務先所在地<br>
+                <span class="icon search">検索結果表示項目</span></td>
+              <td class="info_r_03"><span class="point1">登録時の住所と異なる場合は変更ください。</span><br>
+                <span class="point2">〒</span>
+               <%= f.text_field :offce_postel, placeholder: "office_postel" %>
+                <span class="point2">-</span>
+                <%= f.select :offce_address01, {'北海道' => 1 , '東京' => 2, '沖縄' => 3} %><br />
+           
+               <%# f.collection_select :prefecture_id,# Prefecture.all#, :id, :name %>
+                <select name="prefecture">
+                  <option value="" selected="">都道府県名をお選びください</option>
+                  <optgroup label="北海道・東北地方">
+                  <option value="北海道">└&nbsp;北海道</option>
+                  <option value="青森県">└&nbsp;青森県</option>
+                  <option value="岩手県">└&nbsp;岩手県</option>
+                  <option value="宮城県">└&nbsp;宮城県</option>
+                  <option value="秋田県">└&nbsp;秋田県</option>
+                  <option value="山形県">└&nbsp;山形県</option>
+                  <option value="福島県">└&nbsp;福島県</option>
+                  </optgroup>
+                  <optgroup label="関東地方">
+                  <option value="茨城県">└&nbsp;茨城県</option>
+                  <option value="栃木県">└&nbsp;栃木県</option>
+                  <option value="群馬県">└&nbsp;群馬県</option>
+                  <option value="埼玉県">└&nbsp;埼玉県</option>
+                  <option value="千葉県">└&nbsp;千葉県</option>
+                  <option value="東京都">└&nbsp;東京都</option>
+                  <option value="神奈川県">└&nbsp;神奈川県</option>
+                  </optgroup>
+                  <optgroup label="中部地方">
+                  <option value="新潟県">└&nbsp;新潟県</option>
+                  <option value="富山県">└&nbsp;富山県</option>
+                  <option value="石川県">└&nbsp;石川県</option>
+                  <option value="福井県">└&nbsp;福井県</option>
+                  <option value="山梨県">└&nbsp;山梨県</option>
+                  <option value="長野県">└&nbsp;長野県</option>
+                  <option value="岐阜県">└&nbsp;岐阜県</option>
+                  <option value="静岡県">└&nbsp;静岡県</option>
+                  <option value="愛知県">└&nbsp;愛知県</option>
+                  </optgroup>
+                  <optgroup label="近畿地方">
+                  <option value="三重県">└&nbsp;三重県</option>
+                  <option value="滋賀県">└&nbsp;滋賀県</option>
+                  <option value="京都府">└&nbsp;京都府</option>
+                  <option value="大阪府">└&nbsp;大阪府</option>
+                  <option value="兵庫県">└&nbsp;兵庫県</option>
+                  <option value="奈良県">└&nbsp;奈良県</option>
+                  <option value="和歌山県">└&nbsp;和歌山県</option>
+                  </optgroup>
+                  <optgroup label="中国地方">
+                  <option value="鳥取県">└&nbsp;鳥取県</option>
+                  <option value="島根県">└&nbsp;島根県</option>
+                  <option value="岡山県">└&nbsp;岡山県</option>
+                  <option value="広島県">└&nbsp;広島県</option>
+                  <option value="山口県">└&nbsp;山口県</option>
+                  </optgroup>
+                  <optgroup label="四国地方">
+                  <option value="徳島県">└&nbsp;徳島県</option>
+                  <option value="香川県">└&nbsp;香川県</option>
+                  <option value="愛媛県">└&nbsp;愛媛県</option>
+                  <option value="高知県">└&nbsp;高知県</option>
+                  </optgroup>
+                  <optgroup label="九州,沖縄地方">
+                  <option value="福岡県">└&nbsp;福岡県</option>
+                  <option value="佐賀県">└&nbsp;佐賀県</option>
+                  <option value="長崎県">└&nbsp;長崎県</option>
+                  <option value="熊本県">└&nbsp;熊本県</option>
+                  <option value="大分県">└&nbsp;大分県</option>
+                  <option value="宮崎県">└&nbsp;宮崎県</option>
+                  <option value="鹿児島県">└&nbsp;鹿児島県</option>
+                  <option value="沖縄県">└&nbsp;沖縄県</option>
+                  </optgroup>
+                </select>
+                <br>
+                市区町村郡<span class="">
+                <%= f.text_field :offce_address02, placeholder: "office_address2" %>
+                </span>例）江戸川区<br>
+                番地・建物<span class="">
+               <%= f.text_field :offce_address03, placeholder: "office_address3" %>
+               <%= f.text_field :offce_address04, placeholder: "office_address4" %>
+                </span>例）松江7-55-2 </td>
+            </tr>
+            <tr>
+              <td class="">通勤最寄り駅</td>
+              <td class=""><%= f.text_field :station, placeholder: "station" %></td>
+            </tr>
+            <tr>
+              <td class="">マイカー通勤<br>
+                <span class="">検索結果表示項目</span></td>
+              <td class="">         
+                  <%= f.radio_button :mycar, 1 %>可
+                  <%= f.radio_button :mycar, 2 %>不可<br />
+                </td>
 
-<!---data picker -->  
-
-<div class="field"><%= f.text_area :summary, placeholder: "Compose new micropost..." %></div>
-<div class="field"><%= f.text_area :content, placeholder: "Compose new micropost..." %></div>
-<p>
-<label class="control-label">Select File</label>
-<!--<input id="input-1" type="file" class="file"> -->
-<%= f.label :写真（大）%>    
-<%= f.file_field :limage %></p>  
-<%= f.label :写真（中１）%>   
-<p><%= f.file_field :image1 %></p>  
-<%= f.label :写真（中２）%>   
-<p><%= f.file_field :image2 %></p>  
-<%= f.label :写真（中３）%>   
-<p><%= f.file_field :image3 %></p>  
-<%= f.label :写真（中４）%>   
-<p><%= f.file_field :image4 %></p>    
-<p>  表示フラグ<%= f.check_box :opflg, { :checked => true } %></p>    
-
-
-<div class="field">
-<%= f.label :募集職種1 %>    
-<%= f.text_field :jobtitle01, placeholder: "募集職種" %>
-</div>
-<div class="field">
-<%= f.label :募集職種2 %>    
-<%= f.text_field :jobtitle02, placeholder: "募集職種" %>
-</div>
-<div class="field">
-<%= f.label :募集職種3 %>    
-<%= f.text_field :jobtitle03, placeholder: "募集職種" %>
-</div>
-<div class="field">
-<%= f.label :事業所認定 %>    
-<%= f.text_field :auth, placeholder: "事業所認定" %>
-</div>
-
-<div class="field">
-<%= f.label :勤務先名 %>
-<%= f.text_field :offce_name, placeholder: "office_name" %>
-</div>
-<div class="field">
-<%= f.label :勤務先郵便番号 %>
-<%= f.text_field :offce_postel, placeholder: "office_postel" %>
-</div>
-<div class="field">
-<%= f.label :勤務先都道府県 %>
-<%= f.text_field :offce_address01, placeholder: "office_address1" %>
-</div>
-<div class="field">
-<%= f.label :勤務先市区 %>
-<%= f.text_field :offce_address02, placeholder: "office_address2" %>
-</div>
-<div class="field">
-<%= f.label :勤務先住所 %>
-<%= f.text_field :offce_address03, placeholder: "office_address3" %>
-</div>
-<div class="field">
-<%= f.label :勤務先建物名 %>
-<%= f.text_field :offce_address04, placeholder: "office_address4" %>
-</div>
-<div class="field">
-<%= f.label :マイカー通勤 %>
-<%= f.text_field :mycar, placeholder: "mycar" %>
-</div>
-<div class="field">
-<%= f.label :最寄駅 %>
-<%= f.text_field :station, placeholder: "station" %>
-</div>
-<div class="field">
-<%= f.label :地図情報 %>
-<%= f.text_field :mapinfo, placeholder: "mapinfo" %>
-</div>
-<div class="field">
-<%= f.label :雇用形態 %>
-<%= f.text_field :koyokeitai, placeholder: "koyokeitai" %>
-</div>
-<div class="field">
-<%= f.label :雇用期間 %>
-<%= f.text_field :koyokikan, placeholder: "koyokikan" %>
-</div>
-<div class="field">
-<%= f.label :給与 %>
-<%= f.text_field :salary, placeholder: "salary" %>
-</div>
-<div class="field">
-<%= f.label :給与備考 %>
-<%= f.text_field :salary_remarks, placeholder: "salary_remarks" %>
-</div>
-<div class="field">
-<%= f.label :社会保障 %>
-<%= f.text_field :socialsecurity, placeholder: "socialsecurity" %>
-</div>
-<div class="field">
-<%= f.label :通勤費 %>
-<%= f.text_field :commuting_expenses, placeholder: "commuting_expenses" %>
-</div>
-<div class="field">
-<%= f.label :昇給実績 %>
-<%= f.text_field :promote, placeholder: "promote" %>
-</div>
-<div class="field">
-<%= f.label :退職金 %>
-<%= f.text_field :retirement_salary, placeholder: "retirement_salary" %>
-</div>
-<div class="field">
-<%= f.label :諸費用 %>
-<%= f.text_field :allowance, placeholder: "allowance" %>
-</div>
-<div class="field">
-<%= f.label :雇用に関する備考 %>
-<%= f.text_field :emp_remarks, placeholder: "emp_remarks" %>
-</div>
-<div class="field">
-<%= f.label :業務時間 %>
-<%= f.text_field :worktime, placeholder: "worktime" %>
-</div>
-<div class="field">
-<%= f.label :休憩時間 %>
-<%= f.text_field :breaktime, placeholder: "breaktime" %>
-</div>
-<div class="field">
-<%= f.label :時間外勤務 %>
-<%= f.text_field :overtime, placeholder: "overtime" %>
-</div>
-<div class="field">
-<%= f.label :休暇・休日 %>
-<%= f.text_field :holiday, placeholder: "holiday" %>
-</div>
-<div class="field">
-<%= f.label :年間休日 %>
-<%= f.text_field :annual_holiday, placeholder: "annual_holiday" %>
-</div>
-<div class="field">
-<%= f.label :仕事内容 %>
-<%= f.text_field :job_description, placeholder: "job_description" %>
-</div>
-<div class="field">
-<%= f.label :仕事の流れ %>
-<%= f.text_field :workflow, placeholder: "workflow" %>
-</div>
-<div class="field">
-<%= f.label :免許 %>
-<%= f.text_field :licence, placeholder: "licence" %>
-</div>
-<div class="field">
-<%= f.label :資格 %>
-<%= f.text_field :skill, placeholder: "skill" %>
-</div>
-<div class="field">
-<%= f.label :応募条件 %>
-<%= f.text_field :qualification, placeholder: "qualification" %>
-</div>
-<div class="field">
-<%= f.label :年齢制限 %>
-<%= f.text_field :age_criteria, placeholder: "age_criteria" %>
-</div>
-<div class="field">
-<%= f.label :担当者 %>
-<%= f.text_field :in_charge, placeholder: "in_charge" %>
-</div>
-<div class="field">
-<%= f.label :連絡先電話番号 %>
-<%= f.text_field :apply_tel, placeholder: "apply_tel" %>
-</div>
-<div class="field">
-<%= f.label :連絡先メール %>
-<%= f.text_field :apply_email, placeholder: "apply_email" %>
-</div>
-<div class="field">
-<%= f.label :応募方法 %>
-<%= f.text_field :apply_how, placeholder: "apply_how" %>
-</div>
-<div class="field">
-<%= f.label :応募の流れ %>
-<%= f.text_field :apply_flow, placeholder: "apply_flow" %>
-</div>
-<div class="field">
-<%= f.label :応募に関する備考 %>
-<%= f.text_field :apply_remarks, placeholder: "apply_remarks" %>
-</div>
+            </tr>
 
 
+            
+            
+            
+            <tr>
+              <td class="">事業所認定資格</td>
+              <td class="">
+                
+          
+                
+                <%# f.check_box :auth %>ISO
+      
+                
+                <%= f.text_field :auth, placeholder: "事業所認定" %>
+                <span class="i_text_00">AA</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">A</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">ISO</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">Gマーク</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">グリーン経営</span><br>
+                その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td class="td_left3_b" colspan="2">雇用条件</td>
+            </tr>
+            <tr>
+              <td><%= f.label :koyokeitai , "雇用形態" %></td>
+                
+              <td><%= f.select "koyokeitai" , %w(正社員 契約社員 派遣社員 パート・アルバイト その他) , :include_blank => "雇用形態をお選びください" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :koyokikan , "雇用期間" %></td>
+              <td>
+              <%= f.select "koyokikan" , %w(常用雇用 臨時雇用 その他) , :include_blank => "雇用期間をお選びください" %>
+              
+
+                その他補足があればご記入下さい（該当フォーム無し）
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td><%= f.label :salary_remarks , "給与形態" %></td>
+              <td> <%= f.select "salary_remarks" , %w(時給制 日給制 月給制 日給月給制 年棒制 その他) , :include_blank => "給与形態をお選びください" %>
+                その他補足があればご記入下さい（該当フォーム無し）
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td><%= f.label :salary , "給与" %>入れ方工夫</td>
+              <td><%= f.text_field :salary, placeholder: "salary" %></td>
+            </tr>
+            <tr>
+              <td class="td_left">待遇［社会保険］<br>
+                <span class="icon search">検索結果表示項目</span></td>
+              <td class="info_r_03"><%= f.text_field :socialsecurity, placeholder: "socialsecurity" %>
+                <span class="i_text_00">雇用保険</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">健康保険</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">労災保険</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">厚生年金</span></td>
+            </tr>
+            <tr>
+              <td class="td_left">待遇［通勤費］<br>
+                <span class="icon search">検索結果表示項目</span></td>
+              <td class="info_r_03"><%= f.text_field :commuting_expenses, placeholder: "commuting_expenses" %>
+                <span class="i_text_00">有り</span>
+                <input type="radio" name="" value="無し">
+                <span class="i_text_00">無し</span> その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td class="td_left">待遇［昇給］<br>
+                <span class="icon search">検索結果表示項目</span></td>
+              <td class="info_r_03"><%= f.text_field :promote, placeholder: "promote" %>
+                <span class="i_text_00">有り</span>
+                <input type="radio" name="" value="無し">
+                <span class="i_text_00">無し</span> その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td class="td_left">待遇［賞与］<br>
+                <span class="icon search">検索結果表示項目</span></td>
+              <td class="info_r_03"><input type="radio" name="" value="有り" checked="">
+                <span class="i_text_00">有り</span>
+                <input type="radio" name="" value="無し">
+                <span class="i_text_00">無し</span> その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td class="td_left">待遇［退職金］<br>
+                <span class="icon search">検索結果表示項目</span></td>
+              <td class="info_r_03"><%= f.text_field :retirement_salary, placeholder: "retirement_salary" %>
+                <span class="i_text_00">有り</span>
+                <input type="radio" name="" value="無し">
+                <span class="i_text_00">無し</span> その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td class="td_left">待遇［その他諸手当］</td>
+              <td class="info_r_03"><%= f.text_field :allowance, placeholder: "allowance" %></td>
+            </tr>
+            <tr>
+              <td class="td_left">雇用に関する備考</td>
+              <td class="info_r_03"><%= f.text_field :emp_remarks, placeholder: "emp_remarks" %></textarea></td>
+            </tr>
+
+
+           
+            <tr>
+              <td class="td_left3_b" colspan="2">勤務条件</td>
+            </tr>
+            <tr>
+              <td class="td_left">勤務時間</td>
+              <td class="info_r_03"><%= f.text_field :worktime, placeholder: "worktime" %>
+                <br>
+                例）13:00〜21:00 </td>
+            </tr>
+            <tr>
+              <td class="td_left">休憩時間</td>
+              <td class="info_r_03"><%= f.text_field :breaktime, placeholder: "breaktime" %>
+                例）60分</td>
+            </tr>
+            <tr>
+              <td class="td_left">時間外</td>
+              <td class="info_r_03"><%= f.text_field :overtime, placeholder: "overtime" %>
+                <span class="i_text_00">有り</span>
+                <input type="radio" name="" value="無し">
+                <span class="i_text_00">無し</span> その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value="">
+                <br>
+                例）月30時間 </td>
+            </tr>
+            <tr>
+              <td class="td_left">休　日</td>
+              <td class="info_r_03"><%= f.text_field :holiday, placeholder: "holiday" %>
+                例）週休2日制</td>
+            </tr>
+            <tr>
+              <td class="td_left">年間休日</td>
+              <td class="info_r_03"><%= f.text_field :annual_holiday, placeholder: "annual_holiday" %>
+                例）年間120日</td>
+            </tr>
+            <tr>
+              <td class="td_left">仕事内容</td>
+              <td class="info_r_03"> 出来るだけ詳しく仕事の内容をご記入下さい。<br>
+               <%= f.text_area :job_description, :size => "100x10", placeholder: "出来るだけ詳しく仕事の内容をご記入下さい。" %></td>
+            </tr>
+            <tr>
+              <td>仕事の流れ</td>
+              <td>
+                <%= f.text_area :workflow, :size => "100x10", placeholder: "朝～昼～夕等の業務の流れを出来るだけ詳しくご記入下さい" %></td>
+            </tr>
+            <tr>
+              <td class="td_left3_b" colspan="2">応募条件</td>
+            </tr>
+            <tr>
+              <td class="td_left">免　許<br>
+                <span class="icon search">検索結果表示項目</span></td>
+              <td class="info_r_03"><%= f.text_field :licence, placeholder: "licence" %>
+                <span class="i_text_00">大型自動車運転免許</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">大型二種自動車運転免許</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">中型自動車運転免許</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">普通自動車運転免許</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">普通二種自動車運転免許</span><br>
+                その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td class="td_left">資　格<br>
+                <span class="icon search">検索結果表示項目</span></td>
+              <td class="info_r_03"><%= f.text_field :skill, placeholder: "skill" %>
+                <span class="i_text_00">一級自動車整備士</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">二級自動車整備士</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">三級自動車整備士</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">特殊整備士</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">運行管理者</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">倉庫管理者</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">通関士</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">危険物</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">フォークリフト</span><br>
+                その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value=""></td>
+            </tr>
+            <tr>
+              <td class="td_left">応募資格</td>
+              <td class="info_r_03"><%= f.text_field :qualification, placeholder: "qualification" %>
+                <span class="i_text_00">要経験者</span>
+                <input type="radio" name="" value="経験不問">
+                <span class="i_text_00">経験不問</span><br>
+                その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value="">
+
+                <br>
+                例）3年以上の経験あり </td>
+            </tr>
+            <tr>
+              <td class="td_left">年齢制限</td>
+              <td class="info_r_03"><%= f.text_field :age_criteria, placeholder: "age_criteria" %>
+                <span class="i_text_00">年齢制限あり</span>
+                <input type="radio" name="" value="年齢不問">
+                <span class="i_text_00">年齢不問</span><br>
+                その他補足があればご記入下さい<br>
+                <input type="text" name="" class="itxt1" value="">
+                <br>
+                例）18歳～30歳まで、45歳未満 </td>
+            </tr>
+            <tr>
+              <td class="td_left" rowspan="3">年齢制限理由</td>
+            </tr>
+            <tr>
+              <td class="td_left3_f"><span class="point1">※</span>年齢制限を設ける場合は国の定めにより明確な理由が必要となります。<br>
+                詳しくは<a href="http://www.mhlw.go.jp/general/seido/anteikyoku/kourei2/dl/leaflet3.pdf" target="_blank">「年齢指針」</a>をご確認ください。</td>
+            </tr>
+            <tr>
+              <td class="info_r_03"><input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">1.長期勤続によるキャリア形成を図る観点から</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">2.企業の事業活動の継承や技能、ノウハウ等の継承の観点から</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">3.有する能力を有効に発揮する為に必要とされる期間または能力の形成の為の期間の観点から</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">4.年齢を主要な要素として賃金額を定めている就業規則との兼ね合いから</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">5.特定の年齢層を対象とした商品の販売やサービスの提供等の観点から</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">6.芸術・芸能の分野における表現の真実性等の要請から</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">7.労働災害の発生状況から、安全性の確保が必要な為</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">8.体力、視力等加齢に伴い、その機能が低下するものが業務に支障をきたす恐れがある為</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">9.行政機関の施策を踏まえ中高年齢者に限定して募集をする為</span><br>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">10.労働基準法の定めにより特定の年齢層の就業等が禁止または制限されている為</span></td>
+            </tr>
+            <tr>
+              <td class="td_left3_b" colspan="2">採用の流れ</td>
+            </tr>
+            <tr>
+              <td class="td_left">応募担当者<span class="point1">※</span></td>
+              <td class="info_r_03"><%= f.text_field :in_charge, placeholder: "in_charge" %></td>
+            </tr>
+            <tr>
+              <td class="td_left">応募に関する連絡先</td>
+              <td class="info_r_03"><%= f.text_field :apply_tel, placeholder: "apply_tel" %>
+                <br>
+                例）○○採用係</td>
+            </tr>
+            <tr>
+              <td class="td_left">応募先電話番号<span class="point1">※</span></td>
+              <td class="info_r_03"><%= f.text_field :apply_tel, placeholder: "apply_tel" %>
+                <span class="point2">-</span>
+                <input type="text" name="tel2" value="" class="itxt5">
+                <span class="point2">-</span>
+                <input type="text" name="tel3" value="" class="itxt5"></td>
+            </tr>
+            <tr>
+              <td><%= f.label :apply_email,  "メールアドレス（これいるかなぁ）" %></td>
+              <td><%= f.text_field :apply_email, placeholder: "apply_email" %>
+            </tr>
+            <tr>
+              <td class=""><%= f.label :apply_how,  "応募方法"  %></td>
+              <td class="">
+                <span class="i_text_00">電話</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">FAX</span>
+                <input type="checkbox" name="" value="" class="point2">
+                <span class="i_text_00">メール</span>
+                <input type="checkbox" name="" value="" class="point2"><br>
+                その他補足があればご記入下さい<br>
+                <%= f.text_field :apply_how, :size => "100x5",  placeholder: "apply_how" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :apply_flow,  "応募の流れ"  %><span class="point1">※</span></td>
+              <td><%= f.text_area :apply_flow, :size => "100x10" , placeholder: "apply_flow" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :apply_remarks,  "応募に関する備考"  %></td>
+              <td> 履歴書が必要な場合や締め切り条件等出来るだけ詳しくご記入下さい。<br>
+               <%= f.text_area :apply_remarks, :size => "100x10", placeholder: "apply_remarks" %></td>
+            </tr>
+          </tbody>
+        </table>
+        
+      
+        
+     
+        
+        
+<table class="table table-striped table-bordered table-hover table-condensed">
+          <tbody>
+            <tr>
+              <td class="td_left3_b" colspan="4">PR写真</td>
+            </tr>
+            <tr>
+              <td class="td_left3_f" colspan="4">データ容量［500KB以下］、データ形式［jpg,gif,png］を推奨とします。</td>
+            </tr>
+            <tr>
+              <td><%= f.label :limage,  "メインイメージ"  %></td>
+              <td>
+                <%= f.file_field :limage %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.label :image1,  "イメージ１"  %></td>              
+              <td><%= f.file_field :image1 %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :image2,  "イメージ２"  %></td>              
+              <td><%= f.file_field :image2 %></td>
+            </tr>
+            <tr>              
+              <td><%= f.label :image3,  "イメージ３"  %></td>
+              <td><%= f.file_field :image3 %></td>
+            </tr>
+            <tr>              
+              <td><%= f.label :image4,  "イメージ４" %></td>
+              <td><%= f.file_field :image4 %></td>
+            </tr>
+    
+          </tbody>
+        </table>
 
 
 <!---checkbox -->  
@@ -218,7 +606,7 @@
   </div>    
 
 <!---checkbox -->  
-
+<p>  表示フラグ<%= f.check_box :opflg %></p>   
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
 <% end %>

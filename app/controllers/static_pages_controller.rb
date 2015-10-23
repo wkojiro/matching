@@ -4,7 +4,8 @@ class StaticPagesController < ApplicationController
   #      @client = Client.find(params[:id])
 
   #  @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil
-  @search = Campaign.joins(:categories).all.search(params[:q])
+  #  @search = Campaign.joins(:categories).all.search(params[:q])
+   @search = Campaign.all.search(params[:q])
   @campaigns = @search.result
   #@applies = current_user.apllies.build
     @user = current_user
@@ -18,6 +19,8 @@ class StaticPagesController < ApplicationController
 #    @user = current_user
 #    @client = current_client
   @search = Campaign.all.search(params[:q])
+
+#  @search = Campaign.joins(:categories).all.search(params[:q])
   @campaigns = @search.result
   #@applies = current_user.apllies.build
     @user = current_user

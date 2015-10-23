@@ -31,6 +31,7 @@ class CampaignsController < ApplicationController
     def create
      @campaign = current_client.campaigns.build(campaign_params)
         if @campaign.save
+         puts "done"
             if @campaign.startdate > Date.today 
             flash[:success] = "キャンペーン予約登録完了"
             elsif @campaign.startdate == Date.today 
