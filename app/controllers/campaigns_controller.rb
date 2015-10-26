@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-    before_action :logged_in_client, only: [:create]
+    before_action :logged_in_client, only: [:create,:new,:destoy,:update,:edit]
 
     def index
     end
@@ -25,6 +25,7 @@ class CampaignsController < ApplicationController
 #    @campaigns = @client.campaigns
     if user_logged_in?
       @applies = current_user.applies.build
+      
     end
     end
     
@@ -42,8 +43,8 @@ class CampaignsController < ApplicationController
          redirect_to @campaign
 #         redirect_to request.referrer 
          else
-  @search = Campaign.all.search(params[:q])
-  @campaigns = @search.result             
+          @search = Campaign.all.search(params[:q])
+          @campaigns = @search.result             
         #  @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil      
          render 'static_pages/index'
         end
@@ -82,7 +83,7 @@ class CampaignsController < ApplicationController
  #       :skill,:qualification,:age_criteria,:in_charge,:apply_tel,:apply_email,:apply_how,:apply_flow,:apply_remarks,{:category_ids => []})
         params.require(:campaign).permit(:title,:summary,:content ,:startdate,:enddate,:limage,:image1,:image2,:image3,:image4,:opflg,
          :youtube,:category,:jobtitle01,:jobtitle02,:jobtitle03,:auth,:offce_name,:offce_postel,:offce_address01,:offce_address02,:offce_address03,
-         :offce_address04,:mycar,:station,:mapinfo,:koyokeitai,:koyokikan,:salary,:salary_remarks,:socialsecurity,:commuting_expenses,:promote,
+         :offce_address04,:mycar,:station,:mapinfo,:koyokeitai,:koyokikan,:salary,:salary_remarks,{:socialsecurity => []},:commuting_expenses,:promote,
          :retirement_salary,:allowance,:emp_remarks,:worktime,:breaktime,:overtime,:holiday,:annual_holiday,:job_description,:workflow,:licence,
          :skill,:qualification,:age_criteria,:in_charge,:apply_tel,:apply_email,:apply_how,:apply_flow,:apply_remarks,
         {:category_ids => []})

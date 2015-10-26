@@ -311,14 +311,14 @@
             <tr>
               <td class="td_left">待遇［社会保険］<br>
                 <span class="icon search">検索結果表示項目</span></td>
-              <td class="info_r_03"><%= f.text_field :socialsecurity, placeholder: "socialsecurity" %>
-                <span class="i_text_00">雇用保険</span>
-                <input type="checkbox" name="" value="" class="point2">
-                <span class="i_text_00">健康保険</span>
-                <input type="checkbox" name="" value="" class="point2">
-                <span class="i_text_00">労災保険</span>
-                <input type="checkbox" name="" value="" class="point2">
-                <span class="i_text_00">厚生年金</span></td>
+              <td class="info_r_03">
+              
+<%= f.check_box :socialsecurity, {multiple: true},checked_value = "雇用保険", nil %>雇用保険
+<%= f.check_box :socialsecurity, {multiple: true},checked_value = "健康保険", nil %>健康保険
+<%= f.check_box :socialsecurity, {multiple: true},checked_value = "労災保険", nil %>労災保険
+<%= f.check_box :socialsecurity, {multiple: true},checked_value = "厚生年金", nil %>厚生年金
+
+     </td>
             </tr>
             <tr>
               <td class="td_left">待遇［通勤費］<br>
@@ -599,11 +599,26 @@
 
 
   <div class="field">
-    <%= f.label :専門領域 %><br />
-    <%= collection_check_boxes(:campaign, :category_ids, Category.all, :id, :name) do |b| %>
+    <%= f.label :専門領域1 %><br />
+    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre = '1'"), :id, :name) do |b| %>
       <%= b.label { b.check_box + b.text } %>
     <% end %>
   </div>    
+  
+  <div class="field">
+    <%= f.label :専門領域2 %><br />
+    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre = '2'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>     
+
+ <div class="field">
+    <%= f.label :専門領域3 %><br />
+    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre = '3'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>       
+  
 
 <!---checkbox -->  
 <p>  表示フラグ<%= f.check_box :opflg %></p>   
@@ -613,4 +628,3 @@
 
   </div>
 </div>
-

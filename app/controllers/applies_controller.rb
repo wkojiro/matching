@@ -1,4 +1,5 @@
 class AppliesController < ApplicationController
+
     
     def new
         @applies = Apply.new
@@ -15,9 +16,11 @@ class AppliesController < ApplicationController
             flash[:success] = "応募しました！"
         redirect_to request.referrer 
         else
-        puts "not saved"
-         p @applies.errors
-        redirect_to request.referrer 
+       # puts "not saved"
+         @campaign = @applies.campaign
+         render 'campaigns/show'
+        
+     #   redirect_to request.referrer 
         end
     end
     
