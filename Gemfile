@@ -30,6 +30,8 @@ gem 'carrierwave'
 gem 'nested_form'
 gem 'ransack'
 gem 'gretel'
+gem "gmaps4rails"
+gem "geocoder"
 # Use Unicorn as the app server
 # gem 'unicorn'
 

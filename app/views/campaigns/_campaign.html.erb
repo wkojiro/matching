@@ -1,10 +1,5 @@
-<% if campaign.startdate == Date.today %>
-TODAY!
-<%elsif campaign.startdate < Date.today %>
-startしています!
-<%elsif campaign.startdate > Date.today %>
-待機中です。
-<% end %>
+<% if campaign.startdate <= Date.today and campaign.enddate >= Date.today and campaign.opflg == '1' %>
+
 
 <li id="campaigns-<%= campaign.id %>">
 
@@ -57,6 +52,6 @@ Message:<%= f.message %>
 <% end %>
 <% end %>
 
-
+<% end %>
 
 <hr >

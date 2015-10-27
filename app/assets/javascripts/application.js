@@ -16,6 +16,8 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require jquery_nested_form
+//= require underscore
+//= require gmaps/google
 
 
 var data = {'date-format': 'YYYY-MM-DD' };

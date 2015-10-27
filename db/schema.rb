@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026070714) do
+ActiveRecord::Schema.define(version: 20151027023625) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 20151026070714) do
     t.text     "apply_how"
     t.text     "apply_flow"
     t.text     "apply_remarks"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "campaigns", ["client_id", "created_at"], name: "index_campaigns_on_client_id_and_created_at"

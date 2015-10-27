@@ -40,7 +40,7 @@
 <%= @camp_cates %>
 
 <% @campaigns.each do |camp| %>
-<% if camp.startdate <= Date.today && camp.opflg == "1" %>
+<% if camp.startdate <= Date.today and camp.enddate >= Date.today and camp.opflg == "1" %>
 <%= camp.id %>
 <%= camp.client_id %>
 <%= camp.title %>

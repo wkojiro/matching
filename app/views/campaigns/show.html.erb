@@ -12,6 +12,8 @@
     <span class="alert-danger">パンくず</span>Grentelを使ってみたけど今一だったら自分で作るのもありかも。もう少し研究が必要そう。breadcrumbs_on_railsの方が自由度があるかも
     <span class="alert-danger">写真の設定（圧縮、整形）</span>
     <span class="alert-danger">地図情報（緯度経度？）</span>
+    <span class="alert-danger">リストページの作成</span>
+    <span class="alert-danger">検索フォーム</span>  
     <span class="alert-danger">入力フォームの整形（クライアント側：変更したら入力できていない。radio等配列で入れる必要あり</span>STIにチャレンジするかどうか迷い中。
     <span class="alert-danger">応募フォームの整形</span>    
     <span class="alert-danger">応募フォームの別ページ化（必要かよく検討。Findjobみたいにするのか。）ログインと同時に情報を予め入力しておいてあげる。</span>    
@@ -32,8 +34,8 @@
                 <li class="active"><%= @campaign.title %></li>
             </ul>
 
-<% if @campaign.enddate >= Date.today and @campaign.startdate <= Date.today and @campaign.opflg != "1" %>             
-<div class="alert alert-warning"><span class="glyphicon glyphicon-time"></span> この求人広告の募集は終了しております。</div>            
+<% if @campaign.enddate <= Date.today or @campaign.opflg != "1" %>             
+<div class="alert alert-warning"><span class="glyphicon glyphicon-time"></span> この求人広告の募集は終了しているか、既に停止しております。</div>            
 <% end %>
             
 
@@ -65,8 +67,13 @@
 </ul>
 </div>
 <div class="col-md-4 col-md-offset-2 text-right">
+
 <div class="form-group">
+<% if @campaign.startdate <= Date.today and @campaign.enddate >= Date.today and @campaign.opflg == "1" %> 
     <button id="button1id" name="button1id" class="btn btn-success">応募する</button>
+<% else %>
+    <button disabled id="button1id" name="button1id" class="btn btn-success">応募する</button>
+<% end %>
     <button id="button2id" name="button2id" class="btn btn-danger">気になる</button>
   </div>
 </div>
@@ -315,6 +322,28 @@
          </iframe></div>
          </td>
     </tr>
+    <tr>
+      <th>勤務先地図2</th>
+    
+    <td>
+    
+    <div style='width: 600px;'>
+  <div id="map" style='width: 600px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+</script>
+    
+   </td>
+    </tr>
+    
+    
   </tbody>
 </table>
 </div>
@@ -533,7 +562,7 @@
 
 
 <!--応募フォーム-->
-
+<% if @campaign.startdate <= Date.today and @campaign.enddate >= Date.today and @campaign.opflg == "1" %>
 
 <% if user_logged_in? %>
 ここに返信用のフォームをいれる。（ユーザーログインずみだったら）
@@ -559,6 +588,7 @@ aa
 <% end %>
 
 
+<% end %>
 
 
 

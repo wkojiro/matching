@@ -15,9 +15,16 @@ class CampaignsController < ApplicationController
     #     @campaign = current_client.campaigns.find_by(id: params[:id])
     #    else
          @campaign =Campaign.find(params[:id])
+         
+        @hash = Gmaps4rails.build_markers(@campaign) do |campaign, marker|
+      marker.lat campaign.latitude
+      marker.lng campaign.longitude
+      marker.json({title: campaign.title})
+        end
+         
      #   end
         if current_user != nil #この書き方なんかイケてない、、、
-            @user = current_user
+          @user = current_user
         end
         if current_client != nil
          @client= current_client

@@ -9,7 +9,8 @@ class Campaign < ActiveRecord::Base
   mount_uploader :image2, ImageUploader 
   mount_uploader :image3, ImageUploader 
   mount_uploader :image4, ImageUploader   
-
+  geocoded_by :offce_address02
+  after_validation :geocode
 
   
   has_many :campcats
