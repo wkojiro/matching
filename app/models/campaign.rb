@@ -4,13 +4,20 @@ class Campaign < ActiveRecord::Base
   validates :title, presence: true, length:{maximum: 50 }
   validates :summary, presence: true, length: { maximum: 300 }
   validates :content, presence: true, length: { maximum: 800 }
+  validates :startdate, presence: true
+  validates :enddate, presence: true  
   mount_uploader :limage, ImageUploader 
   mount_uploader :image1, ImageUploader 
   mount_uploader :image2, ImageUploader 
   mount_uploader :image3, ImageUploader 
   mount_uploader :image4, ImageUploader   
-  geocoded_by :offce_address02
+ 
+  geocoded_by :officeaddress
   after_validation :geocode
+
+def officeaddress
+  [offce_address01, offce_address02, offce_address03, offce_address04].compact.join(', ')
+end
 
   
   has_many :campcats

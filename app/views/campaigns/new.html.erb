@@ -1,5 +1,5 @@
 <% if client_logged_in? %>
-<%= nested_form_for @campaign, :html => {:multipart => true} do |f| %> 
+<%= nested_form_for @campaign, :html => {:multipart => true, :class => 'h-adr'} do |f| %> 
 
 <div class="row">
   <div class="col-md-12">
@@ -163,10 +163,56 @@
                 <span class="icon search">検索結果表示項目</span></td>
               <td class="info_r_03"><span class="point1">登録時の住所と異なる場合は変更ください。</span><br>
                 <span class="point2">〒</span>
-               <%= f.text_field :offce_postel, placeholder: "office_postel" %>
+               <%# f.text_field :offce_postel, placeholder: "office_postel" %>
                 <span class="point2">-</span>
-                <%= f.select :offce_address01, {'北海道' => 1 , '東京' => 2, '沖縄' => 3} %><br />
-           
+                 <span class="p-country-name" style="display:none;">Japan</span>
+
+
+
+
+<!-- </form> --> 
+ <span class="p-country-name" style="display:none;">Japan</span>
+
+<!--
+  〒<input type="text" class="p-postal-code" size="3" maxlength="3">
+  <input type="text" class="p-postal-code" size="4" maxlength="4"><br> -->
+<%= f.text_field :offce_postel, :multiple => true, :class => "p-postal-code", :size => "3", :maxlength =>"3" %>
+<%= f.text_field :offce_postel, :multiple => true, :class => "p-postal-code", :size => "4", :maxlength =>"4" %><br >
+
+<%= f.text_field :offce_address01, :class => "p-region" %><br >
+<%= f.text_field :offce_address02, :class => "p-locality" %><br >
+<%= f.text_field :offce_address03, :class => "p-street-address" %><br >
+<%= f.text_field :offce_address04, :class => "p-extended-address" %><br >             
+                
+      
+            
+                <br>
+                市区町村郡<span class="">
+                  
+                <%# f.text_field :officeaddress, placeholder: "office_address2", :multiple => true %>
+                </span>例）江戸川区<br>
+                番地・建物<span class="">
+               <%# f.text_field :officeaddress, placeholder: "office_address3", :multiple => true %>
+               <%# f.text_field :officeaddress, placeholder: "office_address4", :multiple => true %>
+                </span>例）松江7-55-2 </td>
+
+<!--ハッシュの場合の書き方
+   <fieldset>
+  <legend>Address</legend>
+  <%# f.fields_for :officeaddress do |g| %>
+    <%# g.label :pref %>
+ <%# g.select :pref, {'北海道' =>'北海道' , '東京都' => '東京都', '沖縄' => '沖縄'} %>
+    <%# g.label :city %>
+    <%# g.text_field :city %><br />
+    <%# g.label :street %>
+    <%# g.text_field :street %><br />
+    <%# g.label :address %>
+    <%# g.text_field :address %><br />
+  <%# end %>
+</fieldset>
+
+-->
+
                <%# f.collection_select :prefecture_id,# Prefecture.all#, :id, :name %>
                 <select name="prefecture">
                   <option value="" selected="">都道府県名をお選びください</option>
@@ -232,14 +278,7 @@
                   <option value="沖縄県">└&nbsp;沖縄県</option>
                   </optgroup>
                 </select>
-                <br>
-                市区町村郡<span class="">
-                <%= f.text_field :offce_address02, placeholder: "office_address2" %>
-                </span>例）江戸川区<br>
-                番地・建物<span class="">
-               <%= f.text_field :offce_address03, placeholder: "office_address3" %>
-               <%= f.text_field :offce_address04, placeholder: "office_address4" %>
-                </span>例）松江7-55-2 </td>
+
             </tr>
             <tr>
               <td class="">通勤最寄り駅</td>

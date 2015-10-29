@@ -36,10 +36,11 @@
 <%= sort_link @search,:enddate, "終了日でソート" %>
 
 
-総登録求人数：<%= @campaigns.count %>件<br >
+総登録求人数(全部の登録件数）：<%= @campaigns.count %>件<br >
 <%= @camp_cates %>
 
 <% @campaigns.each do |camp| %>
+
 <% if camp.startdate <= Date.today and camp.enddate >= Date.today and camp.opflg == "1" %>
 <%= camp.id %>
 <%= camp.client_id %>

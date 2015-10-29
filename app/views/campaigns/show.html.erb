@@ -11,14 +11,27 @@
     <span class="alert-danger"><strike>複数選択のチェックボックス実装</strike></span>    
     <span class="alert-danger">パンくず</span>Grentelを使ってみたけど今一だったら自分で作るのもありかも。もう少し研究が必要そう。breadcrumbs_on_railsの方が自由度があるかも
     <span class="alert-danger">写真の設定（圧縮、整形）</span>
-    <span class="alert-danger">地図情報（緯度経度？）</span>
+    <span class="alert-danger"><strike>地図情報</strike>プルダウンで都道府県を選ぶ部分で大苦戦。郵便番号から途中まで選べる仕組みとして、根本的にやり方を見直す。 </strike></span>
+    
+    <strike>地図情報の制約条件：
+    
+    geocoded_by で　:address　のようにカラムを一つしか選択できない。本来であれば、:pref + :city +　:street　みたいにしたかったが。
+    そのため、:address[]のように配列にした。(実際はハッシュにしたが、ハッシュ状態からgeocodeを導き出すのが大変だったため、普通の配列に変更）
+    address[]をselectで表示させるには、multipart => true　を使ったが。そうしたら画面的に通常のプルダウンでなくなってしまった。。
+    
+　　１．早々にJqueryなどの郵便番号を入力すると住所が表示できるものを導入する。
+　　２．フィールを元々GeoCode算出用の:addressとキーワード検索でも使うであろう、:pref :city :street に分ける。:addressへの格納を　:pref+:city+:streetみたいにできるのか不明。
+　　　（過去に登録したものも住所から緯度経度を算出させたいので、ボタンを用意するか、バッチでできるようにしたい。）</strike>
+
+  
     <span class="alert-danger">リストページの作成</span>
     <span class="alert-danger">検索フォーム</span>  
+    <span class="alert-danger">総登録件数は絞り込む前の件数となっている。コントローラー側で絞って流し込んだ方が良い？</span>  
+    <span class="alert-danger">startdate等if文などのキーとして利用している値がnilの場合エラーになる。Validationの整備及びNil対策が必要</span>  
     <span class="alert-danger">入力フォームの整形（クライアント側：変更したら入力できていない。radio等配列で入れる必要あり</span>STIにチャレンジするかどうか迷い中。
     <span class="alert-danger">応募フォームの整形</span>    
     <span class="alert-danger">応募フォームの別ページ化（必要かよく検討。Findjobみたいにするのか。）ログインと同時に情報を予め入力しておいてあげる。</span>    
     <span class="alert-danger"><strike>同じ案件に対しての応募制限</span></strike> 一応Validationもエラーメッセージも実装できたが、下過ぎてあんまり意味ない。モーダルか別ページ化。
-  
 
 </pre>
 
@@ -192,22 +205,6 @@
 
 
 
-
-
-<div class="well">
-<p class=""><img src="" /></p>
-
-<h2><strong>株式会社○○代表取締役社長</strong></h2>
-
-<p class="text">「勉強するすべての人にとって欠かせない存在」&hellip;私たちはそういうプラットフォームに育てていきます。こうした「学習&times;コミュニケーション」というプラットフォームは世界的に見ても類似サービスがないフロンティアな領域なんです。</p>
-
-    
-    
-    
-</div>
-
-
-
          <h2 class="section">働きやすさにも自信あり！</h2>
         <p>お任せするのは､企業や店舗･マンション･駐車場など､施設からの警報に対し
 現場にパトロールカーで急行し､異常を早期に発見･通報し被害の拡大防止をします｡
@@ -297,7 +294,10 @@
     </tr>
     <tr>
       <th>勤務先所在地</th>
-      <td>〒<%= @campaign.offce_postel %><%= @campaign.offce_address01 %><%= @campaign.offce_address02 %><%= @campaign.offce_address03 %><%= @campaign.offce_address04 %></td>
+      <td>〒<%= @campaign.offce_postel.gsub(/,/,"").gsub(/"/,"").gsub(/ /,"").gsub(/\[/,"").gsub(/\]/,"") %>
+   
+      <%= @campaign.officeaddress.gsub(/,/,"").gsub(/ /,"") %>
+ 
     </tr>
     <tr>
       <th>最寄駅</th>

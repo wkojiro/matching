@@ -1,5 +1,10 @@
 class CampaignsController < ApplicationController
     before_action :logged_in_client, only: [:create,:new,:destoy,:update,:edit]
+    protect_from_forgery
+
+
+
+
 
     def index
     end
@@ -14,15 +19,13 @@ class CampaignsController < ApplicationController
     #  if current_client == @client
     #     @campaign = current_client.campaigns.find_by(id: params[:id])
     #    else
-         @campaign =Campaign.find(params[:id])
-         
+        @campaign =Campaign.find(params[:id])
         @hash = Gmaps4rails.build_markers(@campaign) do |campaign, marker|
-      marker.lat campaign.latitude
-      marker.lng campaign.longitude
-      marker.json({title: campaign.title})
+         marker.lat campaign.latitude
+         marker.lng campaign.longitude
+         marker.json({title: campaign.title})
         end
          
-     #   end
         if current_user != nil #この書き方なんかイケてない、、、
           @user = current_user
         end
@@ -38,7 +41,7 @@ class CampaignsController < ApplicationController
     
     def create
      @campaign = current_client.campaigns.build(campaign_params)
-        if @campaign.save
+       if @campaign.save
          puts "done"
             if @campaign.startdate > Date.today 
             flash[:success] = "キャンペーン予約登録完了"
@@ -47,14 +50,17 @@ class CampaignsController < ApplicationController
             elsif @campaign.startdate < Date.today 
             flash[:success] = "取りあえず登録"
             end
+            
          redirect_to @campaign
 #         redirect_to request.referrer 
          else
+        puts "not saved" 
           @search = Campaign.all.search(params[:q])
           @campaigns = @search.result             
         #  @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil      
-         render 'static_pages/index'
-        end
+        # render 'static_pages/index'
+         render 'campaigns/new'
+       end
     end
     
     def destroy
@@ -89,12 +95,10 @@ class CampaignsController < ApplicationController
  #       :retirement_salary,:allowance,:emp_remarks,:worktime,:breaktime,:overtime,:holiday,:annual_holiday,:job_description,:workflow,:licence,
  #       :skill,:qualification,:age_criteria,:in_charge,:apply_tel,:apply_email,:apply_how,:apply_flow,:apply_remarks,{:category_ids => []})
         params.require(:campaign).permit(:title,:summary,:content ,:startdate,:enddate,:limage,:image1,:image2,:image3,:image4,:opflg,
-         :youtube,:category,:jobtitle01,:jobtitle02,:jobtitle03,:auth,:offce_name,:offce_postel,:offce_address01,:offce_address02,:offce_address03,
+         :youtube,:category,:jobtitle01,:jobtitle02,:jobtitle03,:auth,:offce_name,{:offce_postel => []},{:officeaddress => []},:offce_address01,:offce_address02,:offce_address03,
          :offce_address04,:mycar,:station,:mapinfo,:koyokeitai,:koyokikan,:salary,:salary_remarks,{:socialsecurity => []},:commuting_expenses,:promote,
          :retirement_salary,:allowance,:emp_remarks,:worktime,:breaktime,:overtime,:holiday,:annual_holiday,:job_description,:workflow,:licence,
          :skill,:qualification,:age_criteria,:in_charge,:apply_tel,:apply_email,:apply_how,:apply_flow,:apply_remarks,
         {:category_ids => []})
     end
 end
-
-
