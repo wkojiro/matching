@@ -2,17 +2,28 @@
 aaa
 <% else %>
 bbb
+     <div class="container-fluid"> 
+     <div class="row" >
+           <div class="col-md-6 col-md-offset-3">
 <%= form_for @resume, :html => {:multipart => true} do |f| %> 
 <%= render 'shared/error_messages', object: f.object %>
-<div class="field">
-<%= f.text_area :address1, placeholder: "Compose new micropost..." %>
-<%= f.text_area :address2, placeholder: "Compose new micropost..." %>
-<%= f.text_area :tel, placeholder: "Compose new micropost..." %>    
-<%= f.date_select :birthday, placeholder: "Compose new micropost..." %>    
-<%= f.text_area :sex, placeholder: "Compose new micropost..." %>    
-<%= f.text_area :shikaku, placeholder: "Compose new micropost..." %>   
-<%= f.text_area :menkyo, placeholder: "Compose new micropost..." %>   
-</div>
+<%= f.label :address1 %>
+<%= f.text_field :address1, class: 'form-control'%>
+<%= f.label :address2 %>
+<%= f.text_field :address2, class: 'form-control' %>
+<%= f.label :tel%>
+<%= f.text_field :tel, class: 'form-control' %>
+<%= f.label :birthday %>
+<%= f.date_select :birthday, class: 'form-control' %><br >
+<%= f.label :sex %>
+<%= f.text_field :sex, class: 'form-control' %> 
+<%= f.label :shikaku %>
+<%= f.text_field :shikaku, class: 'form-control' %>  
+<%= f.label :menkyo %>
+<%= f.text_field :menkyo, class: 'form-control' %>   
+
 <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
 <% end %>
+</div>
+</div></div>

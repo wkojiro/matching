@@ -176,9 +176,8 @@
 <!--
   〒<input type="text" class="p-postal-code" size="3" maxlength="3">
   <input type="text" class="p-postal-code" size="4" maxlength="4"><br> -->
-<%= f.text_field :offce_postel, :multiple => true, :class => "p-postal-code", :size => "3", :maxlength =>"3" %>
-<%= f.text_field :offce_postel, :multiple => true, :class => "p-postal-code", :size => "4", :maxlength =>"4" %><br >
-
+<%= f.text_field :offce_postel, :class => "p-postal-code", :size => "3", :maxlength =>"3" %>
+<%= f.text_field :offce_postel02, :class => "p-postal-code", :size => "4", :maxlength =>"4" %><br >
 <%= f.text_field :offce_address01, :class => "p-region" %><br >
 <%= f.text_field :offce_address02, :class => "p-locality" %><br >
 <%= f.text_field :offce_address03, :class => "p-street-address" %><br >

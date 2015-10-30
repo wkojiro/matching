@@ -19,12 +19,13 @@
 <%= search_form_for @search,url: search_path do |f| %>
   <%= f.label :summary_cont, 'タイトル' %>
   <%= f.text_field :title_cont %>  
-  <%= f.label :summary_cont, 'サマリー' %>  
-  <%= f.text_field :summary_cont %>
+  <%= f.label :offce_address01_cont, '都道府県' %>  
+  <%= f.text_field :offce_address01_cont %>
   <%= f.label :jobtitle01_cont, '募集職種１' %>  
   <%= f.text_field :jobtitle01_cont %>  
   <%= f.label :jobtitle01_cont, 'カテゴリ' %>  
-  <%= f.text_field :categories_name_cont %>    
+  <%= f.text_field :categories_name_cont %>
+
 
 
     <%= f.submit 'search' %>

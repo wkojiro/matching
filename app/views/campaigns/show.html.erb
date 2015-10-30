@@ -23,9 +23,9 @@
 　　２．フィールを元々GeoCode算出用の:addressとキーワード検索でも使うであろう、:pref :city :street に分ける。:addressへの格納を　:pref+:city+:streetみたいにできるのか不明。
 　　　（過去に登録したものも住所から緯度経度を算出させたいので、ボタンを用意するか、バッチでできるようにしたい。）</strike>
 
-  
+    <span class="alert-danger">応募のタイミングで募集中かどうか判断する。/span>  
     <span class="alert-danger">リストページの作成</span>
-    <span class="alert-danger">検索フォーム</span>  
+    <span class="alert-danger">検索フォームエリア検索等</span>  
     <span class="alert-danger">総登録件数は絞り込む前の件数となっている。コントローラー側で絞って流し込んだ方が良い？</span>  
     <span class="alert-danger"><strike>startdate等if文などのキーとして利用している値がnilの場合エラーになる。Validationの整備及びNil対策が必要</strike>ここはscopeを利用するなど要検討</span>  
     <span class="alert-danger">入力フォームの整形（クライアント側：変更したら入力できていない。radio等配列で入れる必要あり</span>STIにチャレンジするかどうか迷い中。
@@ -289,12 +289,12 @@
       <td>主に○○県・○○○県等の大手メーカーの定期便をお願いします。カゴ積み、パレ積みメインの仕事です。応募時・面接時に業務内容をご説明します。</td>
     </tr>
     <tr>
-      <th>勤務先名称</th>
+      <th>勤務先名称</th> <%= @campaign.officeaddress %>
       <td><%= @campaign.offce_name %></td>
     </tr>
     <tr>
       <th>勤務先所在地</th>
-      <td>〒<%= @campaign.offce_postel.gsub(/,/,"").gsub(/"/,"").gsub(/ /,"").gsub(/\[/,"").gsub(/\]/,"") %>
+      <td>〒<%= @campaign.offce_postel %>-<%= @campaign.offce_postel02 %>
    
       <%= @campaign.officeaddress.gsub(/,/,"").gsub(/ /,"") %>
  

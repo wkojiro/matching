@@ -1,11 +1,9 @@
 
-<% unless client_logged_in? %>
 
+<% if current_client != nil and current_client == @client %>
 
-<%= link_to "クライアントログイン", client_login_path %>
+私は<%= current_client.compname %>です。
 
-
-<% else %>
 client/show.html
 <%= Time.now.to_s %>
 <%= datetime = DateTime.now %>
@@ -19,14 +17,59 @@ client/show.html
 
  <p>新規登録はこちら <%= link_to "原稿登録!", new_campaign_path %></p>
   <% if @client.campaigns.any? %>
-   <%= render @campaigns %>
-   <%# @camps = Campcat.find(campaigns.id) %>
-   <%# @camps %>
-   <hr>
+
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>募集職種</th>      
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>編集</th>
+      <th>削除</th>
+      <th>求人広告確認</th>
+       <th>応募者</th>     
+      <th>ステータス</th>     
+    </tr>
+  </thead>
+
+  <tbody>
+       <% @campaigns.each do |campaign| %> 
+   <tr>
+   
+  <td><span class="title"><%= campaign.id %>:<%= campaign.title %></span></td>
+   <td>--</td> 
+  <td><span class="startdate"><%= campaign.startdate.strftime("%Y年%m月%d日") %></span></td>
+  <td><span class="enddate"><%= campaign.enddate.strftime("%Y年%m月%d日") %></span> </td>
+  <td><%= link_to "編集", edit_campaign_path(campaign.id) %> </td>
+  <td><%= link_to "削除", campaign, method: :delete, data: { confirm: "you sure?" } %></td>
+  <td><%= link_to "詳細", campaign_path(campaign.id) %></td>
+  <td>応募者（<%= @appliyer = Apply.where(campaign_id: campaign.id).count %>）<% @appliyer = Apply.where(campaign_id: campaign.id) %><% @appliyer.each do |f| %>        
+<% @appu = User.find(f.user_id) %>
+<%= link_to (@appu.name), user_path(@appu.id) %>
+<%= f.message %>      <% end %></td>
+  <td>ステータス</td>
+
+    </tr>
+      <% end %>
+  </thead>
+</table>  
+
+
   <% end %>
 本来的にここに載せるもの
 <hr>
 承認待ち案件　｜　編集　｜削除
+
+
+<% else %>
+  <script type="text/javascript">
+    window.location.href="/"  // put your correct path in a string here
+  </script>
 
 <% end %>
 

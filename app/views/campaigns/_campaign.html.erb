@@ -1,4 +1,6 @@
-<% if campaign.startdate <= Date.today and campaign.enddate >= Date.today and campaign.opflg == '1' %>
+
+
+<%# if campaign.startdate <= Date.today and campaign.enddate >= Date.today and campaign.opflg == '1' %>
 
 
 <li id="campaigns-<%= campaign.id %>">
@@ -51,4 +53,5 @@ Message:<%= f.message %>
 <br >
 <% end %>
 <% end %>
-<% end %>
+<%# end %>
+

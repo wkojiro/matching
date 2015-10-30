@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
+ 
   def show
     @user = User.find(params[:id])
-    if current_user == @user && @resume != nil
-    @resume = Resume.find(params[:id]) 
+    if @user.resume.nil? 
+       @msg = "まだレジメが作成されておりません。"
+    else 
+    @resume = Resume.find(params[:id])
     end
   end
 
