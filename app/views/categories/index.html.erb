@@ -1,3 +1,7 @@
+<% if current_admin != nil and current_admin == @admin %>
+
+私は<%= current_admin.name %>です。
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Categories</h1>
@@ -26,3 +30,9 @@
 <br>
 
 <%= link_to 'New Category', new_category_path %>
+<% else %>
+  <script type="text/javascript">
+    window.location.href="/"  // put your correct path in a string here
+  </script>
+
+<% end %>

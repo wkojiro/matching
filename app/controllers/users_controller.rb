@@ -2,12 +2,16 @@ class UsersController < ApplicationController
  
   def show
     @user = User.find(params[:id])
-    if @user.resume.nil? 
-       @msg = "まだレジメが作成されておりません。"
+    if Resume.where(user_id: @user.id ).exists?
+      @resume = Resume.where(user_id: :id )
+      @msg = "履歴書があります。"
     else 
-    @resume = Resume.find(params[:id])
+      @msg = "履歴書がありません。"
+      @resume = Resume.new
+       
     end
   end
+
 
   def index
    redirect_to root_path
@@ -19,6 +23,23 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+   @user = User.find(params[:id])
+    if @user.update(user_params)
+      @user.save
+       flash[:success] = "update!"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+  
+
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -28,6 +49,13 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  
+  
+  
+  
+  
+  
 
   private
 

@@ -1,4 +1,6 @@
+<% if current_user!= nil and current_user == @user %>
 
+私は<%= current_user.name %>です。
 <%= @user.inspect %>
 <hr>
 <%= @resume.inspect %>
@@ -12,3 +14,10 @@
 <%= link_to "Edit", edit_resume_path(@resume.id) %> 
 <%# link_to "delete", delete_resume_path(@resume.id), data: { confirm: "you sure?" } %>
 <%# link_to "delete", resume_path, method: :delete, data: { confirm: "you sure?" } %>
+
+<% else %>
+  <script type="text/javascript">
+    window.location.href="/"  // put your correct path in a string here
+  </script>
+
+<% end %>

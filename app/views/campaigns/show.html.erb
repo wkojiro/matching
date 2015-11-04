@@ -23,7 +23,10 @@
 　　２．フィールを元々GeoCode算出用の:addressとキーワード検索でも使うであろう、:pref :city :street に分ける。:addressへの格納を　:pref+:city+:streetみたいにできるのか不明。
 　　　（過去に登録したものも住所から緯度経度を算出させたいので、ボタンを用意するか、バッチでできるようにしたい。）</strike>
 
-    <span class="alert-danger">応募のタイミングで募集中かどうか判断する。/span>  
+    <span class="alert-danger">応募のタイミングで募集中かどうか判断する。</span> 
+    <span class="alert-danger">Resume無の場合は、Resume記入リンクを表示し、Resumeがある場合はResume記入リンクを非表示にする。且つ、２つ目を万が一書かれそうになった場合はエラーではじく。</span>      
+    <span class="alert-danger">Userに対してResumeを紐づけたい。User01に対してResumeは1つだけ紐づいている関係。現状では、User04がUser03よりも早くResumeを作ると、Resume03がUser04と紐づいてしまう。
+という大事件発生中    </span>
     <span class="alert-danger">リストページの作成</span>
     <span class="alert-danger">検索フォームエリア検索等</span>  
     <span class="alert-danger">総登録件数は絞り込む前の件数となっている。コントローラー側で絞って流し込んだ方が良い？</span>  

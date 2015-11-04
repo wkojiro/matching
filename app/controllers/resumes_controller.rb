@@ -7,19 +7,22 @@ class ResumesController < ApplicationController
     end 
     
     def show
-     #@resume = current_user.build_resume.find_by(id: params[:id])
-     @resume = Resume.find(params[:id])if not nil
-     @user = User.find(params[:id]) #paramidが同じことをいいことに危険な実装。
+     @resume = current_user.build_resume.find_by(id: params[:id])
+    # @resume = Resume.find(params[:id])if not nil
+    # @user = User.find(params[:id]) #paramidが同じことをいいことに危険な実装。
     end
 
     def create
      @resume = current_user.build_resume(resume_params)
      if @resume.save
         flash[:success] = "登録!"
-         redirect_to @resume
+        @user = current_user
+         redirect_to @user
      else
-      @resume = Resume.all.order("updated_at DESC").limit(30) if not nil      
-         render 'static_pages/index'
+ #     @resume = Resume.all.order("updated_at DESC").limit(30) if not nil  
+       flash[:warning] = "登録出来ておりません。"
+      @user = current_user
+      redirect_to @user
      end
     end
     
@@ -40,7 +43,8 @@ class ResumesController < ApplicationController
       @resume = Resume.find(params[:id])
         if @resume.update(resume_params)
            flash[:success] = "update done!"    
-            redirect_to request.referrer || root_url
+           @user = current_user
+            redirect_to @user
         else
            render 'edit'
         end

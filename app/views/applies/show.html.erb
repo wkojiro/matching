@@ -1,1 +1,13 @@
+<% if (current_client != nil and current_client == @client ) or (current_admin != nil and current_admin == @admin ) %>
+
+私は<%= current_client.compname or current_admin.name %>です。
+
 <%= @applies.inspect %>
+
+
+<% else %>
+  <script type="text/javascript">
+    window.location.href="/"  // put your correct path in a string here
+  </script>
+
+<% end %>

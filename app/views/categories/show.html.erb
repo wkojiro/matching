@@ -1,3 +1,7 @@
+<% if current_admin != nil and current_admin == @admin %>
+
+私は<%= current_admin.name %>です。
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -8,3 +12,10 @@
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
+
+<% else %>
+  <script type="text/javascript">
+    window.location.href="/"  // put your correct path in a string here
+  </script>
+
+<% end %>

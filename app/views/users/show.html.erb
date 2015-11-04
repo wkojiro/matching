@@ -1,11 +1,113 @@
+<% if Resume.where(user_id: @user.id ).exists? %>
+<%= @msg %>
+<% @resume = Resume.find_by(user_id: @user.id) %>
+<%= @resume.inspect %>
+<% else %>
+<%= @msg %>
+<%= render partial:'resumes/new', locals:{ resume:@resume } %>
+<% end %>
+
+
+
 <h1>
 <%= @user.name %></h1>
-<%= @resume.inspect %>
 
-<%= @msg %>
 
-<% if Resume.exists?(:user_id => @user) %>
-<% @resume = Resume.find(@user) %>
-<%= @resume.inspect %>
-<% end %>
- 
+
+<!-- /sectionW -->
+
+<div class="">
+<div class="">
+  <%= link_to "基本情報", edit_user_path(@user) %>
+<a href=""><img src="" alt="基本情報" width="80" height="80"></a>
+</div>
+<div class="">
+<p class=""><a href="../mypage/basic/index.html">基本情報</a></p>
+<p class="">氏名、メールアドレス、パスワードなどが設定できます。</p>
+</div>
+</div>
+
+<!-- /sectionW -->
+<!-- /sectionW -->
+<div class="">
+<div class="">
+<%= link_to "履歴書", edit_resume_path(@resume.id) %>
+</div>
+<div class="">
+<p class="mypage_text01"><% link_to "edit", edit_user_path(@user.id) %></p>
+<p class="mypage_commen">履歴書の確認・変更が設定できます。採用企業からスカウトを受けるには履歴書の登録が必要です。</p>
+</div>
+</div>
+<!-- /sectionW -->
+<!-- /sectionW -->
+<div class="">
+<div class="">
+<a href="../mypage/portal/index.html"><img src="/driverjob/images/page/mypage_icon_06.png" alt="主要転職サイト" width="80" height="80"></a>
+</div>
+<div class="">
+<p class="mypage_text01"><a href="../mypage/portal/index.html">主要サイトへの登録</a></p>
+<p class="mypage_commen">主要転職サイト・人材紹介会社へまとめて登録できます。</p>
+</div>
+</div>
+<!-- /sectionW -->
+<!-- /sectionW -->
+<div class="">
+<div class="">
+<a href="../mypage/message/list_receive.html"><img src="/driverjob/images/page/mypage_icon_03.png" alt="メッセージ管理" width="80" height="80"></a>
+</div>
+<div class="">
+<p class="mypage_text01"><a href="../mypage/message/list_receive.html">メッセージ管理</a></p>
+<p class="mypage_commen">応募からスカウトまで、全てのメール履歴を確認できます。</p>
+</div>
+</div>
+<!-- /sectionW -->
+<!-- /sectionW -->
+<div class="">
+<div class="">
+<a href="../mypage/bookmark/index.html"><img src="/driverjob/images/page/mypage_icon_05.png" alt="応募情報一覧" width="80" height="80"></a>
+</div>
+<div class="">
+<p class="mypage_text01"><a href="../mypage/subscribed/index.html">応募情報一覧・お祝い金申請</a></p>
+<p class="mypage_commen">応募した情報が確認できます。また、お祝い金の申請はここから行えます。</p>
+</div>
+</div>
+<!-- /sectionW -->
+
+
+
+<!-- /sectionW -->
+<div class="">
+<div class="">
+<a href="../mypage/bookmark/index.html"><img src="/driverjob/images/page/mypage_icon_04.png" alt="検討中フォルダ" width="80" height="80"></a>
+</div>
+<div class="">
+<p class="mypage_text01"><a href="../mypage/bookmark/index.html">検討中フォルダ</a></p>
+<p class="mypage_commen">検討中のお仕事をストックできます。</p>
+</div>
+</div>
+<!-- /sectionW -->
+
+
+<!-- /sectionW -->
+<div class="">
+<div class="">
+<a href="../mypage/bookmark/index.html"><img src="/driverjob/images/page/mypage_icon_04.png" alt="設定" width="80" height="80"></a>
+</div>
+<div class="">
+<p class="mypage_text01"><a href="../mypage/config/index.html">設定</a></p>
+<p class="mypage_commen">各種設定</p>
+</div>
+</div>
+<!-- /sectionW -->
+
+
+</div>
+
+
+
+
+
+
+
+
+
