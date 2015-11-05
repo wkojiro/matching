@@ -1,0 +1,648 @@
+<% unless user_logged_in? %>
+aaa
+<% else %>
+bbb
+
+
+
+
+    <div class="container-fluid"> 
+<div class="row">
+        <div class="col-md-9 border" id="leftCol">
+
+            <ul class="breadcrumb border">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">詳細</a></li>
+                <li class="active">あいうえお</li>
+            </ul>
+            
+            <div class="alert alert-warning">スカウト機能を利用するには、Web履歴書の登録が必要です。</div>            
+    
+            
+履歴書
+履歴書の内容を変更します※は入力必須項目です。
+Web履歴書を最新情報に更新して、「内容を確認する」ボタンを押してください。
+
+<%= form_for @resume, :html => {:multipart => true} do |f| %> 
+<%= render 'shared/error_messages', object: f.object %>
+
+
+
+
+
+
+<%= f.label :tel%>
+<%= f.text_field :tel, class: 'form-control' %>
+
+<%= f.label :sex %>
+<%= f.text_field :sex, class: 'form-control' %> 
+<%= f.label :shikaku %>
+<%= f.text_field :shikaku, class: 'form-control' %>  
+<%= f.label :menkyo %>
+<%= f.text_field :menkyo, class: 'form-control' %>   
+
+
+
+
+
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th class="" colspan="2">プロフィール</th>
+</tr>
+<tr>
+<td class="">生年月日<span class="">※</span></td>
+<td class="">
+    
+<div class="form-group">
+
+<div class="birth_date_field form-inline">
+<%= f.date_select(:birthday, options = { order: [:year, :month, :day],use_month_numbers: true, prompt: {year: '西暦', month: '月', day: '日' }, start_year: 1930,:date_separator => '/' }, html_options = { size: 1 ,class: 'bootstrap-date form-inline form-control'}) %>
+
+
+</div>
+</div>    
+    
+</td>
+</tr>
+<tr>
+<td class="">性　別<span class="">※</span></td>
+<td class="">
+  <%= f.radio_button :sex, 1 %>男
+  <%= f.radio_button :sex, 2 %>女<br />
+</td>
+</tr>
+<tr>
+<td class="">住　所<span class="">※</span></td>
+<td class="" colspan="2">
+ <span class="p-country-name" style="display:none;">Japan</span>
+
+
+  〒
+<%# f.text_field :user_postel, :class => "p-postal-code", :size => "3", :maxlength =>"3" %>
+<%# f.text_field :user_postel02, :class => "p-postal-code", :size => "4", :maxlength =>"4" %><br >
+<%# f.text_field :user_address01, :class => "p-region" %><br >
+<%# f.text_field :user_address02, :class => "p-locality" %><br >
+<%# f.text_field :user_address03, :class => "p-street-address" %><br >
+<%# f.text_field :user_address04, :class => "p-extended-address" %><br >   
+</td>
+</tr>
+<tr>
+<td class="">電話番号<br><span class="">※電話/携帯どちらか必須</span></td>
+<td class="">
+<%= f.text_field :tel, class: 'form-control' %>
+</td>
+</tr>
+<tr>
+<td class="">携帯番号<br><span class="">※電話/携帯どちらか必須</span></td>
+<td class="">
+<input type="tel" name="tel" size="12" maxlength="20" class="form-control">
+</td>
+</tr>
+<tr>
+<td class="">転職に伴う転居</td>
+<td class="">
+<input type="radio" name="" value="できる"><span class="i_text_01">できる</span><input type="radio" name="" value="できない" checked=""><span class="i_text_01">できない</span>
+</td>
+</tr>
+<tr>
+<td class="">最終学歴</td>
+<td class="">
+<div class="row">
+     <div class="form-group">
+        <div class="col-md-2"> 卒業年</div><div class="col-md-7">
+            
+
+  
+ <%= f.date_select(:tel, options = {discard_month: true, discard_day: true, start_year: 1930 }, html_options = { size: 1 ,class: 'bootstrap-date form-inline form-control'}) %>
+           
+</div><div class="col-md-3"> 年（西暦）</div>
+    </div>
+  </div>     
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-2">学校名</div> <div class="col-md-7"> 
+        
+        
+        <input type="text" class="form-control" placeholder="学校名">
+        
+        <%= f.text_field :tel, :class => "form-control" , placeholder: "学校名" %>
+        
+        
+        </div><div class="col-md-3"> 卒業 </div>
+    </div>
+</div>
+
+      
+    
+
+</td>
+</tr>
+<tr>
+<td class="">現在の状況</td>
+<td class="">
+    <div class="row">
+<div class="col-md-3">
+<%# f.select :XXX, {'カテゴリ１' => 1 , 'カテゴリ２' => 2, 'カテゴリ３' => 3} %><br />    
+    
+    
+<select class="form-control" id="">
+<option>就業中</option>
+<option>求職中</option>
+<option>離職中</option>
+</select>
+</div></div>
+</td>
+</tr>
+<tr>
+<td class="">フリー記入欄</td>
+<td class="" colspan="2">自己PR等をご記入下さい。<br>
+<textarea name="text" cols="50" rows="5" class="form-control" maxlength=""></textarea>
+</td>
+</tr>
+<tr>
+<td class="" colspan="2">オプション</td>
+</tr>
+<tr>
+<td class="">スキル情報［複数選択可］</td>
+<td class="">
+<ul class="type skill01">
+<li><input type="checkbox" name="" value="普通自動車免許">普通自動車免許</li>
+<li><input type="checkbox" name="" value="中型自動車免許">中型自動車免許</li>
+<li><input type="checkbox" name="" value="大型自動車免許">大型自動車免許</li>
+<li><input type="checkbox" name="" value="大型特殊自動車免許">大型特殊自動車免許</li>
+<li><input type="checkbox" name="" value="小型特殊自動車免許">小型特殊自動車免許</li>
+<li><input type="checkbox" name="" value="牽（けん）引免許">牽（けん）引免許</li>
+<li><input type="checkbox" name="" value="普通自動車第二種">普通自動車第二種</li>
+<li><input type="checkbox" name="" value="普通自動車第二種">普通自動車第二種</li>
+<li><input type="checkbox" name="" value="普通自動車第二種">普通自動車第二種</li>
+<li><input type="checkbox" name="" value="大型特殊自動車第二種">大型特殊自動車第二種</li>
+<li><input type="checkbox" name="" value="牽（けん）引第二種">牽（けん）引第二種</li>
+</ul>
+----
+<ul class="type skill02">
+<li><input type="checkbox" name="" value="クレーン・デリック運転士">クレーン・デリック運転士</li>
+<li><input type="checkbox" name="" value="フォークリフト運転技能講習">フォークリフト運転技能講習</li>
+<li><input type="checkbox" name="" value="移動式クレーン運転士">移動式クレーン運転士</li>
+<li><input type="checkbox" name="" value="大型特殊自動車運転技能教習">大型特殊自動車運転技能教習</li>
+<li><input type="checkbox" name="" value="ショベルローダー等運転技能講習">ショベルローダー等運転技能講習</li>
+<li><input type="checkbox" name="" value="玉掛け技能講習">玉掛け技能講習</li>
+</ul>
+----
+<ul class="type skill03">
+<li><input type="checkbox" name="" value="甲種危険物取扱者">甲種危険物取扱者</li>
+<li><input type="checkbox" name="" value="乙種危険物取扱者">乙種危険物取扱者</li>
+</ul>
+</tr>
+<tr>
+<td class="">希望勤務地<br>［複数選択可］</td>
+<td class="">
+<input type="checkbox" name="" value="こだわらない"><span class="i_text_01">こだわらない</span>
+<input type="checkbox" name="" value="北海道"><span class="i_text_01">北海道</span>
+<input type="checkbox" name="" value="青森県"><span class="i_text_01">青森県</span>
+<input type="checkbox" name="" value="岩手県"><span class="i_text_01">岩手県</span>
+<input type="checkbox" name="" value="宮城県"><span class="i_text_01">宮城県</span>
+<input type="checkbox" name="" value="秋田県"><span class="i_text_01">秋田県</span><br>
+<input type="checkbox" name="" value="山形県"><span class="i_text_01">山形県</span>
+<input type="checkbox" name="" value="福島県"><span class="i_text_01">福島県</span>
+<input type="checkbox" name="" value="茨城県"><span class="i_text_01">茨城県</span>
+<input type="checkbox" name="" value="栃木県"><span class="i_text_01">栃木県</span>
+<input type="checkbox" name="" value="群馬県"><span class="i_text_01">群馬県</span>
+<input type="checkbox" name="" value="埼玉県"><span class="i_text_01">埼玉県</span>
+<input type="checkbox" name="" value="千葉県"><span class="i_text_01">千葉県</span><br>
+<input type="checkbox" name="" value="東京都"><span class="i_text_01">東京都</span>
+<input type="checkbox" name="" value="神奈川県"><span class="i_text_01">神奈川県</span>
+<input type="checkbox" name="" value="新潟県"><span class="i_text_01">新潟県</span>
+<input type="checkbox" name="" value="富山県"><span class="i_text_01">富山県</span>
+<input type="checkbox" name="" value="石川県"><span class="i_text_01">石川県</span>
+<input type="checkbox" name="" value="福井県"><span class="i_text_01">福井県</span>
+<input type="checkbox" name="" value="山梨県"><span class="i_text_01">山梨県</span><br>
+<input type="checkbox" name="" value="長野県"><span class="i_text_01">長野県</span>
+<input type="checkbox" name="" value="岐阜県"><span class="i_text_01">岐阜県</span>
+<input type="checkbox" name="" value="静岡県"><span class="i_text_01">静岡県</span>
+<input type="checkbox" name="" value="愛知県"><span class="i_text_01">愛知県</span>
+<input type="checkbox" name="" value="三重県"><span class="i_text_01">三重県</span>
+<input type="checkbox" name="" value="滋賀県"><span class="i_text_01">滋賀県</span>
+<input type="checkbox" name="" value="京都府"><span class="i_text_01">京都府</span><br>
+<input type="checkbox" name="" value="大阪府"><span class="i_text_01">大阪府</span>
+<input type="checkbox" name="" value="兵庫県"><span class="i_text_01">兵庫県</span>
+<input type="checkbox" name="" value="奈良県"><span class="i_text_01">奈良県</span>
+<input type="checkbox" name="" value="和歌山県"><span class="i_text_01">和歌山県</span>
+<input type="checkbox" name="" value="鳥取県"><span class="i_text_01">鳥取県</span>
+<input type="checkbox" name="" value="島根県"><span class="i_text_01">島根県</span>
+<input type="checkbox" name="" value="岡山県"><span class="i_text_01">岡山県</span><br>
+<input type="checkbox" name="" value="広島県"><span class="i_text_01">広島県</span>
+<input type="checkbox" name="" value="山口県"><span class="i_text_01">山口県</span>
+<input type="checkbox" name="" value="徳島県"><span class="i_text_01">徳島県</span>
+<input type="checkbox" name="" value="香川県"><span class="i_text_01">香川県</span>
+<input type="checkbox" name="" value="愛媛県"><span class="i_text_01">愛媛県</span>
+<input type="checkbox" name="" value="高知県"><span class="i_text_01">高知県</span>
+<input type="checkbox" name="" value="福岡県"><span class="i_text_01">福岡県</span><br>
+<input type="checkbox" name="" value="佐賀県"><span class="i_text_01">佐賀県</span>
+<input type="checkbox" name="" value="長崎県"><span class="i_text_01">長崎県</span>
+<input type="checkbox" name="" value="熊本県"><span class="i_text_01">熊本県</span>
+<input type="checkbox" name="" value="大分県"><span class="i_text_01">大分県</span>
+<input type="checkbox" name="" value="宮崎県"><span class="i_text_01">宮崎県</span>
+<input type="checkbox" name="" value="鹿児島県"><span class="i_text_01">鹿児島県</span>
+<input type="checkbox" name="" value="沖縄県"><span class="i_text_01">沖縄県</span>
+</td>
+</tr>
+<tr>
+<td class="">希望職種<br>［複数選択可］</td>
+<td class="">
+<ul class="type cate">
+<li><input type="checkbox" name="" value="">トレーラー（牽引）ドライバー</li>
+<li><input type="checkbox" name="" value="">大型トラックドライバー</li>
+<li><input type="checkbox" name="" value="">中型トラックドライバー</li>
+<li><input type="checkbox" name="" value="">小型トラックドライバー</li>
+<li><input type="checkbox" name="" value="">大型バスドライバー</li>
+<li><input type="checkbox" name="" value="">中型バスドライバー</li>
+<li><input type="checkbox" name="" value="">小型バスドライバー</li>
+<li><input type="checkbox" name="" value="">タクシードライバー</li>
+<li><input type="checkbox" name="" value="">ハイヤードライバー</li>
+<li><input type="checkbox" name="" value="">フォークリフト運転手</li>
+<li><input type="checkbox" name="" value="">移動式クレーン運転手</li>
+<li><input type="checkbox" name="" value="">その他ドライバー</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td class="">スカウトメール</td>
+<td class="">
+<input type="radio" name="" value="受ける" checked=""><span class="i_text_01">受ける</span><input type="radio" name="" value="受けない"><span class="i_text_01">受けない</span>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<table class="table table-bordered">
+<tbody><tr>
+<td class="" colspan="2">職務経歴書1</td>
+</tr>
+<tr>
+<td class="">勤務先会社名</td>
+<td class=""><input type="text" name="" class="itxt1" value=""></td>
+</tr>
+<tr>
+<td class="">勤務期間</td>
+<td class="">
+<select name="deliver_year">
+<option value="" selected="">---</option>
+
+<option value="1950">1950</option>
+<option value="1951">1951</option>
+<option value="1952">1952</option>
+<option value="1953">1953</option>
+<option value="1954">1954</option>
+<option value="1955">1955</option>
+<option value="1956">1956</option>
+<option value="1957">1957</option>
+<option value="1958">1958</option>
+<option value="1959">1959</option>
+<option value="1960">1960</option>
+<option value="1961">1961</option>
+<option value="1962">1962</option>
+<option value="1963">1963</option>
+<option value="1964">1964</option>
+<option value="1965">1965</option>
+<option value="1966">1966</option>
+<option value="1967">1967</option>
+<option value="1968">1968</option>
+<option value="1969">1969</option>
+<option value="1970">1970</option>
+<option value="1971">1971</option>
+<option value="1972">1972</option>
+<option value="1973">1973</option>
+<option value="1974">1974</option>
+<option value="1975">1975</option>
+<option value="1976">1976</option>
+<option value="1977">1977</option>
+<option value="1978">1978</option>
+<option value="1979">1979</option>
+<option value="1980">1980</option>
+<option value="1981">1981</option>
+<option value="1982">1982</option>
+<option value="1983">1983</option>
+<option value="1984">1984</option>
+<option value="1985">1985</option>
+<option value="1986">1986</option>
+<option value="1987">1987</option>
+<option value="1988">1988</option>
+<option value="1989">1989</option>
+<option value="1990">1990</option>
+<option value="1991">1991</option>
+<option value="1992">1992</option>
+<option value="1993">1993</option>
+<option value="1994">1994</option>
+<option value="1995">1995</option>
+<option value="1996">1996</option>
+<option value="1997">1997</option>
+<option value="1998">1998</option>
+<option value="1999">1999</option>
+<option value="2000">2000</option>
+<option value="2001">2001</option>
+<option value="2002">2002</option>
+<option value="2003">2003</option>
+<option value="2004">2004</option>
+<option value="2005">2005</option>
+<option value="2006">2006</option>
+<option value="2007">2007</option>
+<option value="2008">2008</option>
+<option value="2009">2009</option>
+<option value="2010">2010</option>
+<option value="2011">2011</option>
+<option value="2012">2012</option>
+<option value="2013">2013</option>
+<option value="2014">2014</option>
+<option value="2015">2015</option>
+<option value="2016">2016</option>
+<option value="2017">2017</option>
+<option value="2018">2018</option>
+<option value="2019">2019</option>
+<option value="2020">2020</option>
+</select>
+<span class="i_text">年</span>
+<select name="deliver_month">
+<option value="" selected="">---</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>
+<span class="i_text">月〜</span>
+<select name="deliver_year">
+<option value="" selected="">---</option>
+<option value="1950">1950</option>
+<option value="1951">1951</option>
+<option value="1952">1952</option>
+<option value="1953">1953</option>
+<option value="1954">1954</option>
+<option value="1955">1955</option>
+<option value="1956">1956</option>
+<option value="1957">1957</option>
+<option value="1958">1958</option>
+<option value="1959">1959</option>
+<option value="1960">1960</option>
+<option value="1961">1961</option>
+<option value="1962">1962</option>
+<option value="1963">1963</option>
+<option value="1964">1964</option>
+<option value="1965">1965</option>
+<option value="1966">1966</option>
+<option value="1967">1967</option>
+<option value="1968">1968</option>
+<option value="1969">1969</option>
+<option value="1970">1970</option>
+<option value="1971">1971</option>
+<option value="1972">1972</option>
+<option value="1973">1973</option>
+<option value="1974">1974</option>
+<option value="1975">1975</option>
+<option value="1976">1976</option>
+<option value="1977">1977</option>
+<option value="1978">1978</option>
+<option value="1979">1979</option>
+<option value="1980">1980</option>
+<option value="1981">1981</option>
+<option value="1982">1982</option>
+<option value="1983">1983</option>
+<option value="1984">1984</option>
+<option value="1985">1985</option>
+<option value="1986">1986</option>
+<option value="1987">1987</option>
+<option value="1988">1988</option>
+<option value="1989">1989</option>
+<option value="1990">1990</option>
+<option value="1991">1991</option>
+<option value="1992">1992</option>
+<option value="1993">1993</option>
+<option value="1994">1994</option>
+<option value="1995">1995</option>
+<option value="1996">1996</option>
+<option value="1997">1997</option>
+<option value="1998">1998</option>
+<option value="1999">1999</option>
+<option value="2000">2000</option>
+<option value="2001">2001</option>
+<option value="2002">2002</option>
+<option value="2003">2003</option>
+<option value="2004">2004</option>
+<option value="2005">2005</option>
+<option value="2006">2006</option>
+<option value="2007">2007</option>
+<option value="2008">2008</option>
+<option value="2009">2009</option>
+<option value="2010">2010</option>
+<option value="2011">2011</option>
+<option value="2012">2012</option>
+<option value="2013">2013</option>
+<option value="2014">2014</option>
+<option value="2015">2015</option>
+<option value="2016">2016</option>
+<option value="2017">2017</option>
+<option value="2018">2018</option>
+<option value="2019">2019</option>
+<option value="2020">2020</option>
+</select>
+<span class="i_text">年</span>
+<select name="deliver_month">
+<option value="" selected="">---</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>
+<span class="i_text">月まで</span><br>
+現在勤務中の場合、終了年月は未入力にしてください。(例：1999年4月 ～ 年 月) 
+</td>
+</tr>
+<tr>
+<td class="">雇用形態</td>
+<td class="" colspan="2">
+<select name="deliver_year">
+<option value="" selected="">雇用形態をお選びください</option>
+<option value="正社員">正社員</option>
+<option value="契約社員">契約社員</option>
+<option value="派遣社員">派遣社員</option>
+<option value="パート・アルバイト">パート・アルバイト</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td class="">職　種</td>
+<td class="" colspan="2">
+<select name="deliver_year">
+<option value="" selected="">職種をお選びください</option>
+<option value="タクシー・ハイヤードライバー">タクシー・ハイヤードライバー</option>
+<option value="バス乗務員">バス乗務員</option>
+<option value="大型トラックドライバー">大型トラックドライバー</option>
+<option value="中型トラックドライバー">中型トラックドライバー</option>
+<option value="小型トラックドライバー">小型トラックドライバー</option>
+<option value="整備系業務">整備系業務</option>
+<option value="事務・管理・軽作業員">事務・管理・軽作業員</option>
+<option value="その他ドライバー">その他ドライバー</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class="">主な職務内容</td>
+<td class=""><input type="text" name="" class="" value=""></td>
+</tr>
+</tbody></table>
+
+<p class="sub_text_d">職務経歴を
+<a href="#" class="">追加</a>
+<a href="#" class="">削除</a>
+</p>
+
+<table class="table table-bordered">
+<tbody>
+<tr>
+<td class="" colspan="7">乗務履歴</td>
+</tr>
+<tr>
+<td class=""> 乗務期間</td>
+<td class=""><span class="">経験なし</span></td>
+<td class=""><span class="">1年未満</span></td>
+<td class=""><span class="">1年以上</span></td>
+<td class=""><span class="">3年以上</span></td>
+<td class=""><span class="">5年以上</span></td>
+</tr>
+<tr>
+<td class="">普通自動車</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">タクシー</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">ハイヤー</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">トレーラー </td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">大型トラック（２０ｔ以上）</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">中型トラック（５ｔから２０ｔ未満）<br></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">小型トラック（４ｔ未満）<br></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">特殊車両</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">大型バス（路線）</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">大型バス（観光）</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">その他バス</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+<tr>
+<td class="">その他車輌</td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+<td class=""><span class=""><input type="radio" name="" value=""></span></td>
+</tr>
+</tbody>
+</table>
+<buttan class="btn">
+<%= f.submit "Post", class: "btn btn-primary" %>
+</buttan>
+<% end %>
+<% end %>
+
+
+<!--<div class="btn_area">
+<input type="image" onclick="form.action='../../mypage/career/career_check.html';return true" src="/driverjob/images/page/bt/drajob_bt11_off.gif" onmouseover="this.src='../../img/bt/drajob_bt11_on.gif'" onmouseout="this.src='../../img/bt/drajob_bt11_off.gif'" alt="内容を確認する" border="0">
+<input type="image" onclick="form.action='../../mypage/index.html';return true" src="/driverjob/images/page/bt/drajob_bt06_off.gif" onmouseover="this.src='../../img/bt/drajob_bt06_on.gif'" onmouseout="this.src='../../img/bt/drajob_bt06_off.gif'" alt="戻る" border="0">
+</div>-->
+
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+</div></div>
