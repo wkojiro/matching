@@ -3,13 +3,9 @@
 
 <div class="row">
   <div class="col-md-12">
-
   <%= render 'shared/error_messages', object: f.object %>
-  
- 
- 
-<div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
- <table class="table table-bordered">
+    <div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
+       <table class="table table-bordered">
           <tbody>
             <tr>
               <td class="" colspan="2">求人広告掲載期間</td>
@@ -23,18 +19,22 @@
               <td class="">Aプラン　成功報酬額：50,000円（お祝い金5000円）→最後に出したほうが良い？？</td>
             </tr>
             <tr>
-              <td class="" rowspan="2">掲載開始希望日<span class="point1">※</span></td>
+              <td class="" rowspan="2"><%= f.label :startdate, "掲載期間" %><span class="point1">※</span></td>
               <td class="">        
-              <span class="input-group date datepicker4">
+              <span class="input-group date datepicker1">
                    <%= f.label :スタート予定日 %>
-                   <%= f.text_field :startdate, :class => "datepicker4" %>
-
-                   〜   
-                   
-                   <%= f.label :終了予定日 %>
-                   <%= f.text_field :enddate, :class => "datepicker4" %>
+                   <%= f.text_field :startdate, :class => "datepicker1" %>
                 </span>
-                   
+                   〜   
+                 <span class="input-group date datepicker2">                
+                   <%= f.label :終了予定日 %>
+                   <%= f.text_field :enddate, :class => "datepicker2" %>
+                </span>
+ <div class="input-daterange input-group" id="datepicker">
+    <input type="text" class="input-sm form-control" name="start" />
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="end" />
+</div>
                    
                 </td>
             </tr>
@@ -50,7 +50,7 @@
               <td class="" colspan="2">求人広告詳細</td>
             </tr>
             <tr>
-              <td class="">募集タイトル<br>
+            <td class=""><%= f.label :title, "募集タイトル" %></td>
                 （20文字以内）<span class="point1">※</span></td>
               <td class="">    <%= f.text_field :title, :size => "80x3",  placeholder: "求人広告タイトル" %>
 
@@ -64,16 +64,16 @@
                 例）業務拡大につき、路線バス運転手大募集！</td>
             </tr>
             <tr >
-              <td class="">募集カテゴリ<span class="point1">※</span><br>
+            <td class=""><%= f.label :category_ids, "募集職種" %></td>
                 <span class="">検索結果表示項目</span></td>
               <td class="">
   
-    <%= f.label :専門領域1 %>
-    <%= collection_select(:campaign, :category_ids , Category.where("genre = '1'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'campaign[category_ids][]'} ) %>
-   <%= collection_select(:campaign, :category_ids , Category.where("genre = '2'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'campaign[category_ids][]'} ) %>
-   <%= collection_select(:campaign, :category_ids , Category.where("genre = '3'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'campaign[category_ids][]'} ) %>
+<%= f.label :専門領域1 %>
+<%= collection_select(:campaign, :category_ids , Category.where("genre1 = '1'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'campaign[category_ids][]'} ) %>
+<%= collection_select(:campaign, :category_ids , Category.where("genre1 = '2'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'campaign[category_ids][]'} ) %>
+<%= collection_select(:campaign, :category_ids , Category.where("genre1 = '3'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'campaign[category_ids][]'} ) %>
 
-　
+
  http://rubyist.g.hatena.ne.jp/yamaz/20061018
  
  <%# f.select :campaign, :category_ids,  Category.where("genre = '1'"), {prompt: "Select Permission Level"}, {:multiple => true, class: "input-lg"} %>
@@ -153,40 +153,35 @@
             </tr>
             
             <tr>
-              <td class="">求人広告概要→何を書いてよいかあいまい。<br>
+            <td class=""><%= f.label :content, "求人広告概要" %></td>
                 （200文字以内）<span class="">※</span></td>
               <td class=""><%= f.text_area :content, :size => "80x3", placeholder: "アピール枠にするか？？" %>
                 <br>
                 例）当社は、設立●●年以来、関東・東北・●●拠点体制で、●●・●●部品専門の物流サービスを展開してきました。ここ数年の経済情勢の変化にも柔軟に対応！企業の利益確保・物流コスト削減に成功し、数々の大手顧客の信頼を獲得しました。 </td>
             </tr>
             <tr>
-              <td class="">採用人数</td>
-              <td class="">---
-                <span class="">人</span></td>
+             <td class=""><%= f.label :howmany, "採用人数" %></td>
+              <td class="">
+                <span class=""><%= f.text_field :howmany, :size => "5", placeholder: "採用人数" %>人</span></td>
             </tr>
+ 
             <tr>
-              <td>仕事概要</td>
-              <td><%# f.text_area :job_description, :size => "100x10", placeholder: "job_description" %>
-                <br>
-                例）主に●●県・●●●県等の大手メーカーの定期便をお願いします。カゴ積み、パレ積みメインの仕事です。応募時・面接時に業務内容をご説明します。 </td>
-            </tr>
-                    <tr>
               <td class="3_b" colspan="2">勤務先情報</td>
             </tr>
    
             <tr>
-              <td class="">勤務先名称<span class="point1">※</span></td>
+             <td class=""><%= f.label :office_name, "勤務地名称" %></td>
               <td class=""><span class="point1">登録時の会社名と異なる場合は変更ください。</span><br>
-               <%= f.text_field :offce_name, placeholder: "office_name" %>
+               <%= f.text_field :office_name, placeholder: "office_name" %>
                 <br>
                 例）ドラジョブ運送東京営業所</td>
             </tr>
             <tr>
-              <td class="">勤務先所在地<br>
+             <td class=""><%= f.label :office_address, "勤務地所在地" %></td>
                 <span class="">検索結果表示項目</span></td>
               <td class=""><span class="point1">登録時の住所と異なる場合は変更ください。</span><br>
                 <span class="point2">〒</span>
-               <%# f.text_field :offce_postel, placeholder: "office_postel" %>
+               <%# f.text_field :office_postel, placeholder: "office_postel" %>
                 <span class="point2">-</span>
                  <span class="p-country-name" style="display:none;">Japan</span>
 
@@ -199,12 +194,12 @@
 <!--
   〒<input type="text" class="p-postal-code" size="3" maxlength="3">
   <input type="text" class="p-postal-code" size="4" maxlength="4"><br> -->
-<%= f.text_field :offce_postel, :class => "p-postal-code", :size => "3", :maxlength =>"3" %>
-<%= f.text_field :offce_postel02, :class => "p-postal-code", :size => "4", :maxlength =>"4" %><br >
-<%= f.text_field :offce_address01, :class => "p-region" %><br >
-<%= f.text_field :offce_address02, :class => "p-locality" %><br >
-<%= f.text_field :offce_address03, :class => "p-street-address" %><br >
-<%= f.text_field :offce_address04, :class => "p-extended-address" %><br >             
+<%= f.text_field :office_postel, :class => "p-postal-code", :size => "3", :maxlength =>"3" %>
+<%= f.text_field :office_postel02, :class => "p-postal-code", :size => "4", :maxlength =>"4" %><br >
+<%= f.text_field :office_address01, :class => "p-region" %><br >
+<%= f.text_field :office_address02, :class => "p-locality" %><br >
+<%= f.text_field :office_address03, :class => "p-street-address" %><br >
+<%= f.text_field :office_address04, :class => "p-extended-address" %><br >             
                 
       
             
@@ -218,32 +213,16 @@
                <%# f.text_field :officeaddress, placeholder: "office_address4", :multiple => true %>
                 </span>例）松江7-55-2 </td>
 
-<!--ハッシュの場合の書き方
-   <fieldset>
-  <legend>Address</legend>
-  <%# f.fields_for :officeaddress do |g| %>
-    <%# g.label :pref %>
- <%# g.select :pref, {'北海道' =>'北海道' , '東京都' => '東京都', '沖縄' => '沖縄'} %>
-    <%# g.label :city %>
-    <%# g.text_field :city %><br />
-    <%# g.label :street %>
-    <%# g.text_field :street %><br />
-    <%# g.label :address %>
-    <%# g.text_field :address %><br />
-  <%# end %>
-</fieldset>
 
--->
 
-               <%# f.collection_select :prefecture_id,# Prefecture.all#, :id, :name %>
  
             </tr>
             <tr>
-              <td class="">通勤最寄り駅</td>
-              <td class=""><%= f.text_field :station, placeholder: "station" %></td>
+              <td class=""><%= f.label :station, "最寄駅" %></td>
+              <td class=""><%= f.text_field :station, placeholder: "最寄駅" %></td>
             </tr>
             <tr>
-              <td class="">マイカー通勤<br>
+              <td class=""><%= f.label :mycar, "マイカー通勤" %></td>
                 <span class="">検索結果表示項目</span></td>
               <td class="">         
                   <%= f.radio_button :mycar, 1 %>可
@@ -257,18 +236,18 @@
             
             
             <tr>
-              <td class="">事業所認定資格</td>
+              <td class=""><%= f.label :auth, "事業所認定" %></td>
               <td class="">
                 
    
 
-<%= f.check_box :auth, {multiple: true},checked_value = "ISO", nil %>ISO
-<%= f.check_box :auth, {multiple: true},checked_value = "AAA", nil %>AAA
-<%= f.check_box :auth, {multiple: true},checked_value = "AA", nil %>AA
-<%= f.check_box :auth, {multiple: true},checked_value = "Gマーク", nil %>Gマーク
-<%= f.check_box :auth, {multiple: true},checked_value = "グリーン経営", nil %>グリーン経営
+<%= f.check_box :auth, {:name =>'campaign[auth][]'} ,checked_value = "ISO", nil %>ISO
+<%= f.check_box :auth, {:name =>'campaign[auth][]'} ,checked_value = "AAA", nil %>AAA
+<%= f.check_box :auth, {:name =>'campaign[auth][]'} ,checked_value = "AA", nil %>AA
+<%= f.check_box :auth, {:name =>'campaign[auth][]'} ,checked_value = "Gマーク", nil %>Gマーク
+<%= f.check_box :auth, {:name =>'campaign[auth][]'} ,checked_value = "グリーン経営", nil %>グリーン経営
 
-<%= f.text_field :auth, multiple: true, :class => "form-control", :size => "20", :maxlength =>"100" , placeholder: "その他補足があればご記入下さい" %>
+<%= f.text_field :auth, :name =>'campaign[auth][]' , :class => "form-control", :size => "20", :maxlength =>"100" , placeholder: "その他補足があればご記入下さい" %>
            </td>
             </tr>
             <tr>
@@ -299,7 +278,7 @@
               <td><%= f.text_field :salary, placeholder: "salary" %></td>
             </tr>
             <tr>
-              <td class="">待遇［社会保険］<br>
+              <td class=""><%= f.label :socialsecurity , "社会保険" %><br>
                 <span class="">検索結果表示項目</span></td>
               <td class="">
               
@@ -311,7 +290,7 @@
      </td>
             </tr>
             <tr>
-              <td class="">待遇［通勤費］<br>
+              <td class=""><%= f.label :commuting_expenses , "待遇［通勤費］" %><br>
                 <span class="">検索結果表示項目</span></td>
               <td class="">
                 <%= f.radio_button :commuting_expenses, 1 %>有り
@@ -319,7 +298,7 @@
               </td>
             </tr>
             <tr>
-              <td class="">待遇［昇給］<br>
+              <td class=""><%= f.label :promote , "待遇［昇給］" %><br>
                 <span class="">検索結果表示項目</span></td>
               <td class="">
                 <%= f.radio_button :promote, 1 %>有り
@@ -327,27 +306,27 @@
                 </td>
             </tr>
             <tr>
-              <td class="">待遇［賞与］<br>
+              <td class=""><%= f.label :shouyo , "待遇［昇給］" %><br>
                 <span class="">検索結果表示項目</span></td>
               <td class="">
-                <%# f.radio_button :, 1 %>有り
-                <%# f.radio_button :, 0 %>無し
+                <%= f.radio_button :shouyo, 1 %>有り
+                <%= f.radio_button :shouyo, 0 %>無し
                 </td>
             </tr>
             <tr>
-              <td class="">待遇［退職金］<br>
+              <td class=""><%= f.label :retirement_salary , "待遇［昇給］" %><br>
                 <span class="">検索結果表示項目</span></td>
               <td class="">
                 <%= f.radio_button :retirement_salary, 1 %>有り
                 <%= f.radio_button :retirement_salary, 0 %>無し</td>
             </tr>
             <tr>
-              <td class="">待遇［その他諸手当］</td>
+              <td class=""><%= f.label :allowance , "諸手当" %></td>
               <td class="">
                 <%= f.text_area :allowance,:size => "80x3", placeholder: "allowance" %></td>
             </tr>
             <tr>
-              <td class="">雇用に関する備考</td>
+              <td class=""><%= f.label :emp_remarks , "雇用に関する備考" %></td>
               <td class=""><%= f.text_area :emp_remarks, :size => "80x3", placeholder: "emp_remarks" %></textarea></td>
             </tr>
 
@@ -357,38 +336,38 @@
               <td class="" colspan="2">勤務条件</td>
             </tr>
             <tr>
-              <td class="">勤務時間</td>
+              <td class=""><%= f.label :worktime, "勤務時間" %></td>
               <td class=""><%= f.text_area :worktime,:size => "80x3", placeholder: "勤務時間" %>
                 <br>
                 例）13:00〜21:00 </td>
             </tr>
             <tr>
-              <td class="">休憩時間</td>
+              <td class=""><%= f.label :brektime, "休憩時間" %></td>
               <td class=""><%= f.text_field :breaktime, placeholder: "休憩時間" %>
                 例）60分</td>
             </tr>
             <tr>
-              <td class="">時間外</td>
+              <td class=""><%= f.label :overtime, "時間外" %></td>
               <td class=""><%= f.text_field :overtime, placeholder: "例）月30時間 " %>
                 例）月30時間 </td>
             </tr>
             <tr>
-              <td class="">休　日</td>
-              <td class=""><%= f.text_field :holiday, placeholder: "holiday" %>
+              <td class=""><%= f.label :holiday, "休暇・休日" %></td>
+              <td class=""><%= f.text_field :holiday, placeholder: "休暇・休日" %>
                 例）週休2日制</td>
             </tr>
             <tr>
-              <td class="">年間休日</td>
-              <td class=""><%= f.text_field :annual_holiday, placeholder: "annual_holiday" %>
+              <td class=""><%= f.label :annual_holiday, "年間休日" %>日</td>
+              <td class=""><%= f.text_field :annual_holiday, placeholder: "年間休日" %>
                 例）年間120日</td>
             </tr>
             <tr>
-              <td class="">仕事内容</td>
+              <td class=""><%= f.label :job_description, "仕事内容" %></td>
               <td class=""> 出来るだけ詳しく仕事の内容をご記入下さい。<br>
                <%= f.text_area :job_description, :size => "100x10", placeholder: "出来るだけ詳しく仕事の内容をご記入下さい。" %></td>
             </tr>
             <tr>
-              <td>仕事の流れ</td>
+              <td class=""><%= f.label :workflow, "仕事の流れ" %></td>
               <td>
                 <%= f.text_area :workflow, :size => "100x10", placeholder: "朝～昼～夕等の業務の流れを出来るだけ詳しくご記入下さい" %></td>
             </tr>
@@ -396,7 +375,7 @@
               <td class="" colspan="2">応募条件</td>
             </tr>
             <tr>
-              <td class="">免　許<br>
+              <td class=""><%= f.label :licence, "免許" %></td>
                 <span class="">検索結果表示項目</span></td>
               <td class=""><%= f.text_field :licence, placeholder: "licence" %>
                 <span class="">大型自動車運転免許</span>
@@ -412,7 +391,7 @@
                 <input type="text" name="" class="itxt1" value=""></td>
             </tr>
             <tr>
-              <td class="">資　格<br>
+              <td class=""><%= f.label :skill, "資格" %></td>
                 <span class="">検索結果表示項目</span></td>
               <td class=""><%= f.text_field :skill, placeholder: "skill" %>
                 <span class="">一級自動車整備士</span>
@@ -436,7 +415,7 @@
                 <input type="text" name="" class="itxt1" value=""></td>
             </tr>
             <tr>
-              <td class="">応募資格</td>
+              <td class=""><%= f.label :qualification, "応募資格" %></td>
               <td class=""><%= f.text_field :qualification, placeholder: "qualification" %>
                 <span class="">要経験者</span>
                 <input type="radio" name="" value="経験不問">
@@ -448,7 +427,7 @@
                 例）3年以上の経験あり </td>
             </tr>
             <tr>
-              <td class="">年齢制限</td>
+              <td class=""><%= f.label :age_criteria, "年齢制限" %></td>
               <td class=""><%= f.text_field :age_criteria, placeholder: "age_criteria" %>
                 <span class="">年齢制限あり</span>
                 <input type="radio" name="" value="年齢不問">
@@ -491,25 +470,16 @@
               <td class="3_b" colspan="2">採用の流れ</td>
             </tr>
             <tr>
-              <td class="">応募担当者<span class="point1">※</span></td>
-              <td class=""><%= f.text_field :in_charge, placeholder: "in_charge" %></td>
+              <td class=""><%= f.label :in_charge, "採用担当者" %></td>
+              <td class=""><%= f.text_field :in_charge, placeholder: "採用担当者名（例:採用係）" %></td>
             </tr>
             <tr>
-              <td class="">応募に関する連絡先</td>
-              <td class=""><%= f.text_field :apply_tel, placeholder: "apply_tel" %>
-                <br>
-                例）○○採用係</td>
+              <td class=""><%= f.label :apply_tel, "連絡先電話番号" %></td>
+              <td class=""><%= f.text_field :apply_tel, placeholder: "連絡先電話番号" %></td>
             </tr>
+
             <tr>
-              <td class="">応募先電話番号<span class="point1">※</span></td>
-              <td class=""><%= f.text_field :apply_tel, placeholder: "apply_tel" %>
-                <span class="point2">-</span>
-                <input type="text" name="tel2" value="" class="itxt5">
-                <span class="point2">-</span>
-                <input type="text" name="tel3" value="" class="itxt5"></td>
-            </tr>
-            <tr>
-              <td><%= f.label :apply_email,  "メールアドレス（これいるかなぁ）" %></td>
+              <td><%= f.label :apply_email,  "メールアドレス" %></td>
               <td><%= f.text_field :apply_email, placeholder: "apply_email" %>
             </tr>
             <tr>
@@ -581,21 +551,21 @@
 
   <div class="field">
     <%= f.label :専門領域1 %><br />
-    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre = '1'"), :id, :name) do |b| %>
+    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre1 = '1'"), :id, :name) do |b| %>
       <%= b.label { b.check_box + b.text } %>
     <% end %>
   </div>    
   
   <div class="field">
     <%= f.label :専門領域2 %><br />
-    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre = '2'"), :id, :name) do |b| %>
+    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre1 = '2'"), :id, :name) do |b| %>
       <%= b.label { b.check_box + b.text } %>
     <% end %>
   </div>     
 
  <div class="field">
     <%= f.label :専門領域3 %><br />
-    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre = '3'"), :id, :name) do |b| %>
+    <%= collection_check_boxes(:campaign, :category_ids, Category.where("genre1 = '3'"), :id, :name) do |b| %>
       <%= b.label { b.check_box + b.text } %>
     <% end %>
   </div>       

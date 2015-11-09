@@ -3,12 +3,48 @@
 
 
 <% breadcrumb :campaigns, @campaign %>
+<pre class="prettyprint">
 
-<div class="col-md-9" id="leftCol">
+    <span class="alert-danger"><strike>タグで表示されているものをSearchに飛ばす方法</strike></span>
+    <span class="alert-danger"><strike>様々なジャンルのタグを用意する。例：職種、資格、免許等。サブクラスを用いると種別分のサブクラスが必要となるため、現行モデルにカラム追加で対応する。</strike></span>      
+    <span class="alert-danger"><strike>クライアントの情報を引っ張ってくる（current_client はクライアントがログインしていることが前提となってしまうためNG）</strike></span>
+    <span class="alert-danger"><strike>複数選択のチェックボックス実装</strike></span>    
+    <span class="alert-danger">パンくず</span>Grentelを使ってみたけど今一だったら自分で作るのもありかも。もう少し研究が必要そう。breadcrumbs_on_railsの方が自由度があるかも
+    <span class="alert-danger">写真の設定（圧縮、整形）</span>
+    <span class="alert-danger">カレンダーで日付設定したものをEditするとStartdateになってしまう。</span>
+    <span class="alert-danger"><strike>地図情報</strike>プルダウンで都道府県を選ぶ部分で大苦戦。郵便番号から途中まで選べる仕組みとして、根本的にやり方を見直す。 </strike></span>
+    <span class="alert-danger">ボタンを押すとGoogleMapが表示する仕組みとしたい</span>
+    
+    <strike>地図情報の制約条件：
+    
+    geocoded_by で　:address　のようにカラムを一つしか選択できない。本来であれば、:pref + :city +　:street　みたいにしたかったが。
+    そのため、:address[]のように配列にした。(実際はハッシュにしたが、ハッシュ状態からgeocodeを導き出すのが大変だったため、普通の配列に変更）
+    address[]をselectで表示させるには、multipart => true　を使ったが。そうしたら画面的に通常のプルダウンでなくなってしまった。。
+    
+　　１．早々にJqueryなどの郵便番号を入力すると住所が表示できるものを導入する。
+　　２．フィールを元々GeoCode算出用の:addressとキーワード検索でも使うであろう、:pref :city :street に分ける。:addressへの格納を　:pref+:city+:streetみたいにできるのか不明。
+　　　（過去に登録したものも住所から緯度経度を算出させたいので、ボタンを用意するか、バッチでできるようにしたい。）</strike>
+
+    <span class="alert-danger">応募のタイミングで募集中かどうか判断する。</span> 
+    <span class="alert-danger">Resume無の場合は、Resume記入リンクを表示し、Resumeがある場合はResume記入リンクを非表示にする。且つ、２つ目を万が一書かれそうになった場合はエラーではじく。</span>      
+    <span class="alert-danger">Userに対してResumeを紐づけたい。User01に対してResumeは1つだけ紐づいている関係。現状では、User04がUser03よりも早くResumeを作ると、Resume03がUser04と紐づいてしまう。
+という大事件発生中    </span>
+    <span class="alert-danger">リストページの作成</span>
+    <span class="alert-danger">検索フォームエリア検索等</span>  
+    <span class="alert-danger">総登録件数は絞り込む前の件数となっている。コントローラー側で絞って流し込んだ方が良い？</span>  
+    <span class="alert-danger"><strike>startdate等if文などのキーとして利用している値がnilの場合エラーになる。Validationの整備及びNil対策が必要</strike>ここはscopeを利用するなど要検討</span>  
+    <span class="alert-danger">入力フォームの整形（クライアント側：変更したら入力できていない。radio等配列で入れる必要あり</span>STIにチャレンジするかどうか迷い中。
+    <span class="alert-danger">応募フォームの整形</span>    
+    <span class="alert-danger">応募フォームの別ページ化（必要かよく検討。Findjobみたいにするのか。）ログインと同時に情報を予め入力しておいてあげる。</span>    
+    <span class="alert-danger"><strike>同じ案件に対しての応募制限</span></strike> 一応Validationもエラーメッセージも実装できたが、下過ぎてあんまり意味ない。モーダルか別ページ化。
+
+</pre>
+
+<div class="col-md-9 border" id="leftCol">
 <!--Startここから -->
 
 
-<div class="breadcrumb "><%= breadcrumb :campaigns, @campaign %></div>→View側の実装が全然できない。違う。これがあることが上手く行っていること。
+<div class="breadcrumb boader"><%= breadcrumb :campaigns, @campaign %></div>→View側の実装が全然できない。違う。これがあることが上手く行っていること。
   
             <ul class="breadcrumb border">
                 <li><a href="#">Home</a></li>
@@ -70,7 +106,7 @@
 
 
 <% @camps = Campaign.where(id: @campaign.id).first.categories %>
-
+<%= @camps.inspect %>
   <div class="">
       <span class="glyphicon glyphicon-tags"></span>&nbsp;
       
@@ -118,7 +154,8 @@
           <div class="thumbnail">
             <img src="http://www.find-job.net/img/com_pics/35291/b-89855ff7.jpg" alt="">
             <div class="caption">
-              <h5></h5>
+              <h5>メンバーは皆、明るくて気さく。 
+気軽に話しかけてくださいね。</h5>
               <p></p>
             </div>
           </div>
@@ -129,7 +166,7 @@
 <div class="col-md-7 col-md-pull-5">
 <h2>『ぐるなび』の未来</h2>
 <p>●目標は、「21世紀の食文化の創造」 
-<br><%= @campaign.job_description %></p>
+<br>今後は、飲食業界とeマーケットを融合した今までにないビジネスを生み出していきたいと考えています。そのためには前例にとらわれていてはいけない。中途入社の方には、新しい風を吹き込んで、新しい取り組みを加速する原動力になっていただければと考えています。</p>
 </div>        
 
 </div>
@@ -159,7 +196,17 @@
 </div>        
 
 </div>
-
+      <ul class="thumbnails list-unstyled">
+        <li class="span2">
+          <div class="thumbnail">
+            <img src="http://www.find-job.net/img/com_pics/35291/b-89855ff7.jpg" alt="">
+            <div class="caption">
+              <h5>サムネイルラベル</h5>
+              <p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+            </div>
+          </div>
+        </li>
+      </ul>
 
 
 
@@ -471,10 +518,10 @@
 </table>
 </div>
 
-
+<%= @campaign.client_id %>
 <% @client = Client.find(@campaign.client_id) %>
-
-
+<%= @client.inspect %>
+<%= @client.compname %>
 <div class="table-responsive" itemscope="" itemtype="http://schema.org/Organization">
 <table class="table table-striped table-bordered table-hover table-condensed">
   <tbody>
@@ -617,3 +664,12 @@ aa
 
 
 </div>
+bbb
+
+<!--endここまで -->
+
+
+
+
+
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030065257) do
+ActiveRecord::Schema.define(version: 20151109084816) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(version: 20151030065257) do
     t.text     "jobtitle02"
     t.text     "jobtitle03"
     t.text     "auth"
-    t.text     "offce_name"
-    t.text     "offce_postel"
-    t.text     "offce_address01"
-    t.text     "offce_address02"
-    t.text     "offce_address03"
-    t.text     "offce_address04"
+    t.text     "office_name"
+    t.text     "office_postel"
+    t.text     "office_address01"
+    t.text     "office_address02"
+    t.text     "office_address03"
+    t.text     "office_address04"
     t.text     "mycar"
     t.text     "station"
     t.text     "mapinfo"
@@ -95,7 +95,9 @@ ActiveRecord::Schema.define(version: 20151030065257) do
     t.float    "latitude"
     t.float    "longitude"
     t.text     "officeaddress"
-    t.text     "offce_postel02"
+    t.text     "office_postel02"
+    t.text     "howmany"
+    t.text     "shouyo"
   end
 
   add_index "campaigns", ["client_id", "created_at"], name: "index_campaigns_on_client_id_and_created_at"
@@ -115,7 +117,8 @@ ActiveRecord::Schema.define(version: 20151030065257) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text     "genre"
+    t.text     "genre1"
+    t.text     "genre2"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -123,23 +126,86 @@ ActiveRecord::Schema.define(version: 20151030065257) do
     t.string   "membername"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.text     "compnamefurigana"
+    t.text     "honsya_postel"
+    t.text     "honsya_postel02"
+    t.text     "honsya_address01"
+    t.text     "honsya_address02"
+    t.text     "honsya_address03"
+    t.text     "honsya_address04"
+    t.text     "honsya_tel"
+    t.text     "honsya_fax"
+    t.text     "honsya_url"
+    t.text     "daihyou"
+    t.text     "since"
+    t.text     "capital"
+    t.text     "employee"
+    t.text     "gyousyu"
+    t.text     "business"
+    t.text     "bikou"
+    t.text     "membernamefurigana"
+    t.text     "section"
+    t.text     "position"
+    t.text     "membercomp"
+    t.text     "memberpostel"
+    t.text     "memberpostel02"
+    t.text     "memberaddress01"
+    t.text     "memberaddress02"
+    t.text     "memberaddress03"
+    t.text     "memberaddress04"
+    t.text     "membertel"
+    t.text     "memberfax"
+    t.text     "agreeflg"
   end
 
   add_index "clients", ["email"], name: "index_clients_on_email", unique: true
 
   create_table "resumes", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "address1"
-    t.string   "address2"
+    t.string   "user_address01"
+    t.string   "user_address02"
     t.string   "tel"
     t.date     "birthday"
     t.string   "sex"
     t.string   "shikaku"
     t.string   "menkyo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.text     "user_address03"
+    t.text     "user_address04"
+    t.text     "user_postel01"
+    t.text     "user_postel02"
+    t.text     "tel02"
+    t.text     "gradyear"
+    t.text     "gradschool"
+    t.text     "status"
+    t.text     "jikopr"
+    t.text     "graduateyear"
+    t.text     "skills"
+    t.text     "wannabe"
+    t.text     "scoutflg"
+    t.text     "jobhopcount"
+    t.text     "jobhistorycompname01"
+    t.text     "jobhistorystartdate01"
+    t.text     "jobhistoryenddate01"
+    t.text     "jobhistorykeitai01"
+    t.text     "jobhistoryoccupation01"
+    t.text     "jobhistory01"
+    t.text     "jobhistorycompname02"
+    t.text     "jobhistorystartdate02"
+    t.text     "jobhistoryenddate02"
+    t.text     "jobhistorykeitai02"
+    t.text     "jobhistoryoccupation02"
+    t.text     "jobhistory02"
+    t.text     "jobhistorycompname03"
+    t.text     "jobhistorystartdate03"
+    t.text     "jobhistoryenddate03"
+    t.text     "jobhistorykeitai03"
+    t.text     "jobhistoryoccupation03"
+    t.text     "jobhistory03"
+    t.text     "skillexperience"
   end
 
   add_index "resumes", ["user_id"], name: "index_resumes_on_user_id"
@@ -150,6 +216,7 @@ ActiveRecord::Schema.define(version: 20151030065257) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.text     "namaefurigana"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

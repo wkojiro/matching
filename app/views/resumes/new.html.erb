@@ -79,12 +79,12 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
 
 
   〒
-<%# f.text_field :user_postel, :class => "p-postal-code", :size => "3", :maxlength =>"3" %>
-<%# f.text_field :user_postel02, :class => "p-postal-code", :size => "4", :maxlength =>"4" %><br >
-<%# f.text_field :user_address01, :class => "p-region" %><br >
-<%# f.text_field :user_address02, :class => "p-locality" %><br >
-<%# f.text_field :user_address03, :class => "p-street-address" %><br >
-<%# f.text_field :user_address04, :class => "p-extended-address" %><br >   
+<%= f.text_field :user_postel01, :class => "p-postal-code", :size => "3", :maxlength =>"3" %>
+<%= f.text_field :user_postel02, :class => "p-postal-code", :size => "4", :maxlength =>"4" %><br >
+<%= f.text_field :user_address01, :class => "p-region" %><br >
+<%= f.text_field :user_address02, :class => "p-locality" %><br >
+<%= f.text_field :user_address03, :class => "p-street-address" %><br >
+<%= f.text_field :user_address04, :class => "p-extended-address" %><br >   
 </td>
 </tr>
 <tr>
@@ -114,7 +114,7 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
             
 
   
- <%= f.date_select(:tel, options = {discard_month: true, discard_day: true, start_year: 1930 }, html_options = { size: 1 ,class: 'bootstrap-date form-inline form-control'}) %>
+ <%= f.date_select(:gradyear, options = {discard_month: true, discard_day: true, start_year: 1930 }, html_options = { size: 1 ,class: 'bootstrap-date form-inline form-control'}) %>
            
 </div><div class="col-md-3"> 年（西暦）</div>
     </div>
@@ -126,7 +126,7 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
         
         <input type="text" class="form-control" placeholder="学校名">
         
-        <%= f.text_field :tel, :class => "form-control" , placeholder: "学校名" %>
+        <%= f.text_field :gradschool, :class => "form-control" , placeholder: "学校名" %>
         
         
         </div><div class="col-md-3"> 卒業 </div>
@@ -143,7 +143,7 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
 <td class="">
     <div class="row">
 <div class="col-md-3">
-<%# f.select :XXX, {'カテゴリ１' => 1 , 'カテゴリ２' => 2, 'カテゴリ３' => 3} %><br />    
+<%= f.select :status, {'カテゴリ１' => 1 , 'カテゴリ２' => 2, 'カテゴリ３' => 3} %><br />    
     
     
 <select class="form-control" id="">

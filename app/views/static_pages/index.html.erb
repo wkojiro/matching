@@ -17,14 +17,15 @@
 
 <%# search_form_for @search,url: root_path do |f| %>
 <%= search_form_for @search,url: search_path do |f| %>
-  <%= f.label :summary_cont, 'タイトル' %>
-  <%= f.text_field :title_cont %>  
-  <%= f.label :offce_address01_cont, '都道府県' %>  
-  <%= f.text_field :offce_address01_cont %>
-  <%= f.label :jobtitle01_cont, '募集職種１' %>  
-  <%= f.text_field :jobtitle01_cont %>  
-  <%= f.label :jobtitle01_cont, 'カテゴリ' %>  
+ 
+  <%= f.label :office_address01_cont, '都道府県' %>  
+  <%= f.text_field :office_address01_cont %>
+  <%= f.label :categories_name_cont, '募集職種' %>  
   <%= f.text_field :categories_name_cont %>
+  <%= f.label :koyokeitai_cont, '雇用形態' %>  
+  <%= f.text_field :koyokeitai_cont %>
+  
+  
 
 
 
@@ -61,12 +62,12 @@
 <%= camp.jobtitle02 %>
 <%= camp.jobtitle03 %>
 <%= camp.auth %>
-<%= camp.offce_name %>
-<%= camp.offce_postel %>
-<%= camp.offce_address01 %>
-<%= camp.offce_address02 %>
-<%= camp.offce_address03 %>
-<%= camp.offce_address04 %>
+<%= camp.office_name %>
+<%= camp.office_postel %>
+<%= camp.office_address01 %>
+<%= camp.office_address02 %>
+<%= camp.office_address03 %>
+<%= camp.office_address04 %>
 <%= camp.mycar %>
 <%= camp.station %>
 <%= camp.mapinfo %>

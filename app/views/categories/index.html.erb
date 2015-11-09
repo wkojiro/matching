@@ -7,10 +7,16 @@
 <h1>Listing Categories</h1>
 
 <pre class="prettyprint">
-  
+Genre1  
    <span class="">ジャンル「１」－－－職種</span>
    <span class="">ジャンル「２」－－－免許</span>
-   <span class="">ジャンル「３」－－－資格</span>   
+   <span class="">ジャンル「３」－－－資格</span>  
+   
+Genre2
+   <span class="">ジャンル「1-1」－－－職種</span>
+   <span class="">ジャンル「2-1」－－－免許</span>
+   <span class="">ジャンル「3-1」－－－資格</span>  
+   
 </pre>
 
 
@@ -29,7 +35,8 @@
     <% @categories.each do |category| %>
       <tr>
         <td>ネーム：<%= category.name %></td>
-        <td>ジャンル：<%= category.genre %></td>
+        <td>ジャンル1：<%= category.genre1 %></td>
+        <td>ジャンル2：<%= category.genre2 %></td>        
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>

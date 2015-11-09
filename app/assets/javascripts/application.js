@@ -22,9 +22,22 @@
 
 var data = {'date-format': 'YYYY-MM-DD' };
  $(function() {
-    $('.datepicker4').attr(data);
-    $('.datepicker4').datetimepicker({
+    $('.datepicker1').attr(data);
+    $('.datepicker1').datetimepicker({
         format: 'YYYY-MM-DD'
     });
+    $('.datepicker2').attr(data);
+    $('.datepicker2').datetimepicker({
+        format: 'YYYY-MM-DD'
+    }); 
+    $('.datepicker').attr(data);
+    $('.datepicker').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });     
+    $('.input-daterange').datepicker({
+        daysOfWeekDisabled: "0,6",
+        autoclose: true,
+        todayHighlight: true
+    });    
 });
 

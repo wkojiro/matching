@@ -1,0 +1,86 @@
+<h1>基本情報の編集</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+
+    
+    <%= form_for @client, html: {class: 'h-adr'} do |f| %>
+       <%= render 'shared/error_messages', object: f.object %> <!-- ここを追加 -->
+
+      <%= f.label :会社名 %>
+      <%= f.text_field :compname, class: 'form-control'  %>
+      <%= f.label :会社名（フリガナ） %>
+      <%= f.text_field :compnamefurigana, class: 'form-control'  %>
+      <%= f.label :ご担当者のお名前 %>
+      <%= f.text_field :membername, class: 'form-control'  %>
+      <%= f.label :ご担当者のお名前（フリガナ） %>
+      <%= f.text_field :membernamefurigana, class: 'form-control'  %>
+     <div class="row">     
+        <div class="col-md-12">      
+        <%= f.label :本社郵便番号 %>   
+        </div>
+      </div>    
+     <div class="row">         
+        <div class="col-md-3">
+        <%= f.text_field :honsya_postel, :class => "p-postal-code form-control", :size => "3", :maxlength =>"3" %>
+        </div>
+        <div class="col-md-4">
+        <%= f.text_field :honsya_postel02, :class => "p-postal-code form-control", :size => "4", :maxlength =>"4" %>
+        </div>  
+
+      </div>    
+<span class="p-country-name" style="display:none;">Japan</span>
+      <%= f.text_field :honsya_address01, :class => "p-region form-control" %><br >
+      <%= f.text_field :honsya_address02, :class => "p-locality form-control" %><br >
+      <%= f.text_field :honsya_address03, :class => "p-street-address form-control" %><br >
+      <%= f.text_field :honsya_address04, :class => "p-extended-address form-control" %><br >    
+      
+          
+                
+
+
+
+
+
+
+
+
+
+
+      <%= f.label :本社電話番号 %>
+      <%= f.text_field :honsya_tel, class: 'form-control'  %>
+      <%= f.label :本社fax %>
+      <%= f.text_field :honsya_fax, class: 'form-control'  %>      
+      <%= f.label :本社ホームページ %>
+      <%= f.text_field :honsya_url, class: 'form-control'  %>  
+
+      <%= f.label :代表者名 %>
+      <%= f.text_field :daihyou, class: 'form-control'  %>  
+
+      <%= f.label :設立年 %>
+      <%= f.text_field :since, class: 'form-control'  %>        
+      <%= f.label :資本金 %>
+      <%= f.text_field :capital, class: 'form-control'  %>    
+
+      <%= f.label :従業員 %>
+      <%= f.text_field :employee, class: 'form-control'  %>    
+
+      <%= f.label :業種 %>
+      <%= f.text_field :gyousyu, class: 'form-control'  %>    
+      <%= f.label :職種／業務内容 %>
+      <%= f.text_field :business, class: 'form-control'  %>    
+
+      <%= f.label :メールアドレス（ログインID） %>
+      <%= f.text_field :email, class: 'form-control'  %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control'  %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control'  %>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

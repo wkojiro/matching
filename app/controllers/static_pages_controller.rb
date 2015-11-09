@@ -21,7 +21,7 @@ class StaticPagesController < ApplicationController
   @search = Campaign.all.search(params[:q])
 
 #  @search = Campaign.joins(:categories).all.search(params[:q])
-  @campaigns = @search.result
+  @campaigns = @search.result.page(params[:page]).per(20)
   #@applies = current_user.apllies.build
     @user = current_user
     @client = current_client

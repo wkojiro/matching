@@ -27,6 +27,7 @@ gem 'bootstrap-sass'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
+gem 'kaminari'
 gem 'nested_form'
 gem 'ransack'
 gem 'gretel'

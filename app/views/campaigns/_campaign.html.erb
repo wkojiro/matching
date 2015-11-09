@@ -3,7 +3,7 @@
 <%# if campaign.startdate <= Date.today and campaign.enddate >= Date.today and campaign.opflg == '1' %>
 
 
-<li id="campaigns-<%= campaign.id %>">
+
 
  <% if current_admin != nil and current_admin == @admin %>
  ここはアドミンでログインした時だけ見れます。
@@ -13,45 +13,69 @@
  <span class="title">クライアントID:<%= campaign.client_id %></span>
  <% end %>
 
- <span class="title"><%= campaign.title %></span>
- <span class="content"><%= campaign.summary %></span>  
- <span class="content"><%= campaign.content %></span>
- <span class="content"><%= campaign.startdate.strftime("%Y年%m月%d日") %></span>  ～
- <span class="content"><%= campaign.enddate.strftime("%Y年%m月%d日") %></span> 
- <span class="content"><%= campaign.limage %></span> 
- <span class="content"><%= campaign.image1 %></span> 
- <span class="content"><%= campaign.image2 %></span> 
- <span class="content"><%= campaign.image3 %></span> 
-<%= image_tag campaign.limage_url.to_s %>
-<%= image_tag campaign.image1_url.to_s %>
-<%= image_tag campaign.image2_url.to_s %>
-<%= image_tag campaign.image3_url.to_s %>
-<%= image_tag campaign.image4_url.to_s %>
-    <span class="content"><%= campaign.opflg %></span>  
-<% @camps = Campaign.where(id: campaign.id).first.categories %>
-<% @camps.each do |f| %>        
-<%= f.name %> 
-<% end %>
-<%= link_to "詳細", campaign_path(campaign.id) %>
 
-<% if current_client != nil and campaign.client == @client %>
-<%= link_to "Edit", edit_campaign_path(campaign.id) %> 
-<%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
-<% elsif current_admin != nil and current_admin == @admin %>
-<%= link_to "Edit", edit_campaign_path(campaign.id) %> 
-<%= link_to "delete", campaign, method: :delete, data: { confirm: "you sure?" } %>
-<% end %>
 
-</li>
-<% if current_client != nil and campaign.client == @client %>
-応募者リスト：<br >
-<% @appliyer = Apply.where(campaign_id: campaign.id) %>
-<% @appliyer.each do |f| %>        
-<% @appu = User.find(f.user_id) %>
-<%= @appu.name %>
-Message:<%= f.message %> 
-<br >
-<% end %>
-<% end %>
+
+
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-2">
+            
+                  <span style="width:60px; height:60px; color:grey;">
+                    <%= link_to image_tag(campaign.limage_url.to_s ,:size => '120x90'), campaign_path(campaign.id) %> 
+                  </span> 
+   
+            </div>
+            <div class="col-md-10">
+              <span class="h3"> <%= link_to (campaign.title), campaign_path(campaign.id) %></span> <br >
+              <span class="small"><%= campaign.startdate.strftime("%Y年%m月%d日") %>～<%= campaign.enddate.strftime("%Y年%m月%d日") %></span>  <br >
+              <span class="h5"><%= campaign.summary %></span>  <br >
+               <%= link_to "詳細", campaign_path(campaign.id) %>
+               <% @camps = Campaign.where(id: campaign.id).first.categories %>
+       
+
+            <div><span class="glyphicon glyphicon-tags"></span>
+            
+            
+            
+            <% @camps = Campaign.where(id: campaign.id).first.categories %>
+            <% @camps.each do |f| %>  
+ 
+            
+            <span class="label label-info"><a href="../search?utf8=✓&q%5Bcategories_name_cont%5D=<%= f.name %>&amp;commit=search"><%= f.name %></a></span>            <% end %>
+            
+            
+            
+            </div>
+            
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%# end %>
 

@@ -16,8 +16,14 @@ class Campaign < ActiveRecord::Base
   after_validation :geocode
 
 def officeaddress
-  [offce_address01, offce_address02, offce_address03, offce_address04].compact.join(', ')
+  [office_address01, office_address02, office_address03, office_address04].compact.join(', ')
 end
+
+def self.ransackable_attributes auth_object = nil
+    %w(office_address01 office_address02 office_address03 office_address04 categories koyokeitai job_description jobtitle01 jobtitle02 jobtitle03)
+end
+
+
 
   
   has_many :campcats

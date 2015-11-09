@@ -14,4 +14,9 @@ aaa
 <%= sort_link @search,:enddate, "終了日でソート" %>
 
 <%= render(@campaigns) %>
+    <div class="row">
+        <div class="col-md-12 pagination-centered border">
+        <%= paginate @campaigns %>
+        </div>
+    </div>
 </div> 
