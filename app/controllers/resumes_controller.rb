@@ -3,7 +3,7 @@ class ResumesController < ApplicationController
     
     def new
       @resume = Resume.new
-
+     @resume.rescats.build # これ！
     end 
     
     def show
@@ -53,7 +53,8 @@ class ResumesController < ApplicationController
     
     private
     def resume_params
-        params.require(:resume).permit(:address1,:address2,:tel,:birthday,:sex ,:shikaku,:menkyo)
+        params.require(:resume).permit(:user_address01,:user_address02,:user_address03,:user_address04,:user_postel01,:user_postel02,:tel,:tel02,:gradyear,:gradschool,:status,:jikopr,
+        :birthday,:sex ,:skills,:wannabe,:jobhopcount,:skillexperience,:shikaku,:menkyo,{:category_ids => []})
     end
 end
 

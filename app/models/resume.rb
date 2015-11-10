@@ -9,6 +9,9 @@ class Resume < ActiveRecord::Base
   validates :id, uniqueness: true
 #  validate :unique_resume
 
+  has_many :rescats
+  has_many :categories, :through => :rescats
+
  #private
 #  def unique_resume
 #    if user_id != id

@@ -22,8 +22,8 @@ bbb
 履歴書
 履歴書の内容を変更します※は入力必須項目です。
 Web履歴書を最新情報に更新して、「内容を確認する」ボタンを押してください。
-
-<%= form_for @resume, :html => {:multipart => true} do |f| %> 
+<%= nested_form_for @resume, :html => {:multipart => true, :class => 'h-adr'} do |f| %> 
+<%# form_for @resume, :html => {:multipart => true,:class => 'h-adr'} do |f| %> 
 <%= render 'shared/error_messages', object: f.object %>
 
 
@@ -31,11 +31,9 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
 
 
 
-<%= f.label :tel%>
-<%= f.text_field :tel, class: 'form-control' %>
 
-<%= f.label :sex %>
-<%= f.text_field :sex, class: 'form-control' %> 
+
+
 <%= f.label :shikaku %>
 <%= f.text_field :shikaku, class: 'form-control' %>  
 <%= f.label :menkyo %>
@@ -96,7 +94,7 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
 <tr>
 <td class="">携帯番号<br><span class="">※電話/携帯どちらか必須</span></td>
 <td class="">
-<input type="tel" name="tel" size="12" maxlength="20" class="form-control">
+<%= f.text_field :tel02, class: 'form-control' %>
 </td>
 </tr>
 <tr>
@@ -122,13 +120,9 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
 <div class="row">
     <div class="form-group">
         <div class="col-md-2">学校名</div> <div class="col-md-7"> 
-        
-        
-        <input type="text" class="form-control" placeholder="学校名">
-        
+
         <%= f.text_field :gradschool, :class => "form-control" , placeholder: "学校名" %>
-        
-        
+
         </div><div class="col-md-3"> 卒業 </div>
     </div>
 </div>
@@ -143,21 +137,24 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
 <td class="">
     <div class="row">
 <div class="col-md-3">
-<%= f.select :status, {'カテゴリ１' => 1 , 'カテゴリ２' => 2, 'カテゴリ３' => 3} %><br />    
+<%= f.select :status, {'就業中' => 1 , '求職中' => 2, '離職中' => 3} %><br />    
     
     
-<select class="form-control" id="">
-<option>就業中</option>
-<option>求職中</option>
-<option>離職中</option>
-</select>
 </div></div>
 </td>
 </tr>
 <tr>
+<td class="">転職回数</td>
+<td class="" colspan="2">
+    <%= f.select :jobhopcount, { '0' => 0,  '1' => 1,  '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, 'それ以上' => 7,} %>回<br />
+
+</td>
+</tr>
+
+<tr>
 <td class="">フリー記入欄</td>
 <td class="" colspan="2">自己PR等をご記入下さい。<br>
-<textarea name="text" cols="50" rows="5" class="form-control" maxlength=""></textarea>
+<%= f.text_area :jikopr, :size => "80x3", placeholder: "志望動機、転職動機をご記入ください。" %>
 </td>
 </tr>
 <tr>
@@ -166,7 +163,46 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
 <tr>
 <td class="">スキル情報［複数選択可］</td>
 <td class="">
+    
+<%= collection_select(:resume, :category_ids , Category.where("genre1 = '1'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'resume[category_ids][]'} ) %>
+<%= collection_select(:resume, :category_ids , Category.where("genre1 = '2'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'resume[category_ids][]'} ) %>
+<%= collection_select(:resume, :category_ids , Category.where("genre1 = '3'"), :id, :name, {prompt: "Select Permission Level"}, {:name =>'resume[category_ids][]'} ) %>    
+
+
+
+
+
+<!---checkbox -->  
+
+
+  <div class="field">
+    <%= f.label :専門領域1 %><br />
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '1'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>    
+  
+  <div class="field">
+    <%= f.label :専門領域2 %><br />
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '2'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>     
+
+ <div class="field">
+    <%= f.label :専門領域3 %><br />
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '3'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>       
+  
+
+<!---checkbox -->
+
+    
+    
 <ul class="type skill01">
+<li>   
 <li><input type="checkbox" name="" value="普通自動車免許">普通自動車免許</li>
 <li><input type="checkbox" name="" value="中型自動車免許">中型自動車免許</li>
 <li><input type="checkbox" name="" value="大型自動車免許">大型自動車免許</li>
@@ -269,7 +305,8 @@ Web履歴書を最新情報に更新して、「内容を確認する」ボタ�
 <tr>
 <td class="">スカウトメール</td>
 <td class="">
-<input type="radio" name="" value="受ける" checked=""><span class="i_text_01">受ける</span><input type="radio" name="" value="受けない"><span class="i_text_01">受けない</span>
+ <%= f.radio_button :scoutflg, 1 %>受ける
+
 </td>
 </tr>
 </tbody>

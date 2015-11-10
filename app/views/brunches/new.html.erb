@@ -1,0 +1,44 @@
+<h1>支店、営業所の登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@brunch) do |f| %>
+       <%= render 'shared/error_messages', object: f.object %> <!-- ここを追加 -->
+       
+      <%= f.label :brunchname %>
+      <%= f.text_field :brunchname, class: 'form-control'  %>
+
+      <%= f.label :brunchnamefurigana %>
+      <%= f.text_field :brunchnamefurigana, class: 'form-control'  %>
+      <%= f.label :brunch_postel01 %>
+      <%= f.text_field :brunch_postel01, class: 'form-control'  %>
+      <%= f.label :brunch_postel02 %>
+      <%= f.text_field :brunch_postel02, class: 'form-control'  %>      
+      <%= f.label :brunch_address01 %>
+      <%= f.text_field :brunch_address01, class: 'form-control'  %>
+      <%= f.label :brunch_address02 %>
+      <%= f.text_field :brunch_address02, class: 'form-control'  %>    
+      <%= f.label :brunch_address03 %>
+      <%= f.text_field :brunch_address03, class: 'form-control'  %>
+      <%= f.label :brunch_address04 %>
+      <%= f.text_field :brunch_address04, class: 'form-control'  %>        
+      <%= f.label :brunch_station %>
+      <%= f.text_field :brunch_station, class: 'form-control'  %>
+      <%= f.label :brunch_tel %>
+      <%= f.text_field :brunch_tel, class: 'form-control'  %>      
+      <%= f.label :brunch_fax %>
+      <%= f.text_field :brunch_fax, class: 'form-control'  %>            
+       <%= f.label :brunch_staffname %>
+      <%= f.text_field :brunch_staffname, class: 'form-control'  %>       
+        <%= f.label :brunch_staffnamefurigana %>
+      <%= f.text_field :brunch_staffnamefurigana, class: 'form-control'  %>       
+        <%= f.label :brunch_staffemail %>
+      <%= f.text_field :brunch_staffemail, class: 'form-control'  %>          
+
+
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

@@ -2,10 +2,6 @@ class CampaignsController < ApplicationController
     before_action :logged_in_client, only: [:create,:new,:destoy,:update,:edit]
     protect_from_forgery
 
-
-
-
-
     def index
     end
     
@@ -96,7 +92,7 @@ class CampaignsController < ApplicationController
  #       :skill,:qualification,:age_criteria,:in_charge,:apply_tel,:apply_email,:apply_how,:apply_flow,:apply_remarks,{:category_ids => []})
         params.require(:campaign).permit(:title,:summary,:content ,:startdate,:enddate,:limage,:image1,:image2,:image3,:image4,:opflg,
          :youtube,:category,:jobtitle01,:jobtitle02,:jobtitle03,{:auth => []},:office_name,:office_postel,:office_postel02,{:officeaddress => []},:office_address01,:office_address02,:office_address03,
-         :office_address04,:mycar,:station,:mapinfo,:howmany,:koyokeitai,:koyokikan,:salary,:salary_remarks,{:socialsecurity => []},:commuting_expenses,:promote,
+         :office_address04,:mycar,:station,:mapinfo,:howmany,:koyokeitai,:koyokikan,:shouyo,:salary,:salary_remarks,{:socialsecurity => []},:commuting_expenses,:promote,
          :retirement_salary,:allowance,:emp_remarks,:worktime,:breaktime,:overtime,:holiday,:annual_holiday,:job_description,:workflow,:licence,
          :skill,:qualification,:age_criteria,:in_charge,:apply_tel,:apply_email,:apply_how,:apply_flow,:apply_remarks,
         {:category_ids => []})

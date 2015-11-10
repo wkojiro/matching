@@ -21,7 +21,26 @@ bbb
 <%= f.text_field :shikaku, class: 'form-control' %>  
 <%= f.label :menkyo %>
 <%= f.text_field :menkyo, class: 'form-control' %>   
+  <div class="field">
+    <%= f.label :専門領域1 %><br />
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '1'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>    
+  
+  <div class="field">
+    <%= f.label :専門領域2 %><br />
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '2'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>     
 
+ <div class="field">
+    <%= f.label :専門領域3 %><br />
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '3'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>   
 <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
 <% end %>

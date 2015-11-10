@@ -7,4 +7,5 @@ class Client < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   has_many :campaigns
+  has_many :brunches
 end

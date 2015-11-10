@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109084816) do
+ActiveRecord::Schema.define(version: 20151110115710) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,29 @@ ActiveRecord::Schema.define(version: 20151109084816) do
   add_index "applies", ["campaign_id"], name: "index_applies_on_campaign_id"
   add_index "applies", ["user_id", "campaign_id"], name: "index_applies_on_user_id_and_campaign_id"
   add_index "applies", ["user_id"], name: "index_applies_on_user_id"
+
+  create_table "brunches", force: :cascade do |t|
+    t.string   "brunchname"
+    t.string   "brunchnamefurigana"
+    t.string   "brunch_postel01"
+    t.string   "brunch_postel02"
+    t.string   "brunch_address01"
+    t.string   "brunch_address02"
+    t.string   "brunch_address03"
+    t.string   "brunch_address04"
+    t.string   "brunch_station"
+    t.string   "brunch_tel"
+    t.string   "brunch_fax"
+    t.string   "brunch_staffname"
+    t.string   "brunch_staffnamefurigana"
+    t.string   "brunch_staffemail"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "client_id"
+  end
+
+  add_index "brunches", ["client_id", "created_at"], name: "index_brunches_on_client_id_and_created_at"
+  add_index "brunches", ["client_id"], name: "index_brunches_on_client_id"
 
   create_table "campaigns", force: :cascade do |t|
     t.integer  "client_id"
@@ -161,6 +184,16 @@ ActiveRecord::Schema.define(version: 20151109084816) do
   end
 
   add_index "clients", ["email"], name: "index_clients_on_email", unique: true
+
+  create_table "rescats", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "resume_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "rescats", ["category_id"], name: "index_rescats_on_category_id"
+  add_index "rescats", ["resume_id"], name: "index_rescats_on_resume_id"
 
   create_table "resumes", force: :cascade do |t|
     t.integer  "user_id"
