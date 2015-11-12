@@ -1,28 +1,14 @@
 crumb :root do
-  link "Home", root_path
+  link 'Home', root_path
 end
 
-# Issue list
-crumb :issues do
-  link "All issues"
+crumb :campaigns do
+  link 'Campaigns', campaigns_path
+end
+
+crumb :campaign do |campaign|
+  link campaign.title, campaign_path(campaign)
   parent :root
-end
-
-
-
-crumb :campaigns do |campaign|
-  link campaign.title, campaign
-  parent :root
-end
-
-
-crumb :users do
-  link 'ユーザーリスト', users_path
-end
-
-crumb :user do |user|
-  link user.name, user_path(user)
-  parent :users
 end
 
 

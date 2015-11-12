@@ -1,65 +1,59 @@
 <%= render 'shared/logintest' %>
+
+<% breadcrumb @campaign %>
+
+
+
+
+<%# breadcrumb :campaigns %>
 <!--- 確認 --->
-
-
-<% breadcrumb :campaigns, @campaign %>
-
-<div class="col-md-9" id="leftCol">
-<!--Startここから -->
-
-
-<div class="breadcrumb "><%= breadcrumb :campaigns, @campaign %></div>→View側の実装が全然できない。違う。これがあることが上手く行っていること。
-  
-            <ul class="breadcrumb border">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">詳細</a></li>
-                <li class="active"><%= @campaign.title %></li>
-            </ul>
-
-<% if @campaign.enddate <= Date.today or @campaign.opflg != "1" %>             
-<div class="alert alert-warning"><span class="glyphicon glyphicon-time"></span> この求人広告の募集は終了しているか、既に停止しております。</div>            
-<% end %>
+<div class="container-fluid"> 
+  <div class="row">
+    <div class="col-md-9 border leftcol" id="leftcol">
+      <% if @campaign.enddate <= Date.today or @campaign.opflg != "1" %>             
+        <div class="alert alert-warning"><span class="glyphicon glyphicon-time"></span> この求人広告の募集は終了しているか、既に停止しております。</div>            
+      <% end %>
             
 
             
             
-<hr>
-<div class="col-md-6">
-<ul class="snsb list-inline">
-<li><a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none">ツイート</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
-<li><script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div></li>
-<li><div class="g-plusone" data-size="medium" data-annotation="none"></div>
-<script type="text/javascript">
-  window.___gcfg = {lang: 'ja'};
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-</li>
-</ul>
-</div>
-<div class="col-md-4 col-md-offset-2 text-right">
-
-<div class="form-group">
-<% if @campaign.startdate <= Date.today and @campaign.enddate >= Date.today and @campaign.opflg == "1" %> 
-    <button id="button1id" name="button1id" class="btn btn-success">応募する</button>
-<% else %>
-    <button disabled id="button1id" name="button1id" class="btn btn-success">応募する</button>
-<% end %>
-    <button id="button2id" name="button2id" class="btn btn-danger">気になる</button>
-  </div>
-</div>
-
+  <hr>
+    <div class="row">
+      <div class="col-md-6">
+          <ul class="snsb list-inline">
+              <li><a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="none">ツイート</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+                <li><script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div></li>
+                <li><div class="g-plusone" data-size="medium" data-annotation="none"></div>
+                <script type="text/javascript">
+                  window.___gcfg = {lang: 'ja'};
+                  (function() {
+                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                    po.src = 'https://apis.google.com/js/platform.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                  })();
+                </script>
+              </li>
+          </ul>
+      </div>
+      <div class="col-md-4 col-md-offset-2 text-right border">
+        <div class="form-group">
+        <% if @campaign.startdate <= Date.today and @campaign.enddate >= Date.today and @campaign.opflg == "1" %> 
+            <button id="button1id" name="button1id" class="btn btn-success">応募する</button>
+        <% else %>
+            <button disabled id="button1id" name="button1id" class="btn btn-success">応募する</button>
+        <% end %>
+            <button id="button2id" name="button2id" class="btn btn-danger">気になる</button>
+        </div>
+      </div>
+    </div>
 
 <!--フォント、セクション系の話-->
 
@@ -116,9 +110,11 @@
       <ul class="thumbnails list-unstyled">
         <li class="span2">
           <div class="thumbnail">
-            <img src="http://www.find-job.net/img/com_pics/35291/b-89855ff7.jpg" alt="">
+                      <a href="javascript:void(0)" class="thumbnail">
+										 <img src=" //placehold.it/180x180">
+										</a>
             <div class="caption">
-              <h5></h5>
+              <h5>Caption</h5>
               <p></p>
             </div>
           </div>
@@ -127,8 +123,8 @@
 </div>
 
 <div class="col-md-7 col-md-pull-5">
-<h2>『ぐるなび』の未来</h2>
-<p>●目標は、「21世紀の食文化の創造」 
+<h2>col-md-7 col-md-pull-5</h2>
+<p>col-md-7 col-md-pull-5 
 <br><%= @campaign.job_description %></p>
 </div>        
 
@@ -141,10 +137,11 @@
       <ul class="thumbnails list-unstyled">
         <li class="span2">
           <div class="thumbnail">
-            <img src="http://www.find-job.net/img/com_pics/35291/b-89855ff7.jpg" alt="">
+            				<a href="javascript:void(0)" class="thumbnail">
+										 <img src=" //placehold.it/180x180">
+										</a>
             <div class="caption">
-              <h5>メンバーは皆、明るくて気さく。 
-気軽に話しかけてくださいね。</h5>
+              <h5>Caption</h5>
               <p></p>
             </div>
           </div>
@@ -153,9 +150,9 @@
 </div>
 
 <div class="col-md-7">
-<h2>『ぐるなび』の未来</h2>
-<p>●目標は、「21世紀の食文化の創造」 
-<br>今後は、飲食業界とeマーケットを融合した今までにないビジネスを生み出していきたいと考えています。そのためには前例にとらわれていてはいけない。中途入社の方には、新しい風を吹き込んで、新しい取り組みを加速する原動力になっていただければと考えています。</p>
+<h2>h2h2</h2>
+<p> 
+<br></p>
 </div>        
 
 </div>
@@ -163,28 +160,19 @@
 
 
 
-         <h2 class="section">働きやすさにも自信あり！</h2>
-        <p>お任せするのは､企業や店舗･マンション･駐車場など､施設からの警報に対し
-現場にパトロールカーで急行し､異常を早期に発見･通報し被害の拡大防止をします｡
-緊張感は常にありますが､頼れる先輩が丁寧にお教えしますので安心してください｡
-
-未経験からスタートした先輩が多いからこそ新人の気持ちをよく理解し､上手にサポートしてくれます｡
-親身な指導で､現場にすぐに慣れることができると思います｡
-
-互いに支えあい､切磋琢磨できるチームワークの良さが当社の強みです｡
-
-特に車の運転が得意な方は､その長所を活かして働ける仕事です｡
+         <h2 class="section">----</h2>
+        <p>---
          </p>
           <h2 class="section">求人のポイント</h2>     
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		求人のポイント
+		---
 	</div>
 	<div class="panel-body">
 		<ul>
-		    <li>福利厚生が充実している</li>
-		    <li>未経験者OK</li>		    
-		    <li>試用期間あり</li>		    		    
+		    <li>--</li>
+		    <li>--</li>		    
+		    <li>--</li>		    		    
 		</ul>
 	</div>
 </div>          
@@ -219,10 +207,6 @@
 								</div>
 							</div>
 						</div>     
-
-
-<%= @campaign.youtube %><br>
-<%= @campaign.category %><br>
 
 
 
@@ -568,9 +552,11 @@ aa
 
 
 
+
 </div>
 <!-- leftここまで -->
-<div class="col-md-3" id="rightCol">
+
+<div class="col-md-3 border" id="rightCol">
         <button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-bullhorn"></span> 応援する
         </button>    
@@ -615,5 +601,5 @@ aa
 
 
 
-
+</div>
 </div>

@@ -5,8 +5,9 @@ class StaticPagesController < ApplicationController
 
   #  @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil
   #  @search = Campaign.joins(:categories).all.search(params[:q])
-   @search = Campaign.all.search(params[:q])
-  @campaigns = @search.result
+  @campcount = Campaign.where("opflg = ? and startdate <= ? and enddate >= ?" , 1, Date.today, Date.today ).count
+  @search = Campaign.search(params[:q])
+  @campaigns = @search.result(distinct: true)
   #@applies = current_user.apllies.build
     @user = current_user
     @client = current_client
@@ -15,13 +16,20 @@ class StaticPagesController < ApplicationController
 
 #  @search = Campaign.all.search(params[:q])
 #  @campaigns = @search.result
-
 #    @user = current_user
 #    @client = current_client
-  @search = Campaign.all.search(params[:q])
+  @campcount2 = Campaign.where("opflg = ? and startdate <= ? and enddate >= ?" , 1, Date.today, Date.today )
+  @campcount = @campcount2.count
+
+##User.where("name = ? and email = ?", name, email)
+##User.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
+
+  @search = @campcount2.search(params[:q])
+
 
 #  @search = Campaign.joins(:categories).all.search(params[:q])
-  @campaigns = @search.result.page(params[:page]).per(20)
+  @campaigns = @search.result(distinct: true).page(params[:page]).per(5).order("updated_at DESC")
+#  @campaigns = @search.result
   #@applies = current_user.apllies.build
     @user = current_user
     @client = current_client

@@ -26,8 +26,6 @@ class BrunchesController < ApplicationController
     end
   end
   
-
-
   def create
      @brunch = current_client.brunches.build(brunch_params)    
     if @brunch.save
@@ -47,7 +45,7 @@ class BrunchesController < ApplicationController
   
   private
 
-  def user_params
+  def brunch_params
     params.require(:brunch).permit(:brunchname, :brunchnamefurigana, :brunch_address01,:brunch_address02,:brunch_address03,:brunch_address04,:brunch_station,:brunch_tel,
     :brunch_fax,:brunch_staffname,:brunch_staffnamefurigana,:brunch_staffemail)
   end    

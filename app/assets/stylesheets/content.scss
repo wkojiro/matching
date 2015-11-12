@@ -1,0 +1,70 @@
+/* ------------------------------------------------------------------
+h3{color:#498b00;font-size: 182%;font-weight: normal;text-align: center;line-height: 4.6em;}
+
+@media only screen and (max-width: 539px){
+h3{color:#498b00;font-size: 96%;font-weight: normal;text-align: center;line-height: 4.0em;}
+}
+
+
+
+
+/* ------------------------------------------------------------------
+content
+------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------
+data-select
+------------------------------------------------------------------ */
+
+select.date-select {
+    width:auto;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+}
+
+/* ------------------------------------------------------------------
+form
+------------------------------------------------------------------ */
+.maz{color:#5c5c5c;line-height: 1.7em;font-weight: bold;margin-bottom:15px;font-size: 100%;}
+.formTBox{width:200px;}
+.formBox .col-sm-3{padding-left:15px;padding-right:0px;}
+.hsni{float:right;}
+.formBox{padding:10px 15px 15px 15px;}
+.fbox{margin-bottom:6px;padding-bottom:5px;border-bottom:1px solid #eee;}
+.fT{color:#000000;font-size: 88%;font-weight: normal;font-family:"Times New Roman", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;}
+.fS{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;padding:0px;}
+.fS01{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;padding:0px;}
+.fS02{color:#595757;font-size: 86%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:3px;padding:0px;}
+.fS03{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;margin-left:15px;padding:0px;}
+.fS04{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;padding:0px;}
+.fmb10{margin-bottom:0px;}
+
+.f_skill01{margin-bottom:5px;margin-top:10px;font-size: 90%;font-weight: normal;color:#888888;}
+.f_skill02{margin-bottom:5px;margin-top:5px;font-size: 90%;font-weight: normal;color:#888888;}
+.file01{color:#b76b55;font-size: 90%; margin-top:10px;}
+.file02{color:#595757;font-size: 90%; margin-top:2px;line-height: 1.6em;}
+.file03{color:#595757;font-size: 74%; margin-top:2px;margin-bottom:6px;}
+.file04{color:#595757;font-size: 80%; margin-top:2px;margin-bottom:10px;}
+.gbg{background-color:#eee;padding:3px 15px 5px 15px;}
+.obg{background-color:#ffe6c8;padding:15px 15px 8px 15px;}
+.obg01{background-color:#fff0dc;padding:15px 15px 8px 15px;}
+@media only screen and (max-width: 539px){
+.hsni{float:none;}
+.formBox{padding:30px 0px 10px 0px;}
+.fbox{margin-bottom:5px;padding-bottom:15px;border-bottom:1px solid #eee;}
+.fS{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:2px;padding:0px 15px;}
+.fS02{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;padding:0px 15px;}
+.fS03{color:#595757;font-size: 96%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:10px;margin-left:15px;padding:0px;}
+.fS04{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;padding:0px 0px;}
+.fmb10{margin-bottom:10px;}
+.f_skill01{margin-bottom:5px;margin-top:15px;font-size: 90%;font-weight: normal;color:#888888;}
+.f_skill02{margin-bottom:5px;margin-top:7px;font-size: 90%;font-weight: normal;color:#888888;}
+.file03{color:#595757;font-size: 86%; margin-top:6px;margin-bottom:10px;}
+.file04{color:#595757;font-size: 88%; margin-top:6px;margin-bottom:20px;}
+}
+
+
+.form-control{height:28px;font-size: 88%;;padding: 5px 3px;}
+.form-control::-moz-placeholder{color:#b4b4b4;opacity:1;font-size: 92%}
+.form-control:-ms-input-placeholder{color:#b4b4b4;font-size: 92%;}
+.form-control::-webkit-input-placeholder{color:#b4b4b4;font-size: 92%;}

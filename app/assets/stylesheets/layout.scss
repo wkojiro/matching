@@ -1,6 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/*　layout.cssで記述してよいこと Layoutのみ
+/*  body wrap Header,footer,side,breadcrum,
+/*  
+/*
+-------------------------------------------------- */
+
+
+
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 
@@ -8,9 +18,11 @@ html,
 body {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
+
 }
 
-
+body{background-color: #f5f5f5;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;}
+  /*body{background-color:#fcfcfc;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;}　*/
 body { padding-top: 50px; }
 /* Wrapper for page content to push down footer */
 #wrap {
@@ -24,11 +36,7 @@ body { padding-top: 50px; }
 }
 
 
-/* Set the fixed height of the footer here */
-#footer {
-  height: 60px;
-  background-color: #f5f5f5;
-}
+
 
 
 /* Layout CSS
@@ -62,16 +70,19 @@ containerまたはcontainer-fluidで左右のmarginを15pxとり、rowで左右�
 */
 
 #wrap > .container {
-  padding: 5px 15px;
-}
+  padding: 5px 15px;　
+
 .container .credit {
   margin: 20px 0;
 }
-
-#footer > .container {
-  padding-left: 15px;
-  padding-right: 15px;
 }
+
+
+.leftcol{
+  background-color:#ffffff;
+  border: 1px solid #dddddd ;
+}
+
 
 code {
   font-size: 80%;
@@ -83,6 +94,7 @@ margin-right: auto;
 margin-left: auto;
 max-width: 1130px; 
 }
+
 /* Custom page CSS
 -------------------------------------------------- */
 
@@ -90,8 +102,7 @@ max-width: 1130px;
   /*    background:#ddd;
       background-position: center center;*/
       background-size: cover;
-      color: #fff;
-      height:200px;
+      height:0px;
       margin-bottom:5px;
     }
 /*    
@@ -127,10 +138,21 @@ max-width: 1130px;
   marginが大きすぎる為基本的に使わない
 }*/
 
-select.date-select {
-    width:auto;
-    border: 1px solid #cccccc;
-    background-color: #ffffff;
-}
+
 
 .pagination-centered{text-align:center;}
+
+
+
+/* footer CSS
+-------------------------------------------------- */
+/* Set the fixed height of the footer here */
+#footer {
+height: 200px;
+background-color: #f5f5f5;
+}
+
+#footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}

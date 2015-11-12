@@ -1,9 +1,7 @@
 <%= render 'shared/logintest' %>
-<div class="container-fluid" id="content">
-  <div class="doc extra-entry">
-    <div class="container-inner inner-md thin mobile">
-      <div class="box box-md radius-zero markdown wow fadeInUp">
-        <div class="box-inner inner-md">
+<div class="container-fluid">
+
+
 <!--- 確認 --->
 
 
@@ -13,7 +11,8 @@
 <hr >
 <!--- 検索部分 --->
 
-
+総登録求人数(全部の登録件数）：
+<%= @campcount %>件<br >
 
 <%# search_form_for @search,url: root_path do |f| %>
 <%= search_form_for @search,url: search_path do |f| %>
@@ -30,24 +29,21 @@
 
 
     <%= f.submit 'search' %>
-  <%= @search %>
+
 <% end %>
 <!--- 検索部分END --->
 
-<%= sort_link @search,:id, "idでソート" %>
-<%= sort_link @search,:enddate, "終了日でソート" %>
 
 
-総登録求人数(全部の登録件数）：<%= @campaigns.count %>件<br >
 <%= @camp_cates %>
 
 <% @campaigns.each do |camp| %>
 
-<% if camp.startdate <= Date.today and camp.enddate >= Date.today and camp.opflg == "1" %>
-<%= camp.id %>
-<%= camp.client_id %>
-<%= camp.title %>
-<%= camp.summary %>
+<% if camp.startdate <= Date.today and camp.enddate >= Date.today and camp.opflg == "0" %>
+<%- camp.id %>
+<%- camp.client_id %>
+<%- camp.title %>
+<%- camp.summary %>
 <%= camp.content %>
 <%= camp.startdate %>
 <%= camp.enddate %>
@@ -111,7 +107,7 @@
 <% end %>
 <%= link_to "詳細", campaign_path(camp.id) %>
 <% if user_logged_in? %>
-返信する
+
 <% end %>
 <br />
 <hr>
@@ -119,32 +115,14 @@
 <% end %>
 
 <hr>
-現状は、campaign自体がクライアントに紐づいて処理をされてしまっている。
-つまり、current_clientがいないとエラーになる。
-  def show
-     @campaign = current_client.campaigns.find_by(id: params[:id])
-#    @campaigns = @client.campaigns
 
-    end
-    
-→一応直してみたが、Clientが異なったとき位URL直タタキで編集とかできてしまうか、要確認。
-
-Userのshowはhas_one belongs_toのアソシエーションを利用していない。これでいいのか不明。
-  def show
-    @user = User.find(params[:id])
-    @resume = Resume.find(params[:id])
-  end
 
 <hr >
 ログアウトしても、Clients/1を直接たたくとも見れてしまう。
 <hr >
 
-本来的にここにでるもの。
-サーチ
-リスト表示
 
-</div>
-</div>
-</div>
-</div>
+
+
+
 </div>

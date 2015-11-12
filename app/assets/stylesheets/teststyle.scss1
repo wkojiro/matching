@@ -18,7 +18,7 @@ containerまたはcontainer-fluidで左右のmarginを15pxとり、rowで左右�
 
 
 
-.container {border:solid 1px blue;}
+.container {border:dashed 1px blue;}
 .container-fluid {border:dashed 1px blue;}
-/*.row {border:dashed 1px gray;}*/
+.row {border:solid 1px gray;}
 .border{border:dashed 1px green;}

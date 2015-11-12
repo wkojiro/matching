@@ -1,76 +1,74 @@
 <div id="wrap" class="">
-   <header class="jumbotron">
+<!--   <header class="jumbotron">
       <div class="container">
-          <%= link_to "会員登録", user_signup_path %></span><span><%= link_to "クライアント登録", client_signup_path %></span>
+          <%# link_to "会員登録", user_signup_path %></span><span><%= link_to "クライアント登録", client_signup_path %></span>
     </div>
    </header>
-
-<div class="navbar navbar-default navbar-fixed-top">
+-->
+  <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="row">
-    <nav>
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", '#' %></li>
-        <li><%= link_to "会員登録", user_signup_path %></li>
-        <li><%= link_to "クライアント登録", client_signup_path %></li>
-        <li><%= link_to "アドミン登録", admin_signup_path %></li>        
-        <% if user_logged_in? %>
-          <li><%= link_to "Users", '#' %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", user_logout_path, method: "delete" %>
+        <nav>
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Help", '#' %></li>
+            <li><%= link_to "会員登録", user_signup_path %></li>
+            <li><%= link_to "クライアント登録", client_signup_path %></li>
+            <li><%= link_to "アドミン登録", admin_signup_path %></li>        
+            <% if user_logged_in? %>
+              <li><%= link_to "Users", '#' %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Account <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Profile", current_user %></li>
+                  <li><%= link_to "Settings", '#' %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Log out", user_logout_path, method: "delete" %></li>
+                </ul>
               </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Log in(user)", user_login_path %></li>
-        <% end %>
-        <% if client_logged_in? %>
-          <li><%= link_to "clients", '#' %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_client %></li>
-              <li><%= link_to "Settings", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", client_logout_path, method: "delete" %>
+            <% else %>
+              <li><%= link_to "Log in(user)", user_login_path %></li>
+            <% end %>
+            <% if client_logged_in? %>
+              <li><%= link_to "clients", '#' %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Account <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Profile", current_client %></li>
+                  <li><%= link_to "Settings", '#' %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "Log out", client_logout_path, method: "delete" %>
+                  </li>
+                </ul>
               </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Log in(client)", client_login_path %></li>
-        <% end %>
-        <% if admin_logged_in? %>
-          <li><%= link_to "admins", '#' %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_admin %></li>
-              <li><%= link_to "Settings", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", admin_logout_path, method: "delete" %>
+            <% else %>
+              <li><%= link_to "Log in(client)", client_login_path %></li>
+            <% end %>
+            <% if admin_logged_in? %>
+              <li><%= link_to "admins", '#' %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Account <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Profile", current_admin %></li>
+                  <li><%= link_to "Settings", '#' %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "Log out", admin_logout_path, method: "delete" %>
+                  </li>
+                </ul>
               </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Log in(admin)", admin_login_path %></li>
-        <% end %>        
-      </ul>
-    </nav>
-</div>
-</div>
-</div>
+            <% else %>
+              <li><%= link_to "Log in(admin)", admin_login_path %></li>
+            <% end %>        
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>

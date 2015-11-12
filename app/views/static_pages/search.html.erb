@@ -1,22 +1,26 @@
 <%= render 'shared/logintest' %>
+<div class="container-fluid"> 
+	<div class="row">
+	    <div class="col-md-12">
 <!--- 確認 --->
+            総登録求人数(全部の登録件数）：<%= @campcount %>件<br >
 
-<h1>の検索結果</h1>
-     <div class="container-fluid"> 
-      <div class="col-md-3 border" id="leftCol">
-aaa
-     
-     </div>
-      <div class="col-md-9 border" id="rightCol">
-<div class="breadcrumb boader"><%= breadcrumb :issues %></div>
-
-<%= sort_link @search,:id, "idでソート" %>
-<%= sort_link @search,:enddate, "終了日でソート" %>
-
-<%= render(@campaigns) %>
-    <div class="row">
-        <div class="col-md-12 pagination-centered border">
-        <%= paginate @campaigns %>
+            <h1>の検索結果</h1>
         </div>
-    </div>
+            <div class="col-md-3 border" id="leftCol">
+                aaa
+            </div>
+            <div class="col-md-9 border" id="rightCol">
+
+                <%# sort_link @search,:id, "idでソート" %>
+                <%# sort_link @search,:startdate, "Start日でソート" %>
+
+                <%= render(@campaigns) %>
+                <div class="row">
+                    <div class="col-md-12 pagination-centered">
+                        <%= paginate @campaigns %>
+                    </div>
+                 </div>
+            </div>
+    </div> 
 </div> 

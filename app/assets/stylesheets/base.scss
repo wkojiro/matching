@@ -1,16 +1,29 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 /* font styles
 -------------------------------------------------- */
-
+/*
 html,
 body {
 font-family: 'Helvetica Neue', Helvetica, 'Arial', '游ゴシック', YuGothic, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
 white-space: normal;
+}*/
+
+
+* {
+padding : 0px;
+margin : 0px;
 }
+html {overflow: auto;}
+
+/*body{background-color:#fcfcfc;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;} */
+body{background-color:#dddddd;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;}
+
 
 h1 { font-size: 2.2em; 
         line-height: 1.8;
 }
-
 h2 { font-size: 1.7em;
     line-height: 1.8;}
     
@@ -25,7 +38,14 @@ h4 { font-size: 1.125em;
     
 p { font-size: 1em;
     line-height:2;}
+    
+ul {
+list-style-type: none;
+}
 
+ol {
+list-style-type: none;
+}
 
 
 .title{
