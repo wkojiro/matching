@@ -1,10 +1,9 @@
 <% unless user_logged_in? %>
-aaa
+aaaa
 <% else %>
 
 <div class="container-fluid">
     <!-- Begin page content -->
-
 
 <div class="row">
 <div class="col-md-9 col-xs-12 leftcol"><!-- right -->
@@ -13,77 +12,83 @@ aaa
     <p class="maz">まずは簡単無料エントリー。とりあえず話を聞きたいという方も、案件紹介をご希望の方も、<br>お気軽にご相談ください。</p>
     <!-- <form class="form-horizontal autoConfirm" id="sendmail" method="POST" action="http://job-front.com/entry/confirm"> -->
 
-    <form method="POST" action="" accept-charset="UTF-8" name="entry_form" enctype="multipart/form-data" class="form-horizontal autoConfirm"><input name="_token" type="hidden" value="EaDAXe3Aq3UFtdYvhvgMqoQ7EB4q1rtzGapcCglY">
-        <input id="hidden" name="pc_flg" type="hidden" value="1">
+<%= nested_form_for @resume, :html => {:multipart => true, :class => 'form-horizontal autoConfirm h-adr'} do |f| %> 
+
+<%= render 'shared/error_messages', object: f.object %>
+
+ 
 
     <!-- 行開始  -->
       <div class="row fbox">
         <div class="col-sm-3"><label for="Name" class="fT">氏名</label><span class="label label-blue fwn hsni">必須</span></div>
-        <div class="col-sm-4">
-          <input value="" class="form-control text-input" id="Name" name="name" placeholder="田中　一郎" type="text">
+        <div class="col-sm-4  border">
+          <input value="" class="form-control text-input" id="Name" name="name" placeholder="田中 一郎" type="text">
           <span style="color:red"></span>
         </div>
-      </div><!-- /行終了  -->
+      </div>
+    <!-- /行終了  -->
 
     <!-- 行開始  -->
       <div class="row fbox">
-        <div class="col-sm-3"><label for="Year" class="fT">生まれた年</label><span class="label label-blue fwn hsni">必須</span></div>
-        <div class="col-sm-3 col-xs-7">
-          <select class="form-control" id="Year" name="birthday">
-            <option value="">年</option>
-            <option value="1955">1955年</option>
-            <option value="1956">1956年</option>
-            <option value="1957">1957年</option>
-            <option value="1958">1958年</option>
-            <option value="1959">1959年</option>
-            <option value="1960">1960年</option>
-            <option value="1961">1961年</option>
-            <option value="1962">1962年</option>
-            <option value="1963">1963年</option>
-            <option value="1964">1964年</option>
-            <option value="1965">1965年</option>
-            <option value="1966">1966年</option>
-            <option value="1967">1967年</option>
-            <option value="1968">1968年</option>
-            <option value="1969">1969年</option>
-            <option value="1970">1970年</option>
-            <option value="1971">1971年</option>
-            <option value="1972">1972年</option>
-            <option value="1973">1973年</option>
-            <option value="1974">1974年</option>
-            <option value="1975">1975年</option>
-            <option value="1976">1976年</option>
-            <option value="1977">1977年</option>
-            <option value="1978">1978年</option>
-            <option value="1979">1979年</option>
-            <option value="1980">1980年</option>
-            <option value="1981">1981年</option>
-            <option value="1982">1982年</option>
-            <option value="1983">1983年</option>
-            <option value="1984">1984年</option>
-            <option value="1985">1985年</option>
-            <option value="1986">1986年</option>
-            <option value="1987">1987年</option>
-            <option value="1988">1988年</option>
-            <option value="1989">1989年</option>
-            <option value="1990">1990年</option>
-            <option value="1991">1991年</option>
-            <option value="1992">1992年</option>
-            <option value="1993">1993年</option>
-            <option value="1994">1994年</option>
-            <option value="1995">1995年</option>
-            <option value="1996">1996年</option>
-            <option value="1997">1997年</option>
-          </select>
+        <div class="col-sm-3  border"><%= f.label :birthday, "生年月日", {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+    
+                    <div class="col-sm-5 col-xs-3 border">
+      
+      
+ <%# f.date_select(:birthday, options = { start_year: 1930 }, html_options = {class: 'form-control'}) %>
+ <%= f.date_select(:birthday, options = { start_year: 1930,order: [:year, :month, :day],use_month_numbers: true, prompt: {year: '西暦', month: '月', day: '日' }, start_year: 1930 },
+ html_options = { class: 'form-control form-inline-block form-width'}) %>
+
           <span style="color:red; display:none;" class="validationMessage"><br />必須項目です。</span>
         </div>
-      </div><!-- /行終了  -->
+      </div>
+    <!-- /行終了  -->
+    
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :sex, "性別", {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4">
 
 
+<%= f.radio_button :sex, 1 %> <%= f.label :sex_1, "男", {class: 'fT'} %>
+<%= f.radio_button :sex, 2 %> <%= f.label :sex_2, "女", {class: 'fT'} %>
 
+        
+        
+          <span style="color:red"></span>
+        </div>
+      </div>
+    <!-- /行終了  -->
 
     <!-- 行開始  -->
-<!-- /行終了  -->
+      <div class="row fbox">
+        <div class="col-sm-3 border"><%= f.label :user_postel01, "郵便番号",  {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-5 border">
+          <p class="f_skill01">郵便番号</p>
+             <span class="p-country-name" style="display:none;">Japan</span>
+              <%= f.text_field :user_postel01, :class => "form-control text-input form-inline-block form-width input-small p-postal-code", :size => "3", :maxlength =>"3" %>-
+              <%= f.text_field :user_postel02, :class => "form-control text-input form-inline-block form-width input-small p-postal-code", :size => "4", :maxlength =>"4" %>
+          <p class="f_skill01">都道府県号</p>
+<%= f.text_field :user_address01, :class => "form-control text-input form-inline-block p-region" %>
+          <p class="f_skill01">市区町村</p>
+<%= f.text_field :user_address02, :class => "form-control text-input form-inline-block p-locality" %>
+          <p class="f_skill01">番地</p>
+<%= f.text_field :user_address03, :class => "form-control text-input form-inline-block p-street-address" %>
+          <p class="f_skill01">その他（建物名等）</p>
+<%= f.text_field :user_address04, :class => "form-control text-input form-inline-block p-extended-address" %>
+
+
+
+
+          <span style="color:red"></span>
+        </div>
+
+      </div>
+      <!-- /行終了  -->
+
+
+      
+
 
     <!-- 行開始  -->
       <div class="row fbox">
@@ -99,27 +104,112 @@ aaa
 
     <!-- 行開始  -->
       <div class="row fbox">
-        <div class="col-sm-3"><label for="Phone" class="fT">電話番号</label><span class="label label-blue fwn hsni">必須</span></div>
-        <div class="col-sm-4">
-          <input value="" class="form-control text-input" id="Phone" name="phone" placeholder="0312345678" type="text">
+        <div class="col-sm-3"><%= f.label :tel, "電話番号",  {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4"><%= f.text_field :tel, class: 'form-control text-input',placeholder: "0312345678"  %>
+          
           <span style="color:red"></span>
         </div>
         <div class="col-sm-5">
           <div class="row"><p class="fS">（半角数字、ハイフン不要）</p></div>
         </div>
-      </div><!-- /行終了  -->
+      </div>
+      <!-- /行終了  -->
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :gradyear, "卒業年",  {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4">
+<%= f.date_select(:gradyear, {:discard_month => true, :discard_day => true,:start_year => 1930, :end_year => Time.now.year, :default =>'1990-1-1'.to_date}, {:class => ["form-control"]})  %>          
+<%# select_year(Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 95, :field_name => 'resume[gradyear]') %>
+
+ 
+          <%# f.date_select(:gradyear, options = {discard_month: true, discard_day: true, start_year: 1930 }, html_options = { size: 1 ,class: 'bootstrap-date form-inline form-control'}) %>
+        <%# f.date_select(:gradyear,:start_year => 1930) %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（卒業年をお知らせください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  -->
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :gradschool, "最終学歴",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-4"><%= f.text_field :gradschool, class: 'form-control text-input',placeholder: "吉祥寺高校"  %>
+          
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（最終学歴をお知らせください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  -->      
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :status, "現在の状況",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-4">
+        <%= f.select :status, 
+    options_for_select([['求職中','求職中'],['就業中','就業中'],['離職中','離職中']], params[:status]),
+    {}, { :class => 'form-control' } %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（現在の活動状況についてお知らせください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  --> 
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :jobhopcount, "転職回数",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-4">
+        <%= f.select :jobhopcount, 
+    options_for_select([['0回','0回'],['1回','1回'],['2回','2回'],['3回','3回'],['4回','4回'],['5回','5回'],['6回以上','6回以上']], params[:jobhopcount]),
+    {}, { :class => 'form-control' } %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（転職回数をお知らせください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  --> 
+
+
+
+
+
+
+
+
 
 
     <!-- 行開始  -->
       <div class="row fbox form-group">
-        <div class="col-sm-3"><label for="Area" class="fT"><span class="text94">仕事を探すエリア</span></label><span class="label label-blue fwn hsni">必須</span></div>
-        <div class="col-sm-5 col-xs-12">
+        <div class="col-sm-3"><%= f.label :category_ids, "資格・免許・スキル情報",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-9 col-xs-12">
           <div class="checkbox">
+ 
+  <div class="field">
+         <p class="f_skill01">免許</p>
+          <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '1'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>    
+  
+  <div class="field">
+        <p class="f_skill01">資格</p>
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '2'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>     
 
-        <label><input type="checkbox" value="1"  name="areas[]"><span class="fS04 mr15">関東</span></label>
-        <label><input type="checkbox" value="2"  name="areas[]"><span class="fS04 mr15">関西</span></label>
-        <label><input type="checkbox" value="3"  name="areas[]"><span class="fS04 mr15">福岡県</span></label>
-        <label><input type="checkbox" value="99" name="areas[]"><span class="fS04">その他の地方</span></label>
+ <div class="field">
+        <p class="f_skill01">その他スキル</p>
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '3'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>   
+
 
           </div>
           <span style="color:red"></span>
@@ -130,246 +220,214 @@ aaa
       </div><!-- /行終了  -->
 
     <!-- 行開始  -->
-      <div class="row fbox form-group">
-        <div class="col-sm-3"><label for="Time" class="fT">希望稼働時期</label><span class="label label-gry fwn hsni">任意</span></div>
-        <div class="col-sm-6 col-xs-12">
-          <div class="radio">
-
-            <label><input type="radio" name="work_term" id="Time1" value="1"><span class="fS04 mr15">即日</span></label>
-            <label><input type="radio" name="work_term" id="Time2" value="2"><span class="fS04 mr15">１～２ヶ月以内</span></label>
-            <label><input type="radio" name="work_term" id="Time3" value="3"><span class="fS04 mr15">３ヶ月以上</span></label>
-            <label><input type="radio" name="work_term" id="Time4" value="4"><span class="fS04">今後、フリーランスを検討</span></label>
-
-          </div>
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :scoutflg, "スカウトメールを希望する",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-4">
+        <%= f.select :scoutflg, 
+    options_for_select([['希望する','希望する'],['希望しない','希望しない']], params[:scoutflg]),
+    {}, { :class => 'form-control' } %>
+          <span style="color:red"></span>
         </div>
-
-      </div><!-- /行終了  -->
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（企業からのスカウトをご希望の場合は「希望する」を選択してください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  --> 
 
     <!-- 行開始  -->
       <div class="row fbox">
-        <div class="col-sm-3"><label for="Reward" class="fT">月額報酬</label><span class="label label-gry fwn hsni">任意</span></div>
-        <div class="col-sm-1 col-xs-3">
-          <div class="row"><p class="fS03">希望</p></div>
-        </div>
-        <div class="col-sm-2 col-xs-7">
-          <div class="row fmb10"><input value="" class="form-control text-input" id="Reward1" name="salary_expected" placeholder="例：70" type="text"></div>       
-        </div>
-        <div class="col-sm-1 col-xs-2">
-          <div class="row"><p class="fS01">&nbsp;万円</p></div>
-        </div>
-
-        <div class="col-sm-1 col-xs-3">
-          <div class="row"><p class="fS03">現状</p></div>
-        </div>
-        <div class="col-sm-2 col-xs-7">
-          <div class="row"><input value="" class="form-control text-input" id="Reward2" name="salary_now" placeholder="例：60" type="text"></div>       
-        </div>
-        <div class="col-sm-1 col-xs-2">
-          <div class="row"><p class="fS01">&nbsp;万円</p></div>
-        </div>
-
-      </div><!-- /行終了  -->
-
-    <!-- 行開始  -->
-      <div class="row fbox">
-        <div class="col-sm-3 col-xs-12"><label for="Skill" class="fT">経験スキル</label><span class="label label-gry fwn hsni">任意</span></div>
-        <div class="col-sm-9 col-xs-12"><!-- /col-sm-9 col-xs-12  -->
-          <p class="f_skill01">期間</p>
-          <div class="col-sm-3 col-xs-3">
+        <div class="col-sm-3 col-xs-12 border"><%= f.label :jobhistory01, "職務経歴",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-9 col-xs-12 border"><!-- /col-sm-9 col-xs-12  -->
+          <div class="col-sm-12 col-xs-12">
            <div class="row">
-            <select class="form-control" id="SkillYear1" name="skill_start_year1" style="width: 110px">
-              <option value="">年</option>
-              <option value="2010">2010年</option>
-              <option value="2011">2011年</option>
-              <option value="2012">2012年</option>
-              <option value="2013">2013年</option>
-              <option value="2014">2014年</option>
-              <option value="2015">2015年</option>
-            </select>
-           </div>
-          </div>
-          <div class="col-sm-2 col-xs-2 ml5">
-           <div class="row">
-            <select class="form-control" id="SkillMonth1" name="skill_start_month1">
-              <option value="">月</option>
-              <option value="1">1月</option>
-              <option value="2">2月</option>
-              <option value="3">3月</option>
-              <option value="4">4月</option>
-              <option value="5">5月</option>
-              <option value="6">6月</option>
-              <option value="7">7月</option>
-              <option value="8">8月</option>
-              <option value="9">9月</option>
-              <option value="10">10月</option>
-              <option value="11">11月</option>
-              <option value="12">12月</option>
-            </select>
-           </div>
-          </div>
-          <div class="col-sm-1 col-xs-1">
-           <div class="row">
-            <p class="f_skill01 text-center">～</p>
-           </div>
-          </div>
-          <div class="col-sm-3 col-xs-3">
-           <div class="row">
-            <select class="form-control" id="SkillYear2" name="skill_end_year1" style="width: 110px">
-              <option value="">年</option>
-              <option value="2010">2010年</option>
-              <option value="2011">2011年</option>
-              <option value="2012">2012年</option>
-              <option value="2013">2013年</option>
-              <option value="2014">2014年</option>
-              <option value="2015">2015年</option>
-            </select>
-           </div>
-          </div>
-          <div class="col-sm-2 col-xs-2 ml5">
-           <div class="row">
-            <select class="form-control" id="SkillMonth2" name="skill_end_month1">
-              <option value="">月</option>
-              <option value="1">1月</option>
-              <option value="2">2月</option>
-              <option value="3">3月</option>
-              <option value="4">4月</option>
-              <option value="5">5月</option>
-              <option value="6">6月</option>
-              <option value="7">7月</option>
-              <option value="8">8月</option>
-              <option value="9">9月</option>
-              <option value="10">10月</option>
-              <option value="11">11月</option>
-              <option value="12">12月</option>
-            </select>
-          </div>
-         </div>
-         <div class="col-sm-12 col-xs-12">
-           <div class="row">
-             <p class="f_skill02">経験スキル（開発環境や担当工程など）</p>
-             <input value="" class="form-control text-input" id="Skill" name="skill_skill1" placeholder="例：ソーシャルゲーム開発　PHP、JavaScript" type="text">
+             <p class="f_skill02">会社名</p>
+             <%= f.text_field :jobhistorycompname01, class: 'form-control text-input',placeholder: "例：ドラキャリ運送株式会社"  %>
+             
            </div>
          </div>
-
-        </div><!-- /col-sm-9 col-xs-12  -->
-
-        <div class="col-sm-9 col-xs-12 col-sm-offset-3 mt8"><!-- /col-sm-9 col-xs-12  -->
-          <p class="f_skill01">期間</p>
-          <div class="col-sm-3 col-xs-3">
+        
+        
+          <p class="f_skill01">在籍期間</p>
+          <div class="col-sm-5 col-xs-3">
            <div class="row">
-            <select class="form-control" id="SkillYear1" name="skill_start_year2" style="width: 110px">
-              <option value="">年</option>
-              <option value="2010">2010年</option>
-              <option value="2011">2011年</option>
-              <option value="2012">2012年</option>
-              <option value="2013">2013年</option>
-              <option value="2014">2014年</option>
-              <option value="2015">2015年</option>
-            </select>
-           </div>
-          </div>
-          <div class="col-sm-2 col-xs-2 ml5">
-           <div class="row">
-            <select class="form-control" id="SkillMonth1" name="skill_start_month2">
-              <option value="">月</option>
-              <option value="1">1月</option>
-              <option value="2">2月</option>
-              <option value="3">3月</option>
-              <option value="4">4月</option>
-              <option value="5">5月</option>
-              <option value="6">6月</option>
-              <option value="7">7月</option>
-              <option value="8">8月</option>
-              <option value="9">9月</option>
-              <option value="10">10月</option>
-              <option value="11">11月</option>
-              <option value="12">12月</option>
-            </select>
-           </div>
-          </div>
-          <div class="col-sm-1 col-xs-1">
-           <div class="row">
-            <p class="f_skill01 text-center">～</p>
-           </div>
-          </div>
-          <div class="col-sm-3 col-xs-3">
-           <div class="row">
-            <select class="form-control" id="SkillYear2" name="skill_end_year2" style="width: 110px">
-              <option value="">年</option>
-              <option value="2010">2010年</option>
-              <option value="2011">2011年</option>
-              <option value="2012">2012年</option>
-              <option value="2013">2013年</option>
-              <option value="2014">2014年</option>
-              <option value="2015">2015年</option>
-            </select>
-           </div>
-          </div>
-          <div class="col-sm-2 col-xs-2 ml5">
-           <div class="row">
-            <select class="form-control" id="SkillMonth2" name="skill_end_month2">
-              <option value="">月</option>
-              <option value="1">1月</option>
-              <option value="2">2月</option>
-              <option value="3">3月</option>
-              <option value="4">4月</option>
-              <option value="5">5月</option>
-              <option value="6">6月</option>
-              <option value="7">7月</option>
-              <option value="8">8月</option>
-              <option value="9">9月</option>
-              <option value="10">10月</option>
-              <option value="11">11月</option>
-              <option value="12">12月</option>
-            </select>
-          </div>
-         </div>
-         <div class="col-sm-12 col-xs-12">
-           <div class="row">
-             <p class="f_skill02">経験スキル（開発環境や担当工程など）</p>
-             <input value="" class="form-control text-input" id="Skill" name="skill_skill2" placeholder="例：広告関連システムのJava開発　要件定義～試験" type="text">
-           </div>
-         </div>
-
-        </div><!-- /col-sm-9 col-xs-12  -->
-      </div><!-- /行終了  -->
-
-    <!-- 行開始  -->
-      <div class="row fbox sp-hide">
-        <div class="col-sm-3"><label for="" class="fT">職務経歴書</label><span class="label label-gry fwn hsni">任意</span></div>
-        <div class="col-sm-9">
-
-          <input style="display: none;" id="Image0PhotoUser" name="job_history_file" type="file">
-          <button class="btn btn-default" role="button" onClick="$(&#039;input[id=Image0PhotoUser]&#039;).click();" type="button">ファイルを選択</button>
-          <button id="clear_button" class="myButton04 ml15" type="button"><i class="fa fa-times"></i>&nbsp;選択クリア</button>
-          <p id="file_name" class="file03" style="margin-left:15px;">選択されていません</p>
-
-          <p class="file03">※ファイルは2MB以下、Word・Excel・PDFファイルのいずれかでアップロードしてください</p>
+             <%= f.date_select(:jobhistorystartdate01, options = {discard_day: true, start_year: 1930,order: [:year, :month],use_month_numbers: true, prompt: {year: '西暦', month: '月'} },
+ html_options = { class: 'form-control form-inline-block form-width110'}) %>
           
-          <div class="gbg">
-            <p class="file02">
-              経歴書フォーマットのダウンロードはこちら&nbsp;&nbsp;&nbsp; 
-              <a href="https://geechs-magazine.com/job/job_history_sample.xls" role="button" download="job_history_sample.xls">
-                <button type="button" class="btn btn-primary btn-xs">Download</button>
-              </a>
-            </p>
+           </div>
           </div>
-        </div>
 
+          <div class="col-sm-2 col-xs-1 border">
+           <div class="row">
+            <p class="f_skill01 text-center">～</p>
+           </div>
+          </div>
+          <div class="col-sm-5 col-xs-3">
+           <div class="row">
+             <%= f.date_select(:jobhistoryenddate01, options = {discard_day: true, start_year: 1930,order: [:year, :month],use_month_numbers: true, prompt: {year: '西暦', month: '月'} },
+ html_options = { class: 'form-control form-inline-block form-width110'}) %>
+           </div> 
+         </div>
+         <div class="col-sm-12 col-xs-12">
+           <div class="row">
+             <p class="f_skill02">雇用形態</p>
+
+<%= f.select :jobhistorykeitai01, 
+    options_for_select([['正社員','正社員'],['契約社員','契約社員'],['派遣社員','派遣社員'],['パート・アルバイト','パート・アルバイト']], params[:jobhistorykeitai01]),
+     {:include_blank => '▼雇用形態を選択してください。'}, { :class => 'form-control form-width' } %>             
+           </div>
+         </div>
+         <div class="col-sm-12 col-xs-12">
+           <div class="row">
+             <p class="f_skill02">職種</p>
+<%= f.select :jobhistoryoccupation01,
+    options_for_select([['タクシードライバー','タクシードライバー'],['バス乗務員','バス乗務員'],['大型トラックドライバー','大型トラックドライバー'],
+    ['中型トラックドライバー','中型トラックドライバー'],['小型トラックドライバー','小型トラックドライバー'],['整備系業務','整備系業務'],
+    ['運行管理系業務','運行管理系業務'],['その他','その他']], params[:jobhistoryoccupation01]),
+     {:include_blank => '▼職種を選択してください。'}, { :class => 'form-control form-width' } %>  
+             
+           </div>
+         </div>
+         <div class="col-sm-12 col-xs-12">
+           <div class="row">
+             <p class="f_skill02">業務内容（担当業務や経験したことなど）</p>             
+             <%= f.text_area :jobhistory01, class: 'form-control text-input',placeholder: "例：引越業務、配車業務等"  %>
+             
+           </div>
+         </div>         
+
+        </div><!-- /col-sm-9 col-xs-12  -->
       </div><!-- /行終了  -->
 
-        <!-- start EntroyControllerにて要素が存在しないとエラーになるため空値送信  -->
-        <input class="form-control--entry form-control in_name_input--entry" placeholder="タナカ　イチロウ" style="display: none;" name="kana" type="text">
-        <input class="form-control--entry form-control in_name_input--entry" placeholder="JR渋谷" style="display: none;" name="station_name" type="text">
-        <input id="magazine_flg" style="display: none;" checked="checked" name="magazine_flg" type="checkbox" value="0">
-        <!-- end EntroyControllerにて要素が存在しないとエラーになるため空値送信 -->
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :jobexprience, "乗務履歴",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-9"></div>
+      </div>
+
+<div class="gbg">    
+<div class="row fbox">
+  <div class="col-md-4">乗務期間</div>
+  <div class="col-md-8" >
+  <div class="col-md-2">経験なし</div>
+  <div class="col-md-2">1年未満</div>
+  <div class="col-md-2">1年以上</div>  
+  <div class="col-md-2">3年以上</div>
+  <div class="col-md-2">5年以上</div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">普通自動車</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 0 %></div>
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 1 %></div>
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 2 %></div>
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 3 %></div>
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">タクシー・ハイヤー</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">大型バス（路線）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">大型バス（旅客）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">大型トラック（20t以上）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">中型トラック（5t～20t未満）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">小型トラック（4ｔ未満）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">トレーラー（牽引）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">特殊車両（玉掛け・クレーン）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 4 %></div>
+  </div>
+</div>
+<div class="row fbox">
+  <div class="col-md-4 text-left">その他車輛</div>
+  <div class="col-md-8" >
+  <div class="col-md-12 text-center"><%= f.text_field :skillexperience_sonota01, class: 'form-control text-input',placeholder: "例：パッカー車、クレーン"  %></div>
+ 
+  </div>
+</div>
+
+</div>
+
+<hr>
 
 
-        <input name="general_params" type="hidden" value="lp9">         <input name="site_flg" type="hidden" value="1">         <p class="text-center">
-          <input class="myButton01" name="entry_submit" type="submit" value="確認画面に進む">
-        </p>
 
-    </form>
+
+<p class="text-center">
+<%= f.submit "送信", class: "myButton01" %>
+<% end %>
+</p>
+
+
+
+
 
     
     <div class="col-sm-2">
@@ -389,44 +447,8 @@ aaa
 
 
 
-<%= form_for @resume, :html => {:multipart => true} do |f| %> 
-<%= render 'shared/error_messages', object: f.object %>
-<%= f.label :user_address01 %>
-<%= f.text_field :user_address01, class: 'form-control'%>
-<%= f.label :user_address02 %>
-<%= f.text_field :user_address02, class: 'form-control' %>
-<%= f.label :tel%>
-<%= f.text_field :tel, class: 'form-control' %>
-<%= f.label :birthday %>
-<%= f.date_select :birthday, class: 'form-control' %><br >
-<%= f.label :sex %>
-<%= f.text_field :sex, class: 'form-control' %> 
-<%= f.label :shikaku %>
-<%= f.text_field :shikaku, class: 'form-control' %>  
-<%= f.label :menkyo %>
-<%= f.text_field :menkyo, class: 'form-control' %>   
-  <div class="field">
-    <%= f.label :専門領域1 %><br />
-    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '1'"), :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
-    <% end %>
-  </div>    
-  
-  <div class="field">
-    <%= f.label :専門領域2 %><br />
-    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '2'"), :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
-    <% end %>
-  </div>     
 
- <div class="field">
-    <%= f.label :専門領域3 %><br />
-    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '3'"), :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
-    <% end %>
-  </div>   
-<%= f.submit "Post", class: "btn btn-primary" %>
-<% end %>
-<% end %>
+
 </div><!-- /row -->
 </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110115710) do
+ActiveRecord::Schema.define(version: 20151117103613) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -204,14 +204,14 @@ ActiveRecord::Schema.define(version: 20151110115710) do
     t.string   "sex"
     t.string   "shikaku"
     t.string   "menkyo"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.text     "user_address03"
     t.text     "user_address04"
     t.text     "user_postel01"
     t.text     "user_postel02"
     t.text     "tel02"
-    t.text     "gradyear"
+    t.date     "gradyear"
     t.text     "gradschool"
     t.text     "status"
     t.text     "jikopr"
@@ -239,6 +239,19 @@ ActiveRecord::Schema.define(version: 20151110115710) do
     t.text     "jobhistoryoccupation03"
     t.text     "jobhistory03"
     t.text     "skillexperience"
+    t.text     "skillexperience_futsu"
+    t.text     "skillexperience_taxi"
+    t.text     "skillexperience_haier"
+    t.text     "skillexperience_rosenbus"
+    t.text     "skillexperience_ryokyakubus"
+    t.text     "skillexperience_sonotabus"
+    t.text     "skillexperience_kenin"
+    t.text     "skillexperience_oogatatruck"
+    t.text     "skillexperience_chugatatruck"
+    t.text     "skillexperience_kogatatruck"
+    t.text     "skillexperience_tokusyu"
+    t.text     "skillexperience_sonota01"
+    t.text     "skillexperience_sonota02"
   end
 
   add_index "resumes", ["user_id"], name: "index_resumes_on_user_id"

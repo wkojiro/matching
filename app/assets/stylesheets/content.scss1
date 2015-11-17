@@ -68,3 +68,5 @@ form
 .form-control::-moz-placeholder{color:#b4b4b4;opacity:1;font-size: 92%}
 .form-control:-ms-input-placeholder{color:#b4b4b4;font-size: 92%;}
 .form-control::-webkit-input-placeholder{color:#b4b4b4;font-size: 92%;}
+.form-inline-block{display:inline-block;}
+.form-width{width:auto;}

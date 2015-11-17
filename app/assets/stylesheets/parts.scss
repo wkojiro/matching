@@ -233,6 +233,75 @@ color: #fff;
 }
 
 /* ------------------------------------------------------------------
+box accessary
+------------------------------------------------------------------ */
+.gray{
+	background-color:#dddddd;
+}
+.orangeborder{
+	border:1px solid orange;
+}
+
+
+.text-left{
+	text-align:left;
+}
+
+.text-center{
+	text-align:center;
+}
+
+.text-right{
+	text-align:right;
+}
+
+.hoverbox{
+  display: inline-block;
+}
+.hoverbox:hover {
+  background-color: #dddddd;
+}
+
+
+.hoverbox:hover:after {
+  border-color: #53b300;
+}
+/*-----------------------------------------------------------------
+input accessary
+------------------------------------------------------------------ */
+input[type="radio"]{
+  -webkit-appearance: none;
+  width:15px;
+  height:15px;
+  border:2px solid #19283C;
+  border-radius:15px;
+  background:transparent;
+  opacity:0.5;
+ /* width:100%; */
+}
+input[type="radio"]:checked{
+  background:#19283C;
+  opacity:1;
+}
+
+input[type="checkbox"]{
+  -webkit-appearance: none;
+  width:15px;
+  height:15px;
+  border:2px solid #19283C;
+  border-radius:2px;
+  background:transparent;
+  opacity:0.5;
+}
+input[type="checkbox"]:checked{
+  background:#19283C;
+  opacity:1;
+}
+
+
+
+
+/* ------------------------------------------------------------------
 Button
 ------------------------------------------------------------------ */
 .myButton04 {
