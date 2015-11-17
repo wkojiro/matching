@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117103613) do
+ActiveRecord::Schema.define(version: 20151117115427) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -221,20 +221,20 @@ ActiveRecord::Schema.define(version: 20151117103613) do
     t.text     "scoutflg"
     t.text     "jobhopcount"
     t.text     "jobhistorycompname01"
-    t.text     "jobhistorystartdate01"
-    t.text     "jobhistoryenddate01"
+    t.date     "jobhistorystartdate01"
+    t.date     "jobhistoryenddate01"
     t.text     "jobhistorykeitai01"
     t.text     "jobhistoryoccupation01"
     t.text     "jobhistory01"
     t.text     "jobhistorycompname02"
-    t.text     "jobhistorystartdate02"
-    t.text     "jobhistoryenddate02"
+    t.date     "jobhistorystartdate02"
+    t.date     "jobhistoryenddate02"
     t.text     "jobhistorykeitai02"
     t.text     "jobhistoryoccupation02"
     t.text     "jobhistory02"
     t.text     "jobhistorycompname03"
-    t.text     "jobhistorystartdate03"
-    t.text     "jobhistoryenddate03"
+    t.date     "jobhistorystartdate03"
+    t.date     "jobhistoryenddate03"
     t.text     "jobhistorykeitai03"
     t.text     "jobhistoryoccupation03"
     t.text     "jobhistory03"
