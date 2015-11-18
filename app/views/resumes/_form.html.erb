@@ -1,0 +1,429 @@
+
+
+
+
+
+
+
+
+<%= nested_form_for @resume, :html => {:multipart => true, :class => 'form-horizontal autoConfirm h-adr'} do |f| %> 
+
+<%= render 'shared/error_messages', object: f.object %>
+
+ 
+
+ 
+       
+
+    <!-- 行開始  -->
+      <div class="row fbox2">
+        <div class="col-sm-3"><label for="Name" class="fT">ご登録氏名</label><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4  border">
+
+           <%= @user.name %>
+           
+          <span style="color:red"></span>
+        </div>
+      </div>
+    <!-- /行終了  -->
+    <!-- 行開始  -->
+      <div class="row fbox2">
+        <div class="col-sm-3"><label for="Email" class="fT">ご登録メールアドレス</label><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4">
+                     <%= @user.email %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（半角英数字）</p></div>
+        </div>
+      </div>
+    <!-- /行終了  -->
+  
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3  border"><%= f.label :birthday, "生年月日", {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+    
+                    <div class="col-sm-5 col-xs-3 border">
+      
+      
+ <%# f.date_select(:birthday, options = { start_year: 1930 }, html_options = {class: 'form-control'}) %>
+ <%= f.date_select(:birthday, options = { start_year: 1930,order: [:year, :month, :day],use_month_numbers: true, prompt: {year: '西暦', month: '月', day: '日' }, start_year: 1930 },
+ html_options = { class: 'form-control form-inline-block form-width'}) %>
+
+          <span style="color:red; display:none;" class="validationMessage"><br />必須項目です。</span>
+        </div>
+      </div>
+    <!-- /行終了  -->
+    
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :sex, "性別", {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4">
+
+
+<%= f.radio_button :sex, 1 %> <%= f.label :sex_1, "男", {class: 'fT'} %>
+<%= f.radio_button :sex, 2 %> <%= f.label :sex_2, "女", {class: 'fT'} %>
+
+        
+        
+          <span style="color:red"></span>
+        </div>
+      </div>
+    <!-- /行終了  -->
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3 border"><%= f.label :user_postel01, "郵便番号",  {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-5 border">
+          <p class="f_skill01">郵便番号</p>
+             <span class="p-country-name" style="display:none;">Japan</span>
+              <%= f.text_field :user_postel01, :class => "form-control text-input form-inline-block form-width input-small p-postal-code", :size => "3", :maxlength =>"3" %>-
+              <%= f.text_field :user_postel02, :class => "form-control text-input form-inline-block form-width input-small p-postal-code", :size => "4", :maxlength =>"4" %>
+          <p class="f_skill01">都道府県号</p>
+<%= f.text_field :user_address01, :class => "form-control text-input form-inline-block p-region" %>
+          <p class="f_skill01">市区町村</p>
+<%= f.text_field :user_address02, :class => "form-control text-input form-inline-block p-locality" %>
+          <p class="f_skill01">番地</p>
+<%= f.text_field :user_address03, :class => "form-control text-input form-inline-block p-street-address" %>
+          <p class="f_skill01">その他（建物名等）</p>
+<%= f.text_field :user_address04, :class => "form-control text-input form-inline-block p-extended-address" %>
+
+
+
+
+          <span style="color:red"></span>
+        </div>
+
+      </div>
+      <!-- /行終了  -->
+
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :tel, "電話番号",  {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4"><%= f.text_field :tel, class: 'form-control text-input',placeholder: "0312345678"  %>
+          
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（半角数字、ハイフン不要）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  -->
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :tel02, "携帯電話番号",  {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4"><%= f.text_field :tel02, class: 'form-control text-input',placeholder: "09000000000"  %>
+          
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（半角数字、ハイフン不要）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  -->
+
+
+
+
+
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :gradyear, "卒業年",  {class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-4">
+<%= f.date_select(:gradyear, {:discard_month => true, :discard_day => true,:start_year => 1930, :end_year => Time.now.year, :default =>'1990-1-1'.to_date}, {:class => ["form-control"]})  %>          
+<%# select_year(Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 95, :field_name => 'resume[gradyear]') %>
+
+ 
+          <%# f.date_select(:gradyear, options = {discard_month: true, discard_day: true, start_year: 1930 }, html_options = { size: 1 ,class: 'bootstrap-date form-inline form-control'}) %>
+        <%# f.date_select(:gradyear,:start_year => 1930) %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（卒業年をお知らせください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  -->
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :gradschool, "最終学歴",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-4"><%= f.text_field :gradschool, class: 'form-control text-input',placeholder: "吉祥寺高校"  %>
+          
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（最終学歴をお知らせください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  -->      
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :status, "現在の状況",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-4">
+           <%# f.select :status, ["求職中", "就業中","離職中"] , class: "form-control" %>
+           
+      <%= f.select :status, { "求職中": "求職中", "就業中":"就業中","離職中":"離職中"},{:include_blank => '▼現在の活動状況を選択してください。'},{ class: "form-control" } %>      
+        <%# f.select :status, 
+    options_for_select([['求職中','求職中'],['就業中','就業中'],['離職中','離職中']], params[:status]),
+    {}, { :class => 'form-control' } %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（現在の活動状況についてお知らせください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  --> 
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :jobhopcount, "転職回数",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-4">
+            <%= f.select :jobhopcount, { "0回": "0回", "1回":"1回","2回":"2回","3回":"3回","4回":"4回","5回":"5回","6回以上":"6回以上"},{:include_blank => '▼転職回数を選択してください。'}, { class: "form-control" } %>   
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（転職回数をお知らせください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  --> 
+
+
+
+
+
+    <!-- 行開始  -->
+      <div class="row fbox form-group">
+        <div class="col-sm-3"><%= f.label :category_ids, "資格・免許・スキル情報",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-9 col-xs-12">
+          <div class="checkbox">
+ 
+  <div class="field">
+         <p class="f_skill01">免許</p>
+          <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '1'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>    
+  
+  <div class="field">
+        <p class="f_skill01">資格</p>
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '2'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>     
+
+ <div class="field">
+        <p class="f_skill01">その他スキル</p>
+    <%= collection_check_boxes(:resume, :category_ids, Category.where("genre1 = '3'"), :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>   
+
+
+          </div>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+          <div class="mt10"><p class="fS02">（複数選択可）</p></div>
+        </div>
+      </div><!-- /行終了  -->
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :scoutflg, "スカウトメールを希望する",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-4">           
+        <%= f.select :scoutflg, { "希望する": "希望する", "希望しない":"希望しない"}, {}, { class: "form-control" } %>  
+
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-5">
+          <div class="row"><p class="fS">（企業からのスカウトをご希望の場合は「希望する」を選択してください。）</p></div>
+        </div>
+      </div>
+      <!-- /行終了  --> 
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3 col-xs-12 border"><%= f.label :jobhistory01, "職務経歴",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-9 col-xs-12 border"><!-- /col-sm-9 col-xs-12  -->
+          <div class="col-sm-12 col-xs-12">
+           <div class="row">
+             <p class="f_skill02">会社名</p>
+             <%= f.text_field :jobhistorycompname01, class: 'form-control text-input',placeholder: "例：ドラキャリ運送株式会社"  %>
+             
+           </div>
+         </div>
+        
+        
+          <p class="f_skill01">在籍期間</p>
+          <div class="col-sm-5 col-xs-3">
+           <div class="row">
+             <%= f.date_select(:jobhistorystartdate01, options = {discard_day: true, start_year: 1950,order: [:year, :month],use_month_numbers: true, prompt: {year: '西暦', month: '月'} },
+ html_options = { class: 'form-control form-inline-block form-width110'}) %>
+          
+           </div>
+          </div>
+
+          <div class="col-sm-2 col-xs-1 border">
+           <div class="row">
+            <p class="f_skill01 text-center">～</p>
+           </div>
+          </div>
+          <div class="col-sm-5 col-xs-3">
+           <div class="row">
+             <%= f.date_select(:jobhistoryenddate01, options = {discard_day: true, start_year: 1950,order: [:year, :month],use_month_numbers: true, prompt: {year: '西暦', month: '月'} },
+ html_options = { class: 'form-control form-inline-block form-width110'}) %>
+           </div> 
+         </div>
+         <div class="col-sm-12 col-xs-12">
+           <div class="row">
+             <p class="f_skill02">雇用形態</p>
+       <%= f.select :jobhistorykeitai01, { "正社員": "正社員", "契約社員":"契約社員", "派遣社員":"派遣社員", "パート・アルバイト":"パート・アルバイト"},{:include_blank => '▼雇用形態を選択してください。'}, { class: "form-control form-width" } %> 
+            
+           </div>
+         </div>
+         <div class="col-sm-12 col-xs-12">
+           <div class="row">
+             <p class="f_skill02">職種</p>
+<%= f.select :jobhistoryoccupation01, { "タクシードライバー": "タクシードライバー", "バス乗務員":"バス乗務員", "大型トラックドライバー":"大型トラックドライバー", "中型トラックドライバー":"中型トラックドライバー","小型トラックドライバー":"小型トラックドライバー","整備系業務":"整備系業務","運行管理系業務":"運行管理系業務","事務・軽作業員":"事務・軽作業員","その他":"その他"},{:include_blank => '▼雇用形態を選択してください。'}, { class: "form-control form-width" } %> 
+  
+
+             
+           </div>
+         </div>
+         <div class="col-sm-12 col-xs-12">
+           <div class="row">
+             <p class="f_skill02">業務内容（担当業務や経験したことなど）</p>             
+             <%= f.text_area :jobhistory01, class: 'form-control text-input',placeholder: "例：引越業務、配車業務等"  %>
+             
+           </div>
+         </div>         
+
+        </div><!-- /col-sm-9 col-xs-12  -->
+      </div><!-- /行終了  -->
+
+    <!-- 行開始  -->
+      <div class="row fbox">
+        <div class="col-sm-3"><%= f.label :jobexprience, "乗務履歴",  {class: 'fT'} %><span class="label label-gry fwn hsni">任意</span></div>
+        <div class="col-sm-9"></div>
+      </div>
+
+<div class="obg">    
+<div class="row fbox2">
+  <div class="col-md-4">乗務期間</div>
+  <div class="col-md-8" >
+  <div class="col-md-2">未経験</div>
+  <div class="col-md-2">1年未満</div>
+  <div class="col-md-2">1年以上</div>  
+  <div class="col-md-2">3年以上</div>
+  <div class="col-md-2">5年以上</div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">普通自動車</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 0 %></div>
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 1 %></div>
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 2 %></div>
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 3 %></div>
+  <div class="col-md-2 text-center hoverbox"><%= f.radio_button :skillexperience_futsu, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">タクシー・ハイヤー</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_taxi, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">大型バス（路線）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_rosenbus, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">大型バス（旅客）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_ryokyakubus, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">大型トラック（20t以上）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_oogatatruck, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">中型トラック（5t～20t未満）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_chugatatruck, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">小型トラック（4ｔ未満）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kogatatruck, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">トレーラー（牽引）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_kenin, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">特殊車両（玉掛け・クレーン）</div>
+  <div class="col-md-8" >
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 0 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 1 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 2 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 3 %></div>
+  <div class="col-md-2 text-center"><%= f.radio_button :skillexperience_tokusyu, 4 %></div>
+  </div>
+</div>
+<div class="row fbox2">
+  <div class="col-md-4 text-left">その他車輛</div>
+  <div class="col-md-8" >
+  <div class="col-md-12 text-center"><%= f.text_field :skillexperience_sonota01, class: 'form-control text-input',placeholder: "例：パッカー車、クレーン"  %></div>
+ 
+  </div>
+</div>
+
+</div>
+
+<hr>
+
+
+<p class="text-center">
+<%= f.submit "送信", class: "myButton01" %>
+<% end %>
+</p>

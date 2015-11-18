@@ -269,29 +269,30 @@ box accessary
 /*-----------------------------------------------------------------
 input accessary
 ------------------------------------------------------------------ */
+
 input[type="radio"]{
-  -webkit-appearance: none;
-  width:15px;
-  height:15px;
-  border:2px solid #19283C;
+/*  -webkit-appearance: none;*/
+  width:16px;
+  height:16px;
+/*  border:2px solid #19283C;
   border-radius:15px;
-  background:transparent;
-  opacity:0.5;
- /* width:100%; */
+  background:transparent; */
+  opacity:1;
+
 }
 input[type="radio"]:checked{
-  background:#19283C;
+/*   background:#19283C; */
   opacity:1;
 }
-
+ 
 input[type="checkbox"]{
-  -webkit-appearance: none;
-  width:15px;
-  height:15px;
+/*  -webkit-appearance: none;*/
+  width:16px;
+  height:16px;
   border:2px solid #19283C;
   border-radius:2px;
   background:transparent;
-  opacity:0.5;
+/*  opacity:0.5;*/
 }
 input[type="checkbox"]:checked{
   background:#19283C;

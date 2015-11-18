@@ -1,0 +1,58 @@
+<!-- form開始  -->
+    <%= form_for(@user) do |f| %>
+      <div class="row fbox2">
+        <div class="col-sm-4">   <%= f.label :name,"お名前",{class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-5  border">
+
+              <%= f.text_field :name, class: 'form-control'  %>
+           
+          <span style="color:red"></span>
+        </div>
+      </div>
+    <!-- /行終了  -->
+    <!-- 行開始  -->
+      <div class="row fbox2">
+        <div class="col-sm-4"> <%= f.label :email ,"ご登録メールアドレス",{class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-5">
+      <%= f.text_field :email, class: 'form-control'  %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-3">
+          <div class="row"><p class="fS">（半角英数字）</p></div>
+        </div>
+      </div>
+    <!-- 行開始  -->      
+      <div class="row fbox2">
+        <div class="col-sm-4"> <%= f.label :password ,"パスワード",{class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-5">
+      <%= f.password_field :password, class: 'form-control'  %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-3">
+          <div class="row"><p class="fS">（半角英数字）</p></div>
+        </div>
+      </div>
+    <!-- /行終了  -->
+    <!-- 行開始  -->      
+      <div class="row fbox2">
+        <div class="col-sm-4"> <%= f.label :password_confirmation,"パスワード確認用",{class: 'fT'} %><span class="label label-blue fwn hsni">必須</span></div>
+        <div class="col-sm-5">
+      <%= f.password_field :password_confirmation, class: 'form-control'  %>
+          <span style="color:red"></span>
+        </div>
+        <div class="col-sm-3">
+          <div class="row"><p class="fS">（半角英数字）</p></div>
+        </div>
+      </div>
+    <!-- /行終了  -->
+    <!-- 行開始  -->
+
+      <div class="row fbox2">
+
+          <p class="text-center">
+          <%= f.submit "Create my account", class: "myButton01" %></p>
+          <% end %>
+
+      </div>
+    <!-- /行終了  -->
+<!-- form終了  -->

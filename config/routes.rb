@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   resources :campaigns 
   resources :categories
   resources :resumes  
-  resources :admins
+  resources :admins, param: :name
   resources :admin_sessions, only: [:new, :create, :destroy]    
   resources :applies
 end

@@ -23,9 +23,24 @@
   <%= f.text_field :categories_name_cont %>
   <%= f.label :koyokeitai_cont, '雇用形態' %>  
   <%= f.text_field :koyokeitai_cont %>
-  
-  
+<br >
+<%= collection_check_boxes(:campaign, :category_ids, Category.where("genre1 = '1'"), :id, :name ,) do |b| %>
+<%= check_box_tag 'q[categories_name_cont]', b.object.name %>
+<%= b.object.name %>
+<% end %>
+<br >
+<%= collection_check_boxes(:campaign, :category_ids, Category.where("genre1 = '2'"), :id, :name ,) do |b| %>
+<%= check_box_tag 'q[categories_name_cont]', b.object.name %>
+<%= b.object.name %>
+<% end %>
+<br >
+<%= collection_check_boxes(:campaign, :category_ids, Category.where("genre1 = '3'"), :id, :name ,) do |b| %>
+<%= check_box_tag 'q[categories_name_cont]', b.object.name %>
+<%= b.object.name %>
+<% end %>
 
+
+<br >
 
 
     <%= f.submit 'search' %>
@@ -35,84 +50,7 @@
 
 
 
-<%= @camp_cates %>
 
-<% @campaigns.each do |camp| %>
-
-<% if camp.startdate <= Date.today and camp.enddate >= Date.today and camp.opflg == "0" %>
-<%- camp.id %>
-<%- camp.client_id %>
-<%- camp.title %>
-<%- camp.summary %>
-<%= camp.content %>
-<%= camp.startdate %>
-<%= camp.enddate %>
-<%= camp.limage %>
-<%= camp.image1 %>
-<%= camp.image2 %>
-<%= camp.image3 %>
-<%= camp.image4 %>
-<%= camp.youtube %>
-<%= camp.category %>
-<%= camp.jobtitle01 %>
-<%= camp.jobtitle02 %>
-<%= camp.jobtitle03 %>
-<%= camp.auth %>
-<%= camp.office_name %>
-<%= camp.office_postel %>
-<%= camp.office_address01 %>
-<%= camp.office_address02 %>
-<%= camp.office_address03 %>
-<%= camp.office_address04 %>
-<%= camp.mycar %>
-<%= camp.station %>
-<%= camp.mapinfo %>
-<%= camp.koyokeitai %>
-<%= camp.koyokikan %>
-<%= camp.salary %>
-<%= camp.salary_remarks %>
-<%= camp.socialsecurity %>
-<%= camp.commuting_expenses %>
-<%= camp.promote %>
-<%= camp.retirement_salary %>
-<%= camp.allowance %>
-<%= camp.emp_remarks %>
-<%= camp.worktime %>
-<%= camp.breaktime %>
-<%= camp.overtime %>
-<%= camp.holiday %>
-<%= camp.annual_holiday %>
-<%= camp.job_description %>
-<%= camp.workflow %>
-<%= camp.licence %>
-<%= camp.skill %>
-<%= camp.qualification %>
-<%= camp.age_criteria %>
-<%= camp.in_charge %>
-<%= camp.apply_tel %>
-<%= camp.apply_email %>
-<%= camp.apply_how %>
-<%= camp.apply_flow %>
-<%= camp.apply_remarks %>
-<%= camp.category_ids %>
-
-
-
-
-
-<%= camp.opflg %>
-<% @camps = Campaign.where(id: camp.id).first.categories %>
-<% @camps.each do |f| %>        
-<%= f.name %> 
-<% end %>
-<%= link_to "詳細", campaign_path(camp.id) %>
-<% if user_logged_in? %>
-
-<% end %>
-<br />
-<hr>
-<% end %>
-<% end %>
 
 <hr>
 

@@ -4,7 +4,7 @@ class AdminsController < ApplicationController
   end
   
   def show
-    @admin = Admin.find(params[:id])
+    @admin = Admin.find(params[:name])
     @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil
   #   @campaigns = Campaign.all.order("updated_at DESC").limit(30) if not nil
   end  

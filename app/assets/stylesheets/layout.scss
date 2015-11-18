@@ -20,18 +20,19 @@ white-space: normal;
 padding : 0px;
 margin : 0px;
 }
-html {overflow: auto;}
+
+/*html {overflow: auto;}*/
 
 /*body{background-color:#fcfcfc;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;} */
-/*body{background-color:#dddddd;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;}*/
-body{background-color: #f5f5f5;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;}
+body{background-color:#ffffff;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;}
+/*body{background-color: #f5f5f5;font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;}*/
 body { padding-top: 50px; }
 /* Wrapper for page content to push down footer */
 
 
 
 html,body{
-     height:100%;
+     height:90%;
 }
 #wrap{
      width: 100%;
@@ -233,6 +234,7 @@ max-width: 1130px;
 -------------------------------------------------- */
 /* Set the fixed height of the footer here */
 #footer {
+margin-top: 50px;    
 height: 200px;
 background-color: #f5f5f5;
 }
@@ -262,6 +264,7 @@ form
 .hsni{float:right;}
 .formBox{padding:10px 15px 15px 15px;}
 .fbox{margin-bottom:6px;padding-bottom:5px;border-bottom:1px solid #eee;}
+.fbox2{margin-bottom:6px;padding-bottom:5px;}
 .fT{color:#000000;font-size: 88%;font-weight: normal;font-family:"Times New Roman", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;}
 .fS{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;padding:0px;}
 .fS01{color:#595757;font-size: 90%;font-weight: normal;font-family:"Times New Roman", "貂ｸ譏取悃", YuMincho, "Hiragino Mincho ProN", Meiryo, serif;margin-top:5px;padding:0px;}

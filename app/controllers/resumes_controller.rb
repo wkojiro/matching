@@ -2,7 +2,8 @@ class ResumesController < ApplicationController
     before_action :logged_in_user, only: [:create]
     
     def new
-      @resume = Resume.new
+     @user = current_user
+     @resume = Resume.new
      @resume.rescats.build # これ！
     end 
     
@@ -36,10 +37,12 @@ class ResumesController < ApplicationController
    # end
     
      def edit
+      @user = current_user 
       @resume = Resume.find(params[:id])
      end
     
      def update
+      @user = current_user      
       @resume = Resume.find(params[:id])
         if @resume.update(resume_params)
            flash[:success] = "update done!"    
