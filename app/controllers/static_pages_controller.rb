@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
   @campcount = Campaign.where("opflg = ? and startdate <= ? and enddate >= ?" , 1, Date.today, Date.today ).count
   @search = Campaign.search(params[:q])
   @campaigns = @search.result(distinct: true)
+  @hws = Hellowork.all
   #@applies = current_user.apllies.build
     @user = current_user
     @client = current_client
@@ -20,7 +21,7 @@ class StaticPagesController < ApplicationController
 #    @client = current_client
   @campcount2 = Campaign.where("opflg = ? and startdate <= ? and enddate >= ?" , 1, Date.today, Date.today )
   @campcount = @campcount2.count
-
+  @hws = Hellowork.all
 ##User.where("name = ? and email = ?", name, email)
 ##User.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
 
@@ -29,6 +30,7 @@ class StaticPagesController < ApplicationController
 
 #  @search = Campaign.joins(:categories).all.search(params[:q])
   @campaigns = @search.result(distinct: true).page(params[:page]).per(5).order("updated_at DESC")
+
 #  @campaigns = @search.result
   #@applies = current_user.apllies.build
     @user = current_user

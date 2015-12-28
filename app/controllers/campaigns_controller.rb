@@ -3,11 +3,13 @@ class CampaignsController < ApplicationController
     protect_from_forgery
 
     def index
+     @hws = Hellowork.all
     end
     
     def new
      @campaign = current_client.campaigns.build
      @campaign.campcats.build # これ！
+     @hws = Hellowork.new
     end
     
     
@@ -15,6 +17,7 @@ class CampaignsController < ApplicationController
     #  if current_client == @client
     #     @campaign = current_client.campaigns.find_by(id: params[:id])
     #    else
+
         @campaign =Campaign.find(params[:id])
         @hash = Gmaps4rails.build_markers(@campaign) do |campaign, marker|
          marker.lat campaign.latitude
