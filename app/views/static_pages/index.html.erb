@@ -65,8 +65,23 @@
 
 </div>
 
+<%# @alljobs.inspect %>
+<% @alljobs.each do |obj| %>
+  <% if obj.kind_of?(Hellowork) %>
+<%= obj.id %>  
+<%= obj.hwnum %>
+<%= obj.hwjigyousyo %>
+<%= obj.hwjigyousyoaddress %>
+<%= obj.hwjigyousyotel %>
 
-<% @hws.each do |hw| %>
-<%= hw.hwnum %>
-<%= hw.hwjigyousyo %>
+  <% else %>
+<%= obj.id %>
+<%= obj.title %>
+  <% end %>
+<% end %>
+
+
+<% @alljobs.each do |hw| %>
+<%= hw.id %>
+
 <% end %>
