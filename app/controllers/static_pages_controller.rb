@@ -10,6 +10,8 @@ class StaticPagesController < ApplicationController
   @campaigns = @search.result(distinct: true)
   @hws = Hellowork.all
   @alljobs = @campaigns.concat(@hws)
+  @alljobs = @alljobs.sort{|f,s| f.created_at <=> s.created_at}
+
  # @alljobs.sort{|f,s| f.created_at <=> s.created_at}
   #@applies = current_user.apllies.build
     @user = current_user
