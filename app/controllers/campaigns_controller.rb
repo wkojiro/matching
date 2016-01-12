@@ -18,7 +18,7 @@ class CampaignsController < ApplicationController
     #    else
 
         @campaign =Campaign.find(params[:id])
-        @hws = Hellowork.all
+   #     @hws = Hellowork.all
         
         @hash = Gmaps4rails.build_markers(@campaign) do |campaign, marker|
          marker.lat campaign.latitude

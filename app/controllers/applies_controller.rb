@@ -14,7 +14,8 @@ class AppliesController < ApplicationController
         @applies = current_user.applies.build(apply_params)
         if @applies.save
             flash[:success] = "応募しました！"
-        redirect_to request.referrer 
+        redirect_to request.referrer
+#         redirect_to @applies
         else
        # puts "not saved"
          @campaign = @applies.campaign
